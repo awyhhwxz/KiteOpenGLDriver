@@ -1,0 +1,54 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+*.ipch
+.vs/KiteOpenGLDriver/v14/.suo
+.vs/KiteOpenGLDriver/v15/.suo
+.vs/KiteOpenGLDriver/v15/Browse.VC.db
+.vs/KiteOpenGLDriver/v15/Browse.VC.opendb
+.vs/KiteOpenGLDriver/v15/Server/sqlite3/db.lock
+.vs/KiteOpenGLDriver/v15/Server/sqlite3/storage.ide
+.vs/KiteOpenGLDriver/v15/Solution.VC.db
+.vs/KiteOpenGLDriver/v15/Solution.VC.db-shm
+.vs/KiteOpenGLDriver/v15/Solution.VC.db-wal
+Debug/KiteMath.ilk
+Debug/KiteMath.pdb
+Debug/KiteOpenGLDriver.ilk
+Debug/KiteOpenGLDriver.pdb
+Debug/KiteOpenGLDriverCore.ilk
+Debug/KiteOpenGLDriverCore.pdb
+Debug/KiteUtil.ilk
+Debug/KiteUtil.pdb
+*.log
+*.tlog
+KiteMath/Debug/vc141.idb
+KiteMath/Debug/vc141.pdb
