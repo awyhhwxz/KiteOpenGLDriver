@@ -17,6 +17,7 @@ namespace kite_driver
 		void ShaderDemo();
 		void InitializeShaderDemo();
 
+		std::shared_ptr<KiteDriverMaterial> _material;
 		GLuint _vbo[2];
 	};
 

@@ -9,6 +9,7 @@ namespace kite_driver
 		~KiteDriverProgramBuilder();
 
 		void Create();
+		void Destroy();
 		void AttachShader(GLuint shader);
 		void LinkProgram();
 

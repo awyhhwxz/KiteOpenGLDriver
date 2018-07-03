@@ -151,8 +151,11 @@
   <ItemGroup>
     <ClInclude Include="interface\IKiteDriverContext.h" />
     <ClInclude Include="interface\IKiteDriverRenderItem.h" />
+    <ClInclude Include="interface\KiteDriverShaderType.h" />
     <ClInclude Include="interface\KiteOpenGLDriverCoreLib.h" />
     <ClInclude Include="KiteDriverContext.h" />
+    <ClInclude Include="KiteDriverEnumOpenGLEnumConverter.h" />
+    <ClInclude Include="KiteDriverMaterial.h" />
     <ClInclude Include="KiteDriverProgramBuilder.h" />
     <ClInclude Include="KiteDriverShaderVisitor.h" />
     <ClInclude Include="RenderItem\RenderItem01.h" />
@@ -161,6 +164,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="KiteDriverContext.cpp" />
+    <ClCompile Include="KiteDriverEnumOpenGLEnumConverter.cpp" />
+    <ClCompile Include="KiteDriverMaterial.cpp" />
     <ClCompile Include="KiteDriverProgramBuilder.cpp" />
     <ClCompile Include="KiteDriverShaderVisitor.cpp" />
     <ClCompile Include="KiteOpenGLDriverCore.cpp" />

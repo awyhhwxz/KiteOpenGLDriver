@@ -11,6 +11,8 @@
 #include <vector>
 #include <algorithm>
 #include <string>
+#include <map>
+#include <memory>
 
 #include "glew.h"
 #include <gl/gl.h>
@@ -22,3 +24,5 @@
 #include "KiteOpenGLDriverCoreLib.h"
 #include "KiteDriverShaderVisitor.h"
 #include "KiteDriverProgramBuilder.h"
+#include "KiteDriverEnumOpenGLEnumConverter.h"
+#include "KiteDriverMaterial.h"

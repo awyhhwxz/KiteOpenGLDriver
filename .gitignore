@@ -52,3 +52,6 @@ Debug/KiteUtil.pdb
 *.tlog
 KiteMath/Debug/vc141.idb
 KiteMath/Debug/vc141.pdb
+*.pdb
+*.idb
+*.pdb

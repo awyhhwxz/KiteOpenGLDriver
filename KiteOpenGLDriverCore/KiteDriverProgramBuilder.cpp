@@ -18,6 +18,11 @@ namespace kite_driver
 		_program = glCreateProgram();
 	}
 
+	void KiteDriverProgramBuilder::Destroy()
+	{
+		glDeleteProgram(_program);
+	}
+
 	void KiteDriverProgramBuilder::AttachShader(GLuint shader)
 	{
 		glAttachShader(_program, shader);

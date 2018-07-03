@@ -51,6 +51,15 @@
     <ClInclude Include="KiteDriverShaderVisitor.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="KiteDriverMaterial.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="interface\KiteDriverShaderType.h">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="KiteDriverEnumOpenGLEnumConverter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -72,6 +81,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="KiteDriverShaderVisitor.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverMaterial.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverEnumOpenGLEnumConverter.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

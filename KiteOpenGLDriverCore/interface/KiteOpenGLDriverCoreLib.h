@@ -8,6 +8,7 @@
 
 #include "IKiteDriverRenderItem.h"
 #include "IKiteDriverContext.h"
+#include "KiteDriverShaderType.h"
 
 namespace kite_driver
 {

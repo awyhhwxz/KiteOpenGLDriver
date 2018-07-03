@@ -57,18 +57,7 @@ namespace kite_driver
 
 	void RenderItem01::ShaderDemo()
 	{
-		auto vertexPath = PathUtil::GetAppPath() + "/shader/vertex_shader.txt";
-		auto fragmentPath = PathUtil::GetAppPath() + "/shader/fragment_shader.txt";
-
-		KiteDriverProgramBuilder programBuilder;
-		programBuilder.Create();
-		auto vertexShader = KiteDriverShaderVisitor::LoadShaderFile(GL_VERTEX_SHADER, vertexPath.c_str());
-		auto fragmentShader = KiteDriverShaderVisitor::LoadShaderFile(GL_FRAGMENT_SHADER, fragmentPath.c_str());
-		programBuilder.AttachShader(vertexShader);
-		programBuilder.AttachShader(fragmentShader);
-		programBuilder.LinkProgram();
-
-		programBuilder.Begin();
+		_material->BeginRender();
 		{
 			glBindBuffer(GL_ARRAY_BUFFER, _vbo[0]);
 			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
@@ -78,7 +67,7 @@ namespace kite_driver
 			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_SHORT, 0);
 			glDisableVertexAttribArray(0);
 		}
-		programBuilder.End();
+		_material->EndRender();
 	}
 	void RenderItem01::InitializeShaderDemo()
 	{
@@ -101,6 +90,13 @@ namespace kite_driver
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vbo[1]);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indexes), indexes, GL_STATIC_DRAW);
+		
+		_material = std::make_shared<KiteDriverMaterial>();
 
+		auto vertexPath = PathUtil::GetAppPath() + "/shader/vertex_shader.txt";
+		auto fragmentPath = PathUtil::GetAppPath() + "/shader/fragment_shader.txt";
+		_material->SetShader(KDST_VERTEX_SHADER, vertexPath);
+		_material->SetShader(KDST_FRAGMENT_SHADER, fragmentPath);
+		_material->Link();
 	}
 }
