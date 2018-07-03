@@ -25,4 +25,5 @@
 #include "KiteDriverShaderVisitor.h"
 #include "KiteDriverProgramBuilder.h"
 #include "KiteDriverEnumOpenGLEnumConverter.h"
+#include "KiteDriverMesh.h"
 #include "KiteDriverMaterial.h"

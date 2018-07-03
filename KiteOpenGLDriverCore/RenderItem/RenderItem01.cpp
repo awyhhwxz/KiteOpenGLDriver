@@ -71,25 +71,28 @@ namespace kite_driver
 	}
 	void RenderItem01::InitializeShaderDemo()
 	{
-		Vector3f v[3];
-		v[0] = Vector3f(-1.0f, -1.0f, 0.0f);
-		v[1] = Vector3f(1.0f, -1.0f, 0.0f);
-		v[2] = Vector3f(0.0f, 1.0f, 0.0f);
+		KiteDriverMesh mesh;
 
-		float values[3 * 3];
-		for (int i = 0; i < 3; ++i)
-		{
-			memcpy(&values[i * 3], &v[i], sizeof(float) * 3);
-		}
-
+		Vector3f v[] = {
+			Vector3f(-1.0f, -1.0f, 0.0f),
+			Vector3f(1.0f, -1.0f, 0.0f),
+			Vector3f(0.0f, 1.0f, 0.0f),
+		};
+		mesh.SetVertices(v, 3);
+		
 		GLushort indexes[] = { 2, 1, 0 };
+		mesh.SetIndices(indexes, 3);
 
 		glGenBuffers(2, _vbo);
 		glBindBuffer(GL_ARRAY_BUFFER, _vbo[0]);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(v), v, GL_STATIC_DRAW);
+		auto vert = mesh.GetVertices();
+		auto verticesSize = mesh.GetVertexCount() * sizeof(Vector3f);
+		glBufferData(GL_ARRAY_BUFFER, verticesSize, vert, GL_STATIC_DRAW);
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vbo[1]);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indexes), indexes, GL_STATIC_DRAW);
+		auto inde = mesh.GetIndices();
+		auto indicesSize = mesh.GetIndexCount() * sizeof(uint16);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicesSize, inde, GL_STATIC_DRAW);
 		
 		_material = std::make_shared<KiteDriverMaterial>();
 

@@ -60,6 +60,12 @@
     <ClInclude Include="KiteDriverEnumOpenGLEnumConverter.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="KiteDriverMesh.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="interface\kite_driver_typedef.h">
+      <Filter>interface</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -87,6 +93,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="KiteDriverEnumOpenGLEnumConverter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverMesh.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
