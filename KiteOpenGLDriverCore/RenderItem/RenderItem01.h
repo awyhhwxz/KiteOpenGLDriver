@@ -13,12 +13,13 @@ namespace kite_driver
 		virtual void Render() override;
 
 	private:
-		void DrawTriangle();
 		void ShaderDemo();
 		void InitializeShaderDemo();
 
-		std::shared_ptr<KiteDriverMaterial> _material;
-		GLuint _vbo[2];
+		std::shared_ptr<KiteDriverMesh> GenerateMesh();
+		std::shared_ptr<KiteDriverMaterial> GenerateMaterial();
+
+		std::shared_ptr<KiteDriverRenderObject> _renderObject;
 	};
 
 }

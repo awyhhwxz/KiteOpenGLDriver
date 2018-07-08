@@ -30,76 +30,45 @@ namespace kite_driver
 		ShaderDemo();
 	}
 
-
-	void RenderItem01::DrawTriangle()
-	{
-		Vector3f v[3];
-		v[0] = Vector3f(-1.0f, -1.0f, 0.0f);
-		v[1] = Vector3f(1.0f, -1.0f, 0.0f);
-		v[2] = Vector3f(0.0f, 1.0f, 0.0f);
-
-		float values[3 * 3];
-		for (int i = 0; i < 3; ++i)
-		{
-			memcpy(&values[i * 3], &v[i], sizeof(float) * 3);
-		}
-
-		GLuint vbo;
-		glGenBuffers(1, &vbo);
-		glBindBuffer(GL_ARRAY_BUFFER, vbo);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(v), v, GL_STATIC_DRAW);
-		glEnableVertexAttribArray(0);
-		glBindBuffer(GL_ARRAY_BUFFER, vbo);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
-		glDisableVertexAttribArray(0);
-	}
-
 	void RenderItem01::ShaderDemo()
 	{
-		_material->BeginRender();
-		{
-			glBindBuffer(GL_ARRAY_BUFFER, _vbo[0]);
-			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-			glEnableVertexAttribArray(0);
-			
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vbo[1]);
-			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_SHORT, 0);
-			glDisableVertexAttribArray(0);
-		}
-		_material->EndRender();
+		_renderObject->Render();
 	}
 	void RenderItem01::InitializeShaderDemo()
 	{
-		KiteDriverMesh mesh;
+		_renderObject = std::make_shared<KiteDriverRenderObject>();
+		_renderObject->Mesh = GenerateMesh();
+		_renderObject->Material = GenerateMaterial();
+		_renderObject->Initialize();
+		_renderObject->set_position(Vector3f(0.5f, 0, 0));
+	}
+
+	std::shared_ptr<KiteDriverMesh> RenderItem01::GenerateMesh()
+	{
+		std::shared_ptr<KiteDriverMesh> mesh = std::make_shared<KiteDriverMesh>();
 
 		Vector3f v[] = {
 			Vector3f(-1.0f, -1.0f, 0.0f),
 			Vector3f(1.0f, -1.0f, 0.0f),
 			Vector3f(0.0f, 1.0f, 0.0f),
 		};
-		mesh.SetVertices(v, 3);
-		
+		mesh->SetVertices(v, 3);
+
 		GLushort indexes[] = { 2, 1, 0 };
-		mesh.SetIndices(indexes, 3);
+		mesh->SetIndices(indexes, 3);
+		return mesh;
+	}
 
-		glGenBuffers(2, _vbo);
-		glBindBuffer(GL_ARRAY_BUFFER, _vbo[0]);
-		auto vert = mesh.GetVertices();
-		auto verticesSize = mesh.GetVertexCount() * sizeof(Vector3f);
-		glBufferData(GL_ARRAY_BUFFER, verticesSize, vert, GL_STATIC_DRAW);
-
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vbo[1]);
-		auto inde = mesh.GetIndices();
-		auto indicesSize = mesh.GetIndexCount() * sizeof(uint16);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicesSize, inde, GL_STATIC_DRAW);
-		
-		_material = std::make_shared<KiteDriverMaterial>();
+	std::shared_ptr<kite_driver::KiteDriverMaterial> RenderItem01::GenerateMaterial()
+	{
+		auto material = std::make_shared<KiteDriverMaterial>();
 
 		auto vertexPath = PathUtil::GetAppPath() + "/shader/vertex_shader.txt";
 		auto fragmentPath = PathUtil::GetAppPath() + "/shader/fragment_shader.txt";
-		_material->SetShader(KDST_VERTEX_SHADER, vertexPath);
-		_material->SetShader(KDST_FRAGMENT_SHADER, fragmentPath);
-		_material->Link();
+		material->SetShader(KDST_VERTEX_SHADER, vertexPath);
+		material->SetShader(KDST_FRAGMENT_SHADER, fragmentPath);
+
+		return material;
 	}
+
 }

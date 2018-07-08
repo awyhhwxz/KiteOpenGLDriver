@@ -43,4 +43,9 @@ namespace kite_driver
 	}
 
 
+	void KiteDriverMaterial::SetUniformValue(tstring uniformName, KiteDriverParaValueType valueType, void* value)
+	{
+		_programBuilder.SetUniformValue(uniformName, valueType, value);
+	}
+
 }

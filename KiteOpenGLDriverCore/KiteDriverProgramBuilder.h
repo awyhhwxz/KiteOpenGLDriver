@@ -15,8 +15,15 @@ namespace kite_driver
 
 		void Begin();
 		void End();
+
+		void SetUniformValue(tstring uniformName, KiteDriverParaValueType valueType, void* value);
+		
+	private:
+		void UniformValueSet(tstring uniformName, KiteDriverParaValue * paraValue);
+
 	protected:
 		GLuint _program;
+		std::map<tstring, std::shared_ptr<KiteDriverParaValue>> _uniformValueMap;
 	};
 
 }

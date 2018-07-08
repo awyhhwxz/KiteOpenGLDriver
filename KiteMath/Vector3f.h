@@ -6,7 +6,7 @@ namespace kite_math
 	{
 	public:
 		Vector3f();
-		Vector3f(float x, float y, float z);
+		Vector3f(float xVal, float yVal, float zVal);
 		~Vector3f();
 
 		union
@@ -18,10 +18,11 @@ namespace kite_math
 			};
 		};
 
-		float* operator ()()
-		{
-			return values;
-		}
+		static const Vector3f Right;
+		static const Vector3f Up;
+		static const Vector3f Forward;
+		static const Vector3f One;
+		static const Vector3f Zero;
 	};
 
 }

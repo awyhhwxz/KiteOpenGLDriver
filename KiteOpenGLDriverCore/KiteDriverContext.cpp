@@ -84,7 +84,7 @@ namespace kite_driver
 			render_item->Render();
 		});
 
-		//glFlush();
+		glFlush();
 		auto dc = GetDC(_hwnd);
 		SwapBuffers(dc);
 		ReleaseDC(_hwnd, dc);

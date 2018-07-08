@@ -19,6 +19,9 @@
     <Filter Include="RenderItem">
       <UniqueIdentifier>{26d2dffb-0f1f-48d7-a333-3593e3c945db}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ParameterValue">
+      <UniqueIdentifier>{acc54989-acf2-4ca8-8695-e78fe7b4777a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -66,6 +69,21 @@
     <ClInclude Include="interface\kite_driver_typedef.h">
       <Filter>interface</Filter>
     </ClInclude>
+    <ClInclude Include="KiteDriverMeshDrawer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KiteDriverRenderObject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KiteDriverDummy.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ParameterValue\KiteDriverParaValue.h">
+      <Filter>ParameterValue</Filter>
+    </ClInclude>
+    <ClInclude Include="KiteDriverParaValueType.h">
+      <Filter>ParameterValue</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -97,6 +115,18 @@
     </ClCompile>
     <ClCompile Include="KiteDriverMesh.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverMeshDrawer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverRenderObject.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverDummy.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ParameterValue\KiteDriverParaValue.cpp">
+      <Filter>ParameterValue</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

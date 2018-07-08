@@ -88,7 +88,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;KITEOPENGLDRIVERCORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>.;.\GL;.\interface;..\KiteMath;..\KiteUtil</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;.\GL;.\interface;..\KiteMath;..\KiteUtil;.\ParameterValue</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -155,24 +155,33 @@
     <ClInclude Include="interface\KiteOpenGLDriverCoreLib.h" />
     <ClInclude Include="interface\kite_driver_typedef.h" />
     <ClInclude Include="KiteDriverContext.h" />
+    <ClInclude Include="KiteDriverDummy.h" />
     <ClInclude Include="KiteDriverEnumOpenGLEnumConverter.h" />
     <ClInclude Include="KiteDriverMaterial.h" />
     <ClInclude Include="KiteDriverMesh.h" />
+    <ClInclude Include="KiteDriverMeshDrawer.h" />
+    <ClInclude Include="KiteDriverParaValueType.h" />
     <ClInclude Include="KiteDriverProgramBuilder.h" />
+    <ClInclude Include="KiteDriverRenderObject.h" />
     <ClInclude Include="KiteDriverShaderVisitor.h" />
+    <ClInclude Include="ParameterValue\KiteDriverParaValue.h" />
     <ClInclude Include="RenderItem\RenderItem01.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="KiteDriverContext.cpp" />
+    <ClCompile Include="KiteDriverDummy.cpp" />
     <ClCompile Include="KiteDriverEnumOpenGLEnumConverter.cpp" />
     <ClCompile Include="KiteDriverMaterial.cpp" />
     <ClCompile Include="KiteDriverMesh.cpp" />
+    <ClCompile Include="KiteDriverMeshDrawer.cpp" />
     <ClCompile Include="KiteDriverProgramBuilder.cpp" />
+    <ClCompile Include="KiteDriverRenderObject.cpp" />
     <ClCompile Include="KiteDriverShaderVisitor.cpp" />
     <ClCompile Include="KiteOpenGLDriverCore.cpp" />
     <ClCompile Include="KiteOpenGLDriverCoreLib.cpp" />
+    <ClCompile Include="ParameterValue\KiteDriverParaValue.cpp" />
     <ClCompile Include="RenderItem\RenderItem01.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
