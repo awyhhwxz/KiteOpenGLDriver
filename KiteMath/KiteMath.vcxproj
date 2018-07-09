@@ -148,13 +148,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Euler.h" />
     <ClInclude Include="KiteMathLib.h" />
+    <ClInclude Include="Mathf.h" />
     <ClInclude Include="Matrix4f.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Vector3f.h" />
     <ClInclude Include="Vector4f.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Euler.cpp" />
+    <ClCompile Include="Mathf.cpp" />
     <ClCompile Include="Matrix4f.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

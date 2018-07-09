@@ -90,6 +90,11 @@ namespace kite_driver
 		ReleaseDC(_hwnd, dc);
 	}
 
+	void KiteDriverContext::Resize(int width, int height)
+	{
+		glViewport(0, 0, width, height);
+	}
+
 	void KiteDriverContext::OnInitialize()
 	{
 		_is_init = true;

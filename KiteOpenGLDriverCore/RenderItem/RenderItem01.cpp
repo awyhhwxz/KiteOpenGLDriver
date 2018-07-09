@@ -41,6 +41,8 @@ namespace kite_driver
 		_renderObject->Material = GenerateMaterial();
 		_renderObject->Initialize();
 		_renderObject->set_position(Vector3f(0.5f, 0, 0));
+		_renderObject->set_euler(Euler(0, 0, Mathf::PI * 0.5f));
+		_renderObject->set_scale(Vector3f(2, 2, 2));
 	}
 
 	std::shared_ptr<KiteDriverMesh> RenderItem01::GenerateMesh()

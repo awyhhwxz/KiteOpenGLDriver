@@ -126,6 +126,14 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    return TRUE;
 }
 
+void WindowResize(int width, int height)
+{
+	if (driver_context)
+	{
+		driver_context->Resize(width, height);
+	}
+}
+
 //
 //  º¯Êý: WndProc(HWND, UINT, WPARAM, LPARAM)
 //
@@ -165,6 +173,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             EndPaint(hWnd, &ps);
         }
         break;
+	case WM_SIZE:
+		{
+			// extract size info
+			auto width = LOWORD(lParam);
+			auto height = HIWORD(lParam);
+			WindowResize(width, height);
+		}
+		break;
 	case WM_ERASEBKGND:
 		return TRUE;
     case WM_DESTROY:

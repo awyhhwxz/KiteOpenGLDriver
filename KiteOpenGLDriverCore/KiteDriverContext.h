@@ -13,6 +13,7 @@ namespace kite_driver
 		virtual void AddRenderItem(IKiteDriverRenderItem* render_item) override;
 		virtual void RemeveRenderItem(IKiteDriverRenderItem* render_item) override;
 		virtual void Render() override;
+		virtual void Resize(int width, int height) override;
 
 	protected:
 		void OnInitialize();

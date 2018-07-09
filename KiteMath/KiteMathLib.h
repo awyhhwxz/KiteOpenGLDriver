@@ -6,6 +6,8 @@
 #define KITE_MATH_API __declspec(dllimport)
 #endif
 
+#include "Mathf.h"
 #include "Vector3f.h"
 #include "Vector4f.h"
+#include "Euler.h"
 #include "Matrix4f.h"

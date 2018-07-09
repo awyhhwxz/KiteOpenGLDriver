@@ -4,7 +4,7 @@
 
 namespace kite_math
 {
-	const Matrix4f Matrix4f::Identity = Matrix4f::scale(Vector3f(1, 1, 1));
+	const Matrix4f Matrix4f::Identity = Matrix4f::Scale(Vector3f(1, 1, 1));
 
 	Matrix4f::Matrix4f()
 		: Matrix4f(0)
@@ -20,8 +20,8 @@ namespace kite_math
 	Matrix4f::~Matrix4f()
 	{
 	}
-
-	kite_math::Matrix4f Matrix4f::scale(const Vector3f& pos)
+	
+	kite_math::Matrix4f Matrix4f::Scale(const Vector3f& pos)
 	{
 		Matrix4f m;
 		m._11 = pos.x;
@@ -32,7 +32,7 @@ namespace kite_math
 		return m;
 	}
 
-	kite_math::Matrix4f Matrix4f::translate(const Vector3f& pos)
+	kite_math::Matrix4f Matrix4f::Translate(const Vector3f& pos)
 	{
 		Matrix4f m;
 		m._11 = 1;
@@ -46,5 +46,25 @@ namespace kite_math
 
 		return m;
 	}
+
+	Matrix4f Matrix4f::Rotate(const Euler & euler)
+	{
+		float cospitch = Mathf::Cos(euler.pitch),
+			sinpitch = Mathf::Sin(euler.pitch),
+			cosyaw = Mathf::Cos(euler.yaw),
+			sinyaw = Mathf::Sin(euler.yaw),
+			cosroll = Mathf::Cos(euler.roll),
+			sinroll = Mathf::Sin(euler.roll);
+
+
+		Matrix4f m;
+		m._11 = cosroll * cosyaw;	m._12 = cosroll * sinyaw * sinpitch - sinroll * cospitch;	m._13 = cosroll * sinyaw * cospitch + sinroll * sinpitch;
+		m._21 = sinroll * cosyaw;	m._22 = sinroll * sinyaw * sinpitch + cosroll * cospitch;	m._23 = sinroll * sinyaw * cospitch - cosroll * sinpitch;
+		m._31 = -sinyaw;			m._32 = cosyaw * sinpitch;									m._33 = cosyaw * cospitch;
+
+		m._44 = 1;
+		return m;
+	}
+
 
 }

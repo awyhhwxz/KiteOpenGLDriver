@@ -30,6 +30,12 @@
     <ClInclude Include="Vector4f.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Mathf.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Euler.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -42,6 +48,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Vector4f.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Mathf.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Euler.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
