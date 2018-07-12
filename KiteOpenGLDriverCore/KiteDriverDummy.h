@@ -14,7 +14,7 @@ namespace kite_driver
 		void set_euler(const kite_math::Euler& euler);
 		void set_scale(const kite_math::Vector3f& scale);
 		const kite_math::Matrix4f& get_world_matrix() { return _world; }
-
+		const kite_math::Matrix4f& get_inverse_world_matrix() { return _inverse_world; }
 	protected:
 		virtual void RefreshWorldMatrix();
 
@@ -24,6 +24,7 @@ namespace kite_driver
 		kite_math::Euler _euler;
 		kite_math::Vector3f _scale;
 		kite_math::Matrix4f _world;
+		kite_math::Matrix4f _inverse_world;
 	};
 
 }

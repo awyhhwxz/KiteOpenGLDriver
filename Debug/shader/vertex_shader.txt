@@ -2,10 +2,10 @@
 layout( location = 0 ) in vec3 vPosition;
 out vec2 uv; 
 uniform mat4 model_matrix;
-uniform mat4 wvp;
+uniform mat4 mv;
 void main()		
 {
 	vec4 pos = vec4(vPosition * 0.5, 1);
-	pos = model_matrix * pos;
+	pos = mv * pos;
 	gl_Position = vec4(pos);	
 }

@@ -32,17 +32,24 @@ namespace kite_driver
 
 	void RenderItem01::ShaderDemo()
 	{
-		_renderObject->Render();
+		_scene->Render();
 	}
 	void RenderItem01::InitializeShaderDemo()
 	{
 		_renderObject = std::make_shared<KiteDriverRenderObject>();
-		_renderObject->Mesh = GenerateMesh();
-		_renderObject->Material = GenerateMaterial();
+		_renderObject->set_mesh(GenerateMesh());
+		_renderObject->set_material(GenerateMaterial());
 		_renderObject->Initialize();
-		_renderObject->set_position(Vector3f(0.5f, 0, 0));
+		_renderObject->set_position(Vector3f(0, 0, 0));
 		_renderObject->set_euler(Euler(0, 0, Mathf::PI * 0.5f));
 		_renderObject->set_scale(Vector3f(2, 2, 2));
+
+		std::shared_ptr<KiteDriverCamera> camera = std::make_shared<KiteDriverCamera>();
+		camera->set_position(Vector3f(0.5f, 0, 0));
+
+		_scene = std::make_shared<KiteDriverScene>();
+		_scene->AddRenderObj(_renderObject);
+		_scene->set_camera(camera);
 	}
 
 	std::shared_ptr<KiteDriverMesh> RenderItem01::GenerateMesh()

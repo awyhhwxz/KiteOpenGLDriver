@@ -84,6 +84,12 @@
     <ClInclude Include="KiteDriverParaValueType.h">
       <Filter>ParameterValue</Filter>
     </ClInclude>
+    <ClInclude Include="KiteDriverCamera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KiteDriverScene.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -127,6 +133,12 @@
     </ClCompile>
     <ClCompile Include="ParameterValue\KiteDriverParaValue.cpp">
       <Filter>ParameterValue</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverCamera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverScene.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

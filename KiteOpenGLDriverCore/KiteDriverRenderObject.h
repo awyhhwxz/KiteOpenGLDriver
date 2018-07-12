@@ -13,8 +13,13 @@ namespace kite_driver
 		void Initialize();
 		void Render();
 
-		std::shared_ptr<KiteDriverMaterial> Material;
-		std::shared_ptr<KiteDriverMesh> Mesh;
+		void set_mesh(const std::shared_ptr<KiteDriverMesh>& mesh) { _mesh = mesh; }
+
+		KiteDriverMaterial* get_material() { return _material.get(); }
+		void set_material(const std::shared_ptr<KiteDriverMaterial>& mat) { _material = mat; }
+	protected:
+		std::shared_ptr<KiteDriverMaterial> _material;
+		std::shared_ptr<KiteDriverMesh> _mesh;
 
 	protected:
 		void RefreshWorldMatrix() override;

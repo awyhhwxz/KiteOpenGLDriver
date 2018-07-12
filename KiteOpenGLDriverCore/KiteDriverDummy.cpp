@@ -5,6 +5,7 @@ namespace kite_driver
 {
 	KiteDriverDummy::KiteDriverDummy()
 		: _world(kite_math::Matrix4f::Identity)
+		, _inverse_world(kite_math::Matrix4f::Identity)
 		, _scale(kite_math::Vector3f::One)
 	{
 	}
@@ -34,6 +35,7 @@ namespace kite_driver
 	void KiteDriverDummy::RefreshWorldMatrix()
 	{
 		_world = kite_math::Matrix4f::Translate(_pos) * kite_math::Matrix4f::Rotate(_euler) * kite_math::Matrix4f::Scale(_scale);
+		_inverse_world = kite_math::Matrix4f::Inverse(_world);
 	}
 
 }

@@ -20,6 +20,7 @@ namespace kite_driver
 		std::shared_ptr<KiteDriverMaterial> GenerateMaterial();
 
 		std::shared_ptr<KiteDriverRenderObject> _renderObject;
+		std::shared_ptr<KiteDriverScene> _scene;
 	};
 
 }

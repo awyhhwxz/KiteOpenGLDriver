@@ -31,3 +31,5 @@
 #include "KiteDriverMaterial.h"
 #include "KiteDriverDummy.h"
 #include "KiteDriverRenderObject.h"
+#include "KiteDriverCamera.h"
+#include "KiteDriverScene.h"

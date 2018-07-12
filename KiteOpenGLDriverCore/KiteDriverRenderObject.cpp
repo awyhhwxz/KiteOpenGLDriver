@@ -15,19 +15,19 @@ namespace kite_driver
 	}
 	void KiteDriverRenderObject::Initialize()
 	{
-		_meshDrawer->SetMesh(Mesh);
+		_meshDrawer->SetMesh(_mesh);
 		_meshDrawer->BindData();
 
-		Material->Link();
+		_material->Link();
 		AssignUniformValue();
 	}
 	void KiteDriverRenderObject::Render()
 	{
-		Material->BeginRender();
+		_material->BeginRender();
 		{
 			_meshDrawer->DrawMesh();
 		}
-		Material->EndRender();
+		_material->EndRender();
 	}
 
 
@@ -39,11 +39,6 @@ namespace kite_driver
 
 	void KiteDriverRenderObject::AssignUniformValue()
 	{
-		auto modelMatrix = _world.values; 
-		if (Material.get() != nullptr)
-		{
-			Material->SetUniformValue("model_matrix", KDPVT_MATRIX4F, modelMatrix);
-		}
 	}
 
 }

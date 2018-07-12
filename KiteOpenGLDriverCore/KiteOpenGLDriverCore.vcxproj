@@ -154,6 +154,7 @@
     <ClInclude Include="interface\KiteDriverShaderType.h" />
     <ClInclude Include="interface\KiteOpenGLDriverCoreLib.h" />
     <ClInclude Include="interface\kite_driver_typedef.h" />
+    <ClInclude Include="KiteDriverCamera.h" />
     <ClInclude Include="KiteDriverContext.h" />
     <ClInclude Include="KiteDriverDummy.h" />
     <ClInclude Include="KiteDriverEnumOpenGLEnumConverter.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="KiteDriverParaValueType.h" />
     <ClInclude Include="KiteDriverProgramBuilder.h" />
     <ClInclude Include="KiteDriverRenderObject.h" />
+    <ClInclude Include="KiteDriverScene.h" />
     <ClInclude Include="KiteDriverShaderVisitor.h" />
     <ClInclude Include="ParameterValue\KiteDriverParaValue.h" />
     <ClInclude Include="RenderItem\RenderItem01.h" />
@@ -170,6 +172,7 @@
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="KiteDriverCamera.cpp" />
     <ClCompile Include="KiteDriverContext.cpp" />
     <ClCompile Include="KiteDriverDummy.cpp" />
     <ClCompile Include="KiteDriverEnumOpenGLEnumConverter.cpp" />
@@ -178,6 +181,7 @@
     <ClCompile Include="KiteDriverMeshDrawer.cpp" />
     <ClCompile Include="KiteDriverProgramBuilder.cpp" />
     <ClCompile Include="KiteDriverRenderObject.cpp" />
+    <ClCompile Include="KiteDriverScene.cpp" />
     <ClCompile Include="KiteDriverShaderVisitor.cpp" />
     <ClCompile Include="KiteOpenGLDriverCore.cpp" />
     <ClCompile Include="KiteOpenGLDriverCoreLib.cpp" />

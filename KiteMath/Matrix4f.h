@@ -7,6 +7,11 @@ namespace kite_math
 	public:
 		Matrix4f();
 		Matrix4f(float val);
+		Matrix4f(const Vector4f& col1,
+			const Vector4f& col2, 
+			const Vector4f& col3, 
+			const Vector4f& col4);
+		Matrix4f(const Matrix4f& m);
 		~Matrix4f();
 
 		union
@@ -22,6 +27,14 @@ namespace kite_math
 
 			Vector4f cols[4];
 		};
+
+		void SetRows(const Vector4f& row0,
+			const Vector4f& row1,
+			const Vector4f& row2,
+			const Vector4f& row3);
+
+		void SetRow(int rowIndex, const Vector4f& row);
+		Vector4f GetRow(int rowIndex) const;
 
 		friend inline Matrix4f operator*(const Matrix4f& m1, const Matrix4f& m2)
 		{
@@ -49,11 +62,22 @@ namespace kite_math
 			return m;
 		}
 
+		friend inline Matrix4f operator*(const Matrix4f& m, const float fVal)
+		{
+			Matrix4f resultMat;
+			for (int i = 0; i < 16; ++i)
+			{
+				resultMat.values[i] = m.values[i] * fVal;
+			}
+			return resultMat;
+		}
+
 		static const Matrix4f Identity;
 	public:
 		static Matrix4f Scale(const Vector3f& pos);
 		static Matrix4f Translate(const Vector3f& pos);
 		static Matrix4f Rotate(const Euler& euler);
+		static Matrix4f Inverse(const Matrix4f& mat);
 	};
 
 }
