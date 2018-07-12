@@ -41,9 +41,12 @@ namespace kite_driver
 		{
 			auto modelMatrix = renderObj->get_world_matrix();
 			material->SetUniformValue("model_matrix", KDPVT_MATRIX4F, modelMatrix.values);
-			auto viewMatrix = _camera->get_inverse_world_matrix();
+			auto viewMatrix = _camera->get_view_matrix();
 			auto mvMatrix = viewMatrix * modelMatrix;
 			material->SetUniformValue("mv", KDPVT_MATRIX4F, mvMatrix.values);
+			auto perspectiveMatrix = _camera->get_perspective_matrix();
+			auto mvpMatrix = perspectiveMatrix * mvMatrix;
+			material->SetUniformValue("mvp", KDPVT_MATRIX4F, mvpMatrix.values);
 		}
 	}
 }

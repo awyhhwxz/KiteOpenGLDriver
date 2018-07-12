@@ -9,6 +9,8 @@ namespace kite_math
 		static float SinDegree(float degree);
 		static float Cos(float radian);
 		static float CosDegree(float degree);
+		static float Tan(float radian);
+		static float TanDegree(float degree);
 		static float DegreeToRad(float degree);
 
 		const static float PI;

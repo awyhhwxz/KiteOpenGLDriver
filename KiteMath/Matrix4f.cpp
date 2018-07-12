@@ -160,4 +160,16 @@ namespace kite_math
 	}
 
 
+	kite_math::Matrix4f Matrix4f::PerspectiveRHand(float fovy, float aspect, float near_plane, float far_plane)
+	{
+		float tan_half_fovy = Mathf::Tan(fovy * 0.5f);
+		Matrix4f m;
+		m._11 = 1.0f / (aspect * tan_half_fovy);
+		m._22 = 1.0f / tan_half_fovy;
+		m._33 = -(near_plane + far_plane) / (far_plane - near_plane);
+		m._43 = -1.0f;
+		m._34 = -2 * far_plane * near_plane / (far_plane - near_plane);
+		return m;
+	}
+
 }

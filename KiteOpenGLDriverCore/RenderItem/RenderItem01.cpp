@@ -45,7 +45,7 @@ namespace kite_driver
 		_renderObject->set_scale(Vector3f(2, 2, 2));
 
 		std::shared_ptr<KiteDriverCamera> camera = std::make_shared<KiteDriverCamera>();
-		camera->set_position(Vector3f(0.5f, 0, 0));
+		camera->set_position(Vector3f(2.0f, 0, -20.0f));
 
 		_scene = std::make_shared<KiteDriverScene>();
 		_scene->AddRenderObj(_renderObject);

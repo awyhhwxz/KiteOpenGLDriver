@@ -23,6 +23,17 @@ namespace kite_math
 	{
 		return Cos(DegreeToRad(degree));
 	}
+
+	float Mathf::Tan(float radian)
+	{
+		return tan(radian);
+	}
+
+	float Mathf::TanDegree(float degree)
+	{
+		return Tan(DegreeToRad(degree));
+	}
+
 	float Mathf::DegreeToRad(float degree)
 	{
 		return degree / 180 * PI;
