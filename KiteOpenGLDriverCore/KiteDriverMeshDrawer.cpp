@@ -10,6 +10,7 @@ namespace kite_driver
 
 	KiteDriverMeshDrawer::~KiteDriverMeshDrawer()
 	{
+		glDeleteBuffers(2, _vbo.get());
 	}
 
 	void kite_driver::KiteDriverMeshDrawer::BindData()
@@ -34,7 +35,8 @@ namespace kite_driver
 		glEnableVertexAttribArray(0);
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _vbo[1]);
-		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_SHORT, 0);
+
+		glDrawElements(GL_TRIANGLES, _mesh->GetIndexCount(), GL_UNSIGNED_SHORT, 0);
 		glDisableVertexAttribArray(0);
 	}
 }

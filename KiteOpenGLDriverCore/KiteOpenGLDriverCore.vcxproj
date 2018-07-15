@@ -88,7 +88,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;KITEOPENGLDRIVERCORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>.;.\GL;.\interface;..\KiteMath;..\KiteUtil;.\ParameterValue</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;.\GL;.\interface;..\KiteMath;..\KiteUtil;.\ParameterValue;.\manager;.\MouseController</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -151,13 +151,16 @@
   <ItemGroup>
     <ClInclude Include="interface\IKiteDriverContext.h" />
     <ClInclude Include="interface\IKiteDriverRenderItem.h" />
+    <ClInclude Include="interface\IMouseMessageReceiver.h" />
     <ClInclude Include="interface\KiteDriverShaderType.h" />
     <ClInclude Include="interface\KiteOpenGLDriverCoreLib.h" />
     <ClInclude Include="interface\kite_driver_typedef.h" />
+    <ClInclude Include="interface\Singleton.h" />
     <ClInclude Include="KiteDriverCamera.h" />
     <ClInclude Include="KiteDriverContext.h" />
     <ClInclude Include="KiteDriverDummy.h" />
     <ClInclude Include="KiteDriverEnumOpenGLEnumConverter.h" />
+    <ClInclude Include="KiteDriverGeometryGenerator.h" />
     <ClInclude Include="KiteDriverMaterial.h" />
     <ClInclude Include="KiteDriverMesh.h" />
     <ClInclude Include="KiteDriverMeshDrawer.h" />
@@ -166,6 +169,12 @@
     <ClInclude Include="KiteDriverRenderObject.h" />
     <ClInclude Include="KiteDriverScene.h" />
     <ClInclude Include="KiteDriverShaderVisitor.h" />
+    <ClInclude Include="manager\KiteDriverInputManager.h" />
+    <ClInclude Include="manager\KiteDriverWindowManager.h" />
+    <ClInclude Include="MouseController\IMouseButtonController.h" />
+    <ClInclude Include="MouseController\KiteDriverMouseController.h" />
+    <ClInclude Include="MouseController\MouseMiddleButtonController.h" />
+    <ClInclude Include="MouseController\MouseRightButtonController.h" />
     <ClInclude Include="ParameterValue\KiteDriverParaValue.h" />
     <ClInclude Include="RenderItem\RenderItem01.h" />
     <ClInclude Include="resource.h" />
@@ -176,6 +185,7 @@
     <ClCompile Include="KiteDriverContext.cpp" />
     <ClCompile Include="KiteDriverDummy.cpp" />
     <ClCompile Include="KiteDriverEnumOpenGLEnumConverter.cpp" />
+    <ClCompile Include="KiteDriverGeometryGenerator.cpp" />
     <ClCompile Include="KiteDriverMaterial.cpp" />
     <ClCompile Include="KiteDriverMesh.cpp" />
     <ClCompile Include="KiteDriverMeshDrawer.cpp" />
@@ -185,6 +195,11 @@
     <ClCompile Include="KiteDriverShaderVisitor.cpp" />
     <ClCompile Include="KiteOpenGLDriverCore.cpp" />
     <ClCompile Include="KiteOpenGLDriverCoreLib.cpp" />
+    <ClCompile Include="manager\KiteDriverInputManager.cpp" />
+    <ClCompile Include="manager\KiteDriverWindowManager.cpp" />
+    <ClCompile Include="MouseController\KiteDriverMouseController.cpp" />
+    <ClCompile Include="MouseController\MouseMiddleButtonController.cpp" />
+    <ClCompile Include="MouseController\MouseRightButtonController.cpp" />
     <ClCompile Include="ParameterValue\KiteDriverParaValue.cpp" />
     <ClCompile Include="RenderItem\RenderItem01.cpp" />
     <ClCompile Include="stdafx.cpp">

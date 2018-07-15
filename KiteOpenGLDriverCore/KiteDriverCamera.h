@@ -28,4 +28,6 @@ namespace kite_driver
 		kite_math::Matrix4f _view_matrix;
 		kite_math::Matrix4f _perspective_matrix;
 	};
+
+	typedef std::shared_ptr<KiteDriverCamera> KiteDriverCameraPtr;
 }

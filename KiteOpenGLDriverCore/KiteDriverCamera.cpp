@@ -8,7 +8,7 @@ namespace kite_driver
 		_fovy(kite_math::Mathf::PI / 3.0f),
 		_aspect(1),
 		_far_plane(1000),
-		_near_plane(10)
+		_near_plane(1)
 	{
 		RefreshProjectMatrix();
 	}

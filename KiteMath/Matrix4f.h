@@ -62,6 +62,22 @@ namespace kite_math
 			return m;
 		}
 
+		friend static inline Vector4f operator*(const Matrix4f& m, const Vector4f& v)
+		{
+			Vector4f result;
+			result.x = m._11 * v.x + m._12 * v.y + m._13 * v.z + m._14 * v.w;
+			result.y = m._21 * v.x + m._22 * v.y + m._23 * v.z + m._24 * v.w;
+			result.z = m._31 * v.x + m._32 * v.y + m._33 * v.z + m._34 * v.w;
+			result.w = m._41 * v.x + m._42 * v.y + m._43 * v.z + m._44 * v.w;
+			return result;
+		}
+
+		friend static inline Vector3f operator*(const Matrix4f& m, const Vector3f& v)
+		{
+			auto v4 = m * Vector4f(v, 1);
+			return Vector3f(v4.x, v4.y, v4.z);
+		}
+
 		friend inline Matrix4f operator*(const Matrix4f& m, const float fVal)
 		{
 			Matrix4f resultMat;

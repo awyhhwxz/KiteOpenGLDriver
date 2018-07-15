@@ -13,14 +13,12 @@ namespace kite_driver
 	{
 	}
 
-	void KiteDriverContext::Initialize(void* hwnd)
+	void KiteDriverContext::Initialize(void* hwnd, float width, float height)
 	{
-
 		// remember the window handle (HWND)
 		_hwnd = (HWND)hwnd;
 
 		HDC mhDC;
-		HGLRC mhRC;
 		// get the device context (DC)
 		mhDC = GetDC(_hwnd);
 
@@ -39,14 +37,20 @@ namespace kite_driver
 		SetPixelFormat(mhDC, format, &pfd);
 
 		// create the render context (RC)
-		mhRC = wglCreateContext(mhDC);
+		_rc = wglCreateContext(mhDC);
 
 		// make it the current render context
-		wglMakeCurrent(mhDC, mhRC);
-
+		wglMakeCurrent(mhDC, _rc);
+		ReleaseDC(_hwnd, mhDC);
 
 		glewInit();
+		KiteDriverWindowManager::Instance()->SetWindowWidthAndHeight(width, height);
 		OnInitialize();
+	}
+
+	void KiteDriverContext::Finalize()
+	{
+		wglDeleteContext(_rc);
 	}
 
 	void KiteDriverContext::AddRenderItem(IKiteDriverRenderItem * render_item)
@@ -73,7 +77,7 @@ namespace kite_driver
 
 	void KiteDriverContext::Render()
 	{
-		glClearColor(0.5f, 0.5f, 0.5f, 1.f);
+		glClearColor(1.0f, 0.0f, 0.0f, 1.f);
 		glClearDepth(1.f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glEnable(GL_DEPTH_TEST);
@@ -93,6 +97,7 @@ namespace kite_driver
 	void KiteDriverContext::Resize(int width, int height)
 	{
 		glViewport(0, 0, width, height);
+		KiteDriverWindowManager::Instance()->SetWindowWidthAndHeight(width, height);
 	}
 
 	void KiteDriverContext::OnInitialize()

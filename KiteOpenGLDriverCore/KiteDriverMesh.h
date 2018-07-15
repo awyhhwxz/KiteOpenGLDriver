@@ -22,4 +22,5 @@ namespace kite_driver
 		std::vector<uint16> _indices;
 	};
 
+	typedef std::shared_ptr<KiteDriverMesh> KiteDriverMeshPtr;
 }

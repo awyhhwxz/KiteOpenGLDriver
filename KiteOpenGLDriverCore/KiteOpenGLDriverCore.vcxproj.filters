@@ -19,8 +19,14 @@
     <Filter Include="RenderItem">
       <UniqueIdentifier>{26d2dffb-0f1f-48d7-a333-3593e3c945db}</UniqueIdentifier>
     </Filter>
+    <Filter Include="manager">
+      <UniqueIdentifier>{1a66f5dd-b885-41fc-9355-c4f0eb069608}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MouseController">
+      <UniqueIdentifier>{c168213a-6bd3-417b-8fe7-8c8eb2b54b96}</UniqueIdentifier>
+    </Filter>
     <Filter Include="ParameterValue">
-      <UniqueIdentifier>{acc54989-acf2-4ca8-8695-e78fe7b4777a}</UniqueIdentifier>
+      <UniqueIdentifier>{b0129d18-0b2d-4350-8623-e50f6cba622f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -78,17 +84,44 @@
     <ClInclude Include="KiteDriverDummy.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="ParameterValue\KiteDriverParaValue.h">
-      <Filter>ParameterValue</Filter>
-    </ClInclude>
-    <ClInclude Include="KiteDriverParaValueType.h">
-      <Filter>ParameterValue</Filter>
-    </ClInclude>
     <ClInclude Include="KiteDriverCamera.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="KiteDriverScene.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="interface\IMouseMessageReceiver.h">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="interface\Singleton.h">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="manager\KiteDriverInputManager.h">
+      <Filter>manager</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseController\KiteDriverMouseController.h">
+      <Filter>MouseController</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseController\IMouseButtonController.h">
+      <Filter>MouseController</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseController\MouseRightButtonController.h">
+      <Filter>MouseController</Filter>
+    </ClInclude>
+    <ClInclude Include="KiteDriverParaValueType.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ParameterValue\KiteDriverParaValue.h">
+      <Filter>ParameterValue</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseController\MouseMiddleButtonController.h">
+      <Filter>MouseController</Filter>
+    </ClInclude>
+    <ClInclude Include="KiteDriverGeometryGenerator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="manager\KiteDriverWindowManager.h">
+      <Filter>manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -131,14 +164,32 @@
     <ClCompile Include="KiteDriverDummy.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ParameterValue\KiteDriverParaValue.cpp">
-      <Filter>ParameterValue</Filter>
-    </ClCompile>
     <ClCompile Include="KiteDriverCamera.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="KiteDriverScene.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="manager\KiteDriverInputManager.cpp">
+      <Filter>manager</Filter>
+    </ClCompile>
+    <ClCompile Include="MouseController\KiteDriverMouseController.cpp">
+      <Filter>MouseController</Filter>
+    </ClCompile>
+    <ClCompile Include="MouseController\MouseRightButtonController.cpp">
+      <Filter>MouseController</Filter>
+    </ClCompile>
+    <ClCompile Include="ParameterValue\KiteDriverParaValue.cpp">
+      <Filter>ParameterValue</Filter>
+    </ClCompile>
+    <ClCompile Include="MouseController\MouseMiddleButtonController.cpp">
+      <Filter>MouseController</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverGeometryGenerator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="manager\KiteDriverWindowManager.cpp">
+      <Filter>manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

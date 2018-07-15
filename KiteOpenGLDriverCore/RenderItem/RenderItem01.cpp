@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "RenderItem01.h"
+#include "KiteDriverMouseController.h"
+#include "KiteDriverGeometryGenerator.h"
 
 using namespace kite_math;
 using namespace kite_util;
@@ -37,7 +39,7 @@ namespace kite_driver
 	void RenderItem01::InitializeShaderDemo()
 	{
 		_renderObject = std::make_shared<KiteDriverRenderObject>();
-		_renderObject->set_mesh(GenerateMesh());
+		_renderObject->set_mesh(KiteDriverGeometryGenerator::Cuboid(1.0f,1.0f,1.0f));
 		_renderObject->set_material(GenerateMaterial());
 		_renderObject->Initialize();
 		_renderObject->set_position(Vector3f(0, 0, 0));
@@ -46,6 +48,12 @@ namespace kite_driver
 
 		std::shared_ptr<KiteDriverCamera> camera = std::make_shared<KiteDriverCamera>();
 		camera->set_position(Vector3f(2.0f, 0, -20.0f));
+
+		KiteDriverWindowManager::Instance()->set_window_camera(camera);
+
+		auto mouse_controller = std::make_shared<kite_driver::KiteDriverMouseController>();
+		mouse_controller->SetCamera(camera);
+		KiteDriverInputManager::Instance()->RegistryMouseMessageReceiver(std::static_pointer_cast<kite_driver::IMouseMessageReceiver>(mouse_controller));
 
 		_scene = std::make_shared<KiteDriverScene>();
 		_scene->AddRenderObj(_renderObject);

@@ -3,11 +3,14 @@
 
 #include "stdafx.h"
 #include "KiteOpenGLDriver.h"
+#include "WindowsMouseMessageHandler.h"
 
 #define MAX_LOADSTRING 100
 
 using namespace kite_driver;
 IKiteDriverContext * driver_context;
+
+WindowsMouseMessageHandler mouse_message_handler;
 
 // 全局变量: 
 HINSTANCE hInst;                                // 当前实例
@@ -50,9 +53,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	{
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
+			if (msg.message == WM_QUIT)
+				break;
+
 			if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
 			{
-
 				TranslateMessage(&msg);
 				DispatchMessage(&msg);
 			}
@@ -66,7 +71,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     return (int) msg.wParam;
 }
-
 
 
 //
@@ -109,8 +113,10 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 将实例句柄存储在全局变量中
 
+   int width = 800, height = 600;
+
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+      CW_USEDEFAULT, 0, width, height, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
    {
@@ -121,7 +127,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    UpdateWindow(hWnd);
 
    driver_context = CreateKiteDriverContext();
-   driver_context->Initialize(hWnd);
+   driver_context->Initialize(hWnd, width, height);
 
    return TRUE;
 }
@@ -146,6 +152,8 @@ void WindowResize(int width, int height)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+	mouse_message_handler.WndProc(hWnd, message, wParam, lParam);
+
     switch (message)
     {
     case WM_COMMAND:
@@ -183,12 +191,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	case WM_ERASEBKGND:
 		return TRUE;
-    case WM_DESTROY:
+	case WM_DESTROY:
+		driver_context->Finalize();
         PostQuitMessage(0);
         break;
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
+
     return 0;
 }
 

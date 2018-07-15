@@ -30,12 +30,18 @@
     <ClInclude Include="KiteOpenGLDriver.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="WindowsMouseMessageHandler.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="KiteOpenGLDriver.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowsMouseMessageHandler.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -32,6 +32,12 @@ namespace kite_driver
 		RefreshWorldMatrix();
 	}
 
+	void KiteDriverDummy::Translate(const kite_math::Vector3f & translate)
+	{
+		auto translatefinal = kite_math::Matrix4f::Rotate(_euler) * translate;
+		set_position(_pos + translatefinal);
+	}
+
 	void KiteDriverDummy::RefreshWorldMatrix()
 	{
 		_world = kite_math::Matrix4f::Translate(_pos) * kite_math::Matrix4f::Rotate(_euler) * kite_math::Matrix4f::Scale(_scale);

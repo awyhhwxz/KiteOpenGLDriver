@@ -19,6 +19,11 @@ namespace kite_math
 	{
 	}
 
+	Vector3f::Vector3f(const Vector2f& v2, float zVal)
+		: x(v2.x), y(v2.y), z(zVal)
+	{
+	}
+
 
 	Vector3f::~Vector3f()
 	{

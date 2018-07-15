@@ -11,10 +11,13 @@ namespace kite_driver
 
 	public:
 		void set_position(const kite_math::Vector3f& pos);
+		const kite_math::Vector3f& get_position() { return _pos; }
 		void set_euler(const kite_math::Euler& euler);
 		void set_scale(const kite_math::Vector3f& scale);
 		const kite_math::Matrix4f& get_world_matrix() { return _world; }
 		const kite_math::Matrix4f& get_inverse_world_matrix() { return _inverse_world; }
+
+		void Translate(const kite_math::Vector3f& translate);
 	protected:
 		virtual void RefreshWorldMatrix();
 

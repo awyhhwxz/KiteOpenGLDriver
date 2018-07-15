@@ -7,6 +7,7 @@ namespace kite_math
 	public:
 		Vector3f();
 		Vector3f(float xVal, float yVal, float zVal);
+		Vector3f(const Vector2f& v2, float zVal);
 		~Vector3f();
 
 		union
@@ -23,6 +24,11 @@ namespace kite_math
 		static const Vector3f Forward;
 		static const Vector3f One;
 		static const Vector3f Zero;
+
+		friend static Vector3f operator+(const Vector3f& v1, const Vector3f& v2)
+		{
+			return Vector3f(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z);
+		}
 	};
 
 }
