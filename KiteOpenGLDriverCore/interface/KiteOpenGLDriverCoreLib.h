@@ -10,9 +10,10 @@
 #include <vector>
 #include <memory>
 
-#include "KiteMathLib.h"
 
 #include "kite_driver_typedef.h"
+#include "KiteMathLib.h"
+
 #include "IKiteDriverRenderItem.h"
 #include "IKiteDriverContext.h"
 #include "KiteDriverShaderType.h"
@@ -21,6 +22,7 @@
 
 #include "Singleton.h"
 #include "KiteDriverInputManager.h"
+#include "KiteDriverResourceManager.h"
 
 namespace kite_driver
 {

@@ -10,3 +10,4 @@
 
 #include "StringReader.h"
 #include "PathUtil.h"
+#include "ImageLoader.h"

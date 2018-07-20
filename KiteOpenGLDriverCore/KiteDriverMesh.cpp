@@ -32,6 +32,17 @@ namespace kite_driver
 		}
 	}
 
+	void KiteDriverMesh::SetUVs(int uv_index, kite_math::Vector2f * uvs, int vertexCount)
+	{
+		auto& uvs_cache = _uvs_map[uv_index];
+		uvs_cache.clear();
+		for (int uvI = 0; uvI < vertexCount; ++uvI)
+		{
+			auto uvsPointer = uvs + uvI;
+			uvs_cache.push_back(*uvsPointer);
+		}
+	}
+
 	float * KiteDriverMesh::GetVertices()
 	{
 		return (float*)&_vertices[0];
@@ -40,6 +51,11 @@ namespace kite_driver
 	uint16* KiteDriverMesh::GetIndices()
 	{
 		return &_indices[0];
+	}
+
+	float * KiteDriverMesh::GetUVs(int uv_index)
+	{
+		return (float*)&_uvs_map[uv_index][0];
 	}
 
 }

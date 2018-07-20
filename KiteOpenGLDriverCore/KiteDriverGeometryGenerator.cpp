@@ -26,6 +26,18 @@ namespace kite_driver
 		};
 		mesh->SetVertices(v, 8);
 
+		Vector2f uv0[] = {
+			Vector2f(0, 0),
+			Vector2f(1, 0),
+			Vector2f(0, 1),
+			Vector2f(1, 1),
+			Vector2f(1, 1),
+			Vector2f(0, 1),
+			Vector2f(1, 0),
+			Vector2f(0, 0),
+		};
+		mesh->SetUVs(0, uv0, 8);
+
 		GLushort indexes[] = {
 			0, 1, 2, //up
 			1, 3, 2,

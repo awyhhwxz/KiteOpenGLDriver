@@ -11,15 +11,20 @@ namespace kite_driver
 
 		void SetVertices(kite_math::Vector3f* verices, int vertexCount);
 		void SetIndices(uint16 * indices, int indexCount);
+		void SetUVs(int uv_index, kite_math::Vector2f* uvs, int vertexCount);
 
 		float* GetVertices();
 		inline int GetVertexCount() { return _vertices.size(); }
 
 		uint16* GetIndices();
 		inline int GetIndexCount() { return _indices.size(); }
+
+		float* GetUVs(int uv_index);
+		inline int GetUVChannelCount() { return _uvs_map.size(); }
 	private:
 		std::vector<kite_math::Vector3f> _vertices;
 		std::vector<uint16> _indices;
+		std::map<int, std::vector<kite_math::Vector2f>> _uvs_map;
 	};
 
 	typedef std::shared_ptr<KiteDriverMesh> KiteDriverMeshPtr;

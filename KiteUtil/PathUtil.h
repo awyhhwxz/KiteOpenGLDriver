@@ -1,11 +1,14 @@
 #pragma once
+
+#include "kite_driver_typedef.h"
 namespace kite_util
 {
 	class KITE_UTIL_API PathUtil
 	{
 	public:
-		static std::string GetAppPath();
-		static std::string GetFileDirectory(const std::string& fileName);
+		static tstring GetAppPath();
+		static tstring GetResourcePath();
+		static tstring GetFileDirectory(const tstring& fileName);
 	};
 
 }

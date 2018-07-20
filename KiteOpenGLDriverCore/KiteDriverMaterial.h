@@ -15,8 +15,8 @@ namespace kite_driver
 		void BeginRender();
 		void EndRender();
 
-		void SetUniformValue(tstring uniformName, KiteDriverParaValueType valueType, void* value);
-
+		void SetUniformValue(const tchar* uniformName, KiteDriverParaValueType valueType, void* value);
+		void SetUniformTexture(const tchar* uniformName, const std::shared_ptr<KiteDriverTexture2D>& texture);
 	private:
 		KiteDriverProgramBuilder _programBuilder;
 		std::map<KiteDriverShaderType, std::string> _shaderMap;

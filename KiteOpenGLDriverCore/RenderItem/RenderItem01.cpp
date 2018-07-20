@@ -28,7 +28,6 @@ namespace kite_driver
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glEnable(GL_DEPTH_TEST);
 
-		//DrawTriangle();
 		ShaderDemo();
 	}
 
@@ -58,6 +57,7 @@ namespace kite_driver
 		_scene = std::make_shared<KiteDriverScene>();
 		_scene->AddRenderObj(_renderObject);
 		_scene->set_camera(camera);
+
 	}
 
 	std::shared_ptr<KiteDriverMesh> RenderItem01::GenerateMesh()
@@ -80,8 +80,15 @@ namespace kite_driver
 	{
 		auto material = std::make_shared<KiteDriverMaterial>();
 
-		auto vertexPath = PathUtil::GetAppPath() + "/shader/vertex_shader.txt";
-		auto fragmentPath = PathUtil::GetAppPath() + "/shader/fragment_shader.txt";
+		auto imagePath = PathUtil::GetResourcePath() + "/texture/stone.jpg";
+		ImageLoader image_loader;
+		image_loader.Load(imagePath.c_str());
+		auto texture = std::make_shared<KiteDriverTexture2D>();
+		texture->Assign(&image_loader);
+		material->SetUniformTexture("tex", texture);
+
+		auto vertexPath = PathUtil::GetResourcePath() + "/shader/texure.vertex";
+		auto fragmentPath = PathUtil::GetResourcePath() + "/shader/texture.fragment";
 		material->SetShader(KDST_VERTEX_SHADER, vertexPath);
 		material->SetShader(KDST_FRAGMENT_SHADER, fragmentPath);
 

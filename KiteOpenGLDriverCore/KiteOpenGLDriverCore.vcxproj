@@ -169,7 +169,9 @@
     <ClInclude Include="KiteDriverRenderObject.h" />
     <ClInclude Include="KiteDriverScene.h" />
     <ClInclude Include="KiteDriverShaderVisitor.h" />
+    <ClInclude Include="KiteDriverTexture2D.h" />
     <ClInclude Include="manager\KiteDriverInputManager.h" />
+    <ClInclude Include="manager\KiteDriverResourceManager.h" />
     <ClInclude Include="manager\KiteDriverWindowManager.h" />
     <ClInclude Include="MouseController\IMouseButtonController.h" />
     <ClInclude Include="MouseController\KiteDriverMouseController.h" />
@@ -193,9 +195,11 @@
     <ClCompile Include="KiteDriverRenderObject.cpp" />
     <ClCompile Include="KiteDriverScene.cpp" />
     <ClCompile Include="KiteDriverShaderVisitor.cpp" />
+    <ClCompile Include="KiteDriverTexture2D.cpp" />
     <ClCompile Include="KiteOpenGLDriverCore.cpp" />
     <ClCompile Include="KiteOpenGLDriverCoreLib.cpp" />
     <ClCompile Include="manager\KiteDriverInputManager.cpp" />
+    <ClCompile Include="manager\KiteDriverResourceManager.cpp" />
     <ClCompile Include="manager\KiteDriverWindowManager.cpp" />
     <ClCompile Include="MouseController\KiteDriverMouseController.cpp" />
     <ClCompile Include="MouseController\MouseMiddleButtonController.cpp" />

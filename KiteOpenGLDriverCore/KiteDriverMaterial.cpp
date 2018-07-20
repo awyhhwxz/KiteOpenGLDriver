@@ -43,9 +43,14 @@ namespace kite_driver
 	}
 
 
-	void KiteDriverMaterial::SetUniformValue(tstring uniformName, KiteDriverParaValueType valueType, void* value)
+	void KiteDriverMaterial::SetUniformValue(const tchar* uniformName, KiteDriverParaValueType valueType, void* value)
 	{
 		_programBuilder.SetUniformValue(uniformName, valueType, value);
+	}
+
+	void KiteDriverMaterial::SetUniformTexture(const tchar* uniformName, const std::shared_ptr<KiteDriverTexture2D>& texture)
+	{
+		_programBuilder.SetUniformTexture(uniformName, texture);
 	}
 
 }

@@ -16,11 +16,12 @@
 #include <gl/glu.h>
 
 // TODO:  在此处引用程序需要的其他头文件
-#include "KiteUtilLib.h"
 #include "KiteOpenGLDriverCoreLib.h"
+#include "KiteUtilLib.h"
 #include "KiteDriverParaValueType.h"
 #include "KiteDriverParaValue.h"
 #include "KiteDriverShaderVisitor.h"
+#include "KiteDriverTexture2D.h"
 #include "KiteDriverProgramBuilder.h"
 #include "KiteDriverEnumOpenGLEnumConverter.h"
 #include "KiteDriverMesh.h"

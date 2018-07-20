@@ -123,6 +123,12 @@
     <ClInclude Include="manager\KiteDriverWindowManager.h">
       <Filter>manager</Filter>
     </ClInclude>
+    <ClInclude Include="KiteDriverTexture2D.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="manager\KiteDriverResourceManager.h">
+      <Filter>manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -189,6 +195,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="manager\KiteDriverWindowManager.cpp">
+      <Filter>manager</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverTexture2D.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="manager\KiteDriverResourceManager.cpp">
       <Filter>manager</Filter>
     </ClCompile>
   </ItemGroup>
