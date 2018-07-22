@@ -12,7 +12,7 @@ namespace kite_util
 			switch (color_type)
 			{
 			case FIC_RGB:
-				return KiteImageFormat::KIF_RGB;
+				return KiteImageFormat::KIF_BGR;
 			}
 			break;
 		default:
@@ -26,6 +26,11 @@ namespace kite_util
 	{
 	}
 
+
+	ImageLoader::ImageLoader(const tchar* file_path)
+	{
+		Load(file_path);
+	}
 
 	ImageLoader::~ImageLoader()
 	{

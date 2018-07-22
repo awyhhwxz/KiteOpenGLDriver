@@ -5,6 +5,7 @@ namespace kite_driver
 {
 	KiteDriverScene::KiteDriverScene()
 	{
+		_skybox = std::make_shared<KiteDriverSkyBox>();
 	}
 
 
@@ -24,22 +25,29 @@ namespace kite_driver
 	}
 	void KiteDriverScene::Render()
 	{
+		RenderSkyBox();
+
 		std::for_each(_renderObjList.begin(), _renderObjList.end(), [this](std::weak_ptr<kite_driver::KiteDriverRenderObject> renderObjWeak)
 		{
 			if (!renderObjWeak.expired())
 			{
 				auto renderObj = renderObjWeak.lock();
-				AssignUniformValue(renderObj.get());
-				renderObj->Render();
+				RenderObject(renderObj.get());
 			}
 		});
 	}
-	void KiteDriverScene::AssignUniformValue(kite_driver::KiteDriverRenderObject* renderObj)
+
+	void KiteDriverScene::SetSkyBox(const std::shared_ptr<KiteDriverTextureCube>& texCube)
 	{
-		auto material = renderObj->get_material();
+		_skybox->SetTextureCube(texCube);
+	}
+
+	void KiteDriverScene::AssignUniformValue(kite_driver::KiteDriverRenderObject* renderObject)
+	{
+		auto material = renderObject->get_material();
 		if (material != nullptr)
 		{
-			auto modelMatrix = renderObj->get_world_matrix();
+			auto modelMatrix = renderObject->get_world_matrix();
 			material->SetUniformValue("model_matrix", KDPVT_MATRIX4F, modelMatrix.values);
 			auto viewMatrix = _camera->get_view_matrix();
 			auto mvMatrix = viewMatrix * modelMatrix;
@@ -49,4 +57,26 @@ namespace kite_driver
 			material->SetUniformValue("mvp", KDPVT_MATRIX4F, mvpMatrix.values);
 		}
 	}
+
+	void KiteDriverScene::RenderSkyBox()
+	{
+		auto renderObject = _skybox->GetRenderObject();
+		if (renderObject)
+		{
+			auto material = renderObject->get_material();
+			if (material != nullptr)
+			{
+				auto mvp_matrix = _camera->get_skybox_vp_matrix();
+				material->SetUniformValue("mvp", KDPVT_MATRIX4F, mvp_matrix.values);
+				renderObject->Render();
+			}
+		}
+	}
+
+	void KiteDriverScene::RenderObject(kite_driver::KiteDriverRenderObject* object)
+	{
+		AssignUniformValue(object);
+		object->Render();
+	}
+
 }

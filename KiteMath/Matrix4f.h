@@ -94,6 +94,7 @@ namespace kite_math
 		static Matrix4f Translate(const Vector3f& pos);
 		static Matrix4f Rotate(const Euler& euler);
 		static Matrix4f Inverse(const Matrix4f& mat);
+		static Matrix4f Transpose(const Matrix4f& mat);
 		static Matrix4f PerspectiveRHand(float fovy, float aspect, float near_plane, float far_plane);
 
 	};

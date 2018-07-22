@@ -45,24 +45,23 @@ namespace kite_driver
 		_renderObject->set_euler(Euler(0, 0, Mathf::PI * 0.5f));
 		_renderObject->set_scale(Vector3f(2, 2, 2));
 
-		std::shared_ptr<KiteDriverCamera> camera = std::make_shared<KiteDriverCamera>();
-		camera->set_position(Vector3f(2.0f, 0, -20.0f));
-
-		KiteDriverWindowManager::Instance()->set_window_camera(camera);
+		KiteDriverCameraPtr camera = GenerateCamera();
 
 		auto mouse_controller = std::make_shared<kite_driver::KiteDriverMouseController>();
 		mouse_controller->SetCamera(camera);
 		KiteDriverInputManager::Instance()->RegistryMouseMessageReceiver(std::static_pointer_cast<kite_driver::IMouseMessageReceiver>(mouse_controller));
+		
+		auto skybox = GenerateSkyBox();
 
 		_scene = std::make_shared<KiteDriverScene>();
 		_scene->AddRenderObj(_renderObject);
 		_scene->set_camera(camera);
-
+		_scene->SetSkyBox(skybox);
 	}
 
-	std::shared_ptr<KiteDriverMesh> RenderItem01::GenerateMesh()
+	KiteDriverMeshPtr RenderItem01::GenerateMesh()
 	{
-		std::shared_ptr<KiteDriverMesh> mesh = std::make_shared<KiteDriverMesh>();
+		KiteDriverMeshPtr mesh = std::make_shared<KiteDriverMesh>();
 
 		Vector3f v[] = {
 			Vector3f(-1.0f, -1.0f, 0.0f),
@@ -89,10 +88,34 @@ namespace kite_driver
 
 		auto vertexPath = PathUtil::GetResourcePath() + "/shader/texure.vertex";
 		auto fragmentPath = PathUtil::GetResourcePath() + "/shader/texture.fragment";
-		material->SetShader(KDST_VERTEX_SHADER, vertexPath);
-		material->SetShader(KDST_FRAGMENT_SHADER, fragmentPath);
+		material->SetShader(KDST_VERTEX_SHADER, vertexPath.c_str());
+		material->SetShader(KDST_FRAGMENT_SHADER, fragmentPath.c_str());
 
 		return material;
+	}
+
+	kite_driver::KiteDriverCameraPtr RenderItem01::GenerateCamera()
+	{
+		KiteDriverCameraPtr camera = std::make_shared<KiteDriverCamera>();
+		camera->set_position(Vector3f(2.0f, 0, -20.0f));
+
+		KiteDriverWindowManager::Instance()->set_window_camera(camera);
+		return camera;
+	}
+
+	kite_driver::KiteDriverTextureCubePtr RenderItem01::GenerateSkyBox()
+	{
+		KiteDriverTextureCubePtr texCube = std::make_shared<KiteDriverTextureCube>();
+		ImageLoader loads[6];
+		loads[0].Load(CSTR(PathUtil::GetResourcePath() + "/texture/skybox/leftImage.png"));
+		loads[1].Load(CSTR(PathUtil::GetResourcePath() + "/texture/skybox/rightImage.png"));
+		loads[2].Load(CSTR(PathUtil::GetResourcePath() + "/texture/skybox/upImage.png"));
+		loads[3].Load(CSTR(PathUtil::GetResourcePath() + "/texture/skybox/downImage.png"));
+		loads[4].Load(CSTR(PathUtil::GetResourcePath() + "/texture/skybox/backImage.png"));
+		loads[5].Load(CSTR(PathUtil::GetResourcePath() + "/texture/skybox/frontImage.png"));
+		texCube->Assign(loads);
+
+		return texCube;
 	}
 
 }

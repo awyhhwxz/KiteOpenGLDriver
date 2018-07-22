@@ -1,0 +1,9 @@
+#version 400 core
+precision mediump float;
+uniform samplerCube texCube;
+in vec3 cubeuv;
+out vec4 FragColor;
+void main()		
+{   
+	FragColor = texture(texCube, cubeuv);		
+}

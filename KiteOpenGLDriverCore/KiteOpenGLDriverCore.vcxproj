@@ -167,9 +167,13 @@
     <ClInclude Include="KiteDriverParaValueType.h" />
     <ClInclude Include="KiteDriverProgramBuilder.h" />
     <ClInclude Include="KiteDriverRenderObject.h" />
+    <ClInclude Include="KiteDriverRenderStateSetter.h" />
     <ClInclude Include="KiteDriverScene.h" />
     <ClInclude Include="KiteDriverShaderVisitor.h" />
+    <ClInclude Include="KiteDriverSkyBox.h" />
+    <ClInclude Include="KiteDriverTexture.h" />
     <ClInclude Include="KiteDriverTexture2D.h" />
+    <ClInclude Include="KiteDriverTextureCube.h" />
     <ClInclude Include="manager\KiteDriverInputManager.h" />
     <ClInclude Include="manager\KiteDriverResourceManager.h" />
     <ClInclude Include="manager\KiteDriverWindowManager.h" />
@@ -193,9 +197,13 @@
     <ClCompile Include="KiteDriverMeshDrawer.cpp" />
     <ClCompile Include="KiteDriverProgramBuilder.cpp" />
     <ClCompile Include="KiteDriverRenderObject.cpp" />
+    <ClCompile Include="KiteDriverRenderStateSetter.cpp" />
     <ClCompile Include="KiteDriverScene.cpp" />
     <ClCompile Include="KiteDriverShaderVisitor.cpp" />
+    <ClCompile Include="KiteDriverSkyBox.cpp" />
+    <ClCompile Include="KiteDriverTexture.cpp" />
     <ClCompile Include="KiteDriverTexture2D.cpp" />
+    <ClCompile Include="KiteDriverTextureCube.cpp" />
     <ClCompile Include="KiteOpenGLDriverCore.cpp" />
     <ClCompile Include="KiteOpenGLDriverCoreLib.cpp" />
     <ClCompile Include="manager\KiteDriverInputManager.cpp" />

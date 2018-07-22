@@ -80,14 +80,14 @@ namespace kite_driver
 		paraValue->SetValue(value);
 	}
 
-	void KiteDriverProgramBuilder::SetUniformTexture(const tchar*  uniformName, const std::shared_ptr<KiteDriverTexture2D>& texture)
+	void KiteDriverProgramBuilder::SetUniformTexture(const tchar*  uniformName, const std::shared_ptr<KiteDriverTexture>& texture)
 	{
 		_uniform_texture_map[uniformName] = texture;
 
 		auto targetUniformTexture = _uniform_texture_map.find(uniformName);
 		if (targetUniformTexture == _uniform_texture_map.end())
 		{
-			_uniform_texture_map.insert(std::pair<tstring, std::shared_ptr<KiteDriverTexture2D>>(uniformName, texture));
+			_uniform_texture_map.insert(std::pair<tstring, std::shared_ptr<KiteDriverTexture>>(uniformName, texture));
 		}
 		else
 		{
@@ -95,7 +95,7 @@ namespace kite_driver
 		}
 	}
 
-	void KiteDriverProgramBuilder::UniformTextureSet(const tchar* uniformName, KiteDriverTexture2D * texture, int texture_index)
+	void KiteDriverProgramBuilder::UniformTextureSet(const tchar* uniformName, KiteDriverTexture * texture, int texture_index)
 	{
 		auto location = glGetUniformLocation(_program, uniformName);
 		if (location >= 0)

@@ -5,14 +5,14 @@
 namespace kite_driver
 {
 	KiteDriverTexture2D::KiteDriverTexture2D()
+		: KiteDriverTexture()
 	{
-		glGenTextures(1, &_texId);
+		_tex_target = GL_TEXTURE_2D;
 	}
 
 
 	KiteDriverTexture2D::~KiteDriverTexture2D()
 	{
-		glDeleteTextures(1, &_texId);
 	}
 
 	void KiteDriverTexture2D::Assign(kite_util::ImageLoader * loader)
@@ -29,69 +29,18 @@ namespace kite_driver
 		memcpy(_data.get(), data, data_size);
 	}
 
-	void KiteDriverTexture2D::SetWidthHeight(float width, float height)
-	{
-		_width = width;
-		_height = height;
-	}
 
-	void KiteDriverTexture2D::SetImageFormat(kite_util::KiteImageFormat image_format)
-	{
-		_image_format = image_format;
-	}
-
-	void KiteDriverTexture2D::BindTexture()
-	{
-		glBindTexture(GL_TEXTURE_2D, _texId);
-	}
-
-	void KiteDriverTexture2D::UnbindTexture()
-	{
-		glBindTexture(GL_TEXTURE_2D, 0);
-	}
 
 	void KiteDriverTexture2D::SetGLData()
 	{
 		glBindTexture(GL_TEXTURE_2D, _texId);
 
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		SetTextureParameters();
 
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-		
 		auto image_format = ConvertToGLImageFormat(_image_format);
-		glTexImage2D(GL_TEXTURE_2D, 0, image_format, _width, _height, 0, image_format, ParseGLDataType(_image_format), _data.get());
+		auto internal_image_format = ConvertToGLInternalImageFormat(_image_format);
+		glTexImage2D(GL_TEXTURE_2D, 0, internal_image_format, _width, _height, 0, image_format, ParseGLDataType(_image_format), _data.get());
 		
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
-
-	GLint KiteDriverTexture2D::ConvertToGLImageFormat(kite_util::KiteImageFormat kite_image_format)
-	{
-		switch (kite_image_format)
-		{
-		case kite_util::KIF_INVALID:
-			break;
-		case kite_util::KIF_RGB:
-			return GL_RGB;
-		default:
-			break;
-		}
-		return -1;
-	}
-
-	GLenum KiteDriverTexture2D::ParseGLDataType(kite_util::KiteImageFormat kite_image_format)
-	{
-		switch (kite_image_format)
-		{
-		case kite_util::KIF_INVALID:
-			break;
-		case kite_util::KIF_RGB:
-			return GL_UNSIGNED_BYTE;
-		default:
-			break;
-		}
-		return -1;
-	}
-
 }

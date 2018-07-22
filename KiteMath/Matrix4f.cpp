@@ -160,6 +160,17 @@ namespace kite_math
 	}
 
 
+	kite_math::Matrix4f Matrix4f::Transpose(const Matrix4f& mat)
+	{
+		Matrix4f transpose_mat(
+			mat.GetRow(0),
+			mat.GetRow(1),
+			mat.GetRow(2),
+			mat.GetRow(3)
+			);
+		return transpose_mat;
+	}
+
 	kite_math::Matrix4f Matrix4f::PerspectiveRHand(float fovy, float aspect, float near_plane, float far_plane)
 	{
 		float tan_half_fovy = Mathf::Tan(fovy * 0.5f);

@@ -16,8 +16,10 @@ namespace kite_driver
 		void ShaderDemo();
 		void InitializeShaderDemo();
 
-		std::shared_ptr<KiteDriverMesh> GenerateMesh();
+		KiteDriverMeshPtr GenerateMesh();
 		std::shared_ptr<KiteDriverMaterial> GenerateMaterial();
+		KiteDriverCameraPtr GenerateCamera();
+		KiteDriverTextureCubePtr GenerateSkyBox();
 
 		std::shared_ptr<KiteDriverRenderObject> _renderObject;
 		std::shared_ptr<KiteDriverScene> _scene;

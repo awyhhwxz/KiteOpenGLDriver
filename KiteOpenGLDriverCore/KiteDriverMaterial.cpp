@@ -15,14 +15,14 @@ namespace kite_driver
 		_programBuilder.Destroy();
 	}
 
-	void KiteDriverMaterial::SetShader(KiteDriverShaderType shaderType, std::string shaderPath)
+	void KiteDriverMaterial::SetShader(KiteDriverShaderType shader_type, const tchar*  shader_path)
 	{
-		_shaderMap[shaderType] = shaderPath;
+		_shader_map[shader_type] = shader_path;
 	}
 
 	void KiteDriverMaterial::Link()
 	{
-		std::for_each(_shaderMap.begin(), _shaderMap.end(), [this](auto shaderPair)
+		std::for_each(_shader_map.begin(), _shader_map.end(), [this](auto shaderPair)
 		{
 			auto shaderType = KiteDriverEnumOpenGLEnumConverter::Convert(shaderPair.first);
 			auto vertexShader = KiteDriverShaderVisitor::LoadShaderFile(shaderType, shaderPair.second.c_str());
@@ -34,6 +34,7 @@ namespace kite_driver
 
 	void KiteDriverMaterial::BeginRender()
 	{
+		_render_state_setter.StateSet();
 		_programBuilder.Begin();
 	}
 
@@ -43,14 +44,14 @@ namespace kite_driver
 	}
 
 
-	void KiteDriverMaterial::SetUniformValue(const tchar* uniformName, KiteDriverParaValueType valueType, void* value)
+	void KiteDriverMaterial::SetUniformValue(const tchar* uniform_name, KiteDriverParaValueType value_type, void* value)
 	{
-		_programBuilder.SetUniformValue(uniformName, valueType, value);
+		_programBuilder.SetUniformValue(uniform_name, value_type, value);
 	}
 
-	void KiteDriverMaterial::SetUniformTexture(const tchar* uniformName, const std::shared_ptr<KiteDriverTexture2D>& texture)
+	void KiteDriverMaterial::SetUniformTexture(const tchar* uniform_name, const std::shared_ptr<KiteDriverTexture>& texture)
 	{
-		_programBuilder.SetUniformTexture(uniformName, texture);
+		_programBuilder.SetUniformTexture(uniform_name, texture);
 	}
 
 }

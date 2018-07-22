@@ -9,6 +9,8 @@ typedef unsigned int uint32;
 typedef std::string tstring;
 typedef char tchar;
 
+#define CSTR(str) (##str).c_str()
+
 #define KITE_DRIVER_TYPEDEF_HEADFILEDEFINE
 
 #endif // KITE_DRIVER_TYPEDEF_HEADFILEDEFINE

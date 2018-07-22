@@ -129,6 +129,18 @@
     <ClInclude Include="manager\KiteDriverResourceManager.h">
       <Filter>manager</Filter>
     </ClInclude>
+    <ClInclude Include="KiteDriverTextureCube.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KiteDriverTexture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KiteDriverSkyBox.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KiteDriverRenderStateSetter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -202,6 +214,18 @@
     </ClCompile>
     <ClCompile Include="manager\KiteDriverResourceManager.cpp">
       <Filter>manager</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverTextureCube.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverTexture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverSkyBox.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverRenderStateSetter.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
