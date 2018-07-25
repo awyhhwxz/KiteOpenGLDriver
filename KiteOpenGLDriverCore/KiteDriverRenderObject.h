@@ -31,4 +31,5 @@ namespace kite_driver
 		std::shared_ptr<KiteDriverMeshDrawer> _meshDrawer;
 	};
 
+	typedef std::shared_ptr<KiteDriverRenderObject> KiteDriverRenderObjectPtr;
 }

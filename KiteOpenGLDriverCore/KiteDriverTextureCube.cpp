@@ -37,7 +37,7 @@ namespace kite_driver
 
 	void KiteDriverTextureCube::SetGLData()
 	{
-		glBindTexture(GL_TEXTURE_CUBE_MAP, _texId);
+		glBindTexture(GL_TEXTURE_CUBE_MAP, _tex_id);
 
 		SetTextureParameters();
 

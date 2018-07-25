@@ -21,8 +21,17 @@ namespace kite_driver
 		KiteDriverCameraPtr GenerateCamera();
 		KiteDriverTextureCubePtr GenerateSkyBox();
 
-		std::shared_ptr<KiteDriverRenderObject> _renderObject;
+		KiteDriverTexture2DPtr GenerateTexture2D(const tchar* image_path);
+
+		KiteDriverRenderObjectPtr GenerateCubeRenderObject();
+		KiteDriverRenderObjectPtr GeneratePlaneRenderObject();
+
+		KiteDriverRenderObjectPtr _cubeRenderObject;
+		KiteDriverRenderObjectPtr _planeRenderObject;
 		std::shared_ptr<KiteDriverScene> _scene;
+		std::shared_ptr<KiteDriverScene> _rendertexture_scene;
+
+		KiteDriverRenderTexturePtr _rendertexture;
 	};
 
 }

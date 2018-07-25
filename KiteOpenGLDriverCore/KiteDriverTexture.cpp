@@ -5,18 +5,18 @@ namespace kite_driver
 {
 	KiteDriverTexture::KiteDriverTexture()
 	{
-		glGenTextures(1, &_texId);
+		glGenTextures(1, &_tex_id);
 	}
 
 
 	KiteDriverTexture::~KiteDriverTexture()
 	{
-		glDeleteTextures(1, &_texId);
+		glDeleteTextures(1, &_tex_id);
 	}
 
 	void KiteDriverTexture::BindTexture()
 	{
-		glBindTexture(_tex_target, _texId);
+		glBindTexture(_tex_target, _tex_id);
 	}
 
 	void KiteDriverTexture::UnbindTexture()
@@ -24,7 +24,7 @@ namespace kite_driver
 		glBindTexture(_tex_target, 0);
 	}
 
-	void KiteDriverTexture::SetWidthHeight(float width, float height)
+	void KiteDriverTexture::SetWidthHeight(int width, int height)
 	{
 		_width = width;
 		_height = height;
@@ -43,6 +43,8 @@ namespace kite_driver
 			break;
 		case kite_util::KIF_RGB:
 			return GL_RGB;
+		case kite_util::KIF_RGBA:
+			return GL_RGBA;
 		case kite_util::KIF_BGR:
 			return GL_BGR;
 		default:
@@ -60,6 +62,8 @@ namespace kite_driver
 		case kite_util::KIF_RGB:
 		case kite_util::KIF_BGR:
 			return GL_RGB;
+		case kite_util::KIF_RGBA:
+			return GL_RGBA;
 		default:
 			break;
 		}
@@ -74,6 +78,8 @@ namespace kite_driver
 			break;
 		case kite_util::KIF_RGB:
 		case kite_util::KIF_BGR:
+			return GL_UNSIGNED_BYTE;
+		case kite_util::KIF_RGBA:
 			return GL_UNSIGNED_BYTE;
 		default:
 			break;

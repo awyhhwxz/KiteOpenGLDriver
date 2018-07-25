@@ -15,11 +15,12 @@ namespace kite_driver
 		void Assign(kite_util::ImageLoader* loader);
 		void SetPixels(uint8* data, uint32 data_size);
 
-	private:
-		void SetGLData();
+	protected:
+		virtual void SetGLData() override;
 
 	private:
 		std::unique_ptr<uint8[]> _data;
 	};
 
+	typedef std::shared_ptr<KiteDriverTexture2D> KiteDriverTexture2DPtr;
 }

@@ -6,6 +6,7 @@ namespace kite_util
 	enum KiteImageFormat
 	{
 		KIF_INVALID,
+		KIF_RGBA,
 		KIF_RGB,
 		KIF_BGR,
 	};

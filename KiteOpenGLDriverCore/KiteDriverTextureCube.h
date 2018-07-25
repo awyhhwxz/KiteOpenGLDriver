@@ -13,7 +13,7 @@ namespace kite_driver
 		void Assign(kite_util::ImageLoader loader[6]);
 
 	private:
-		void SetGLData();
+		virtual void SetGLData() override;
 
 	private:
 		std::unique_ptr<uint8[]> _datas[6];

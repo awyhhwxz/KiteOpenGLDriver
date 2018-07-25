@@ -7,8 +7,6 @@ namespace kite_driver
 {
 	KiteDriverMeshPtr KiteDriverGeometryGenerator::Cuboid(float x_length, float y_length, float z_length)
 	{
-
-
 		std::shared_ptr<KiteDriverMesh> mesh = std::make_shared<KiteDriverMesh>();
 
 		auto vertices = CuboidVertices(x_length, y_length, z_length);
@@ -41,6 +39,38 @@ namespace kite_driver
 			2, 7, 6,
 		};
 		mesh->SetIndices(indexes, 3 * 12);
+		return mesh;
+	}
+
+	kite_driver::KiteDriverMeshPtr KiteDriverGeometryGenerator::Plane(float x_length, float y_length)
+	{
+		std::shared_ptr<KiteDriverMesh> mesh = std::make_shared<KiteDriverMesh>();
+
+		auto x_half_length = x_length * 0.5f;
+		auto y_half_length = y_length * 0.5f;
+
+		Vector3f vertices[] = {
+			Vector3f(x_length, y_length, 0),
+			Vector3f(x_length, -y_length, 0),
+			Vector3f(-x_length, y_length, 0),
+			Vector3f(-x_length, -y_length, 0),
+		};
+		mesh->SetVertices(vertices, 4);
+
+		Vector2f uv0[] = {
+			Vector2f(1, 1),
+			Vector2f(1, 0),
+			Vector2f(0, 1),
+			Vector2f(0, 0),
+		};
+		mesh->SetUVs(0, uv0, 4);
+
+		GLushort indexes[] = {
+			0, 2, 1,
+			2, 3, 1
+		};
+		mesh->SetIndices(indexes, 3 * 2);
+
 		return mesh;
 	}
 

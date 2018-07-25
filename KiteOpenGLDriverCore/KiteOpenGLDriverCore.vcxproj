@@ -160,6 +160,7 @@
     <ClInclude Include="KiteDriverContext.h" />
     <ClInclude Include="KiteDriverDummy.h" />
     <ClInclude Include="KiteDriverEnumOpenGLEnumConverter.h" />
+    <ClInclude Include="KiteDriverFrameBuffer.h" />
     <ClInclude Include="KiteDriverGeometryGenerator.h" />
     <ClInclude Include="KiteDriverMaterial.h" />
     <ClInclude Include="KiteDriverMesh.h" />
@@ -168,6 +169,7 @@
     <ClInclude Include="KiteDriverProgramBuilder.h" />
     <ClInclude Include="KiteDriverRenderObject.h" />
     <ClInclude Include="KiteDriverRenderStateSetter.h" />
+    <ClInclude Include="KiteDriverRenderTexture.h" />
     <ClInclude Include="KiteDriverScene.h" />
     <ClInclude Include="KiteDriverShaderVisitor.h" />
     <ClInclude Include="KiteDriverSkyBox.h" />
@@ -191,6 +193,7 @@
     <ClCompile Include="KiteDriverContext.cpp" />
     <ClCompile Include="KiteDriverDummy.cpp" />
     <ClCompile Include="KiteDriverEnumOpenGLEnumConverter.cpp" />
+    <ClCompile Include="KiteDriverFrameBuffer.cpp" />
     <ClCompile Include="KiteDriverGeometryGenerator.cpp" />
     <ClCompile Include="KiteDriverMaterial.cpp" />
     <ClCompile Include="KiteDriverMesh.cpp" />
@@ -198,6 +201,7 @@
     <ClCompile Include="KiteDriverProgramBuilder.cpp" />
     <ClCompile Include="KiteDriverRenderObject.cpp" />
     <ClCompile Include="KiteDriverRenderStateSetter.cpp" />
+    <ClCompile Include="KiteDriverRenderTexture.cpp" />
     <ClCompile Include="KiteDriverScene.cpp" />
     <ClCompile Include="KiteDriverShaderVisitor.cpp" />
     <ClCompile Include="KiteDriverSkyBox.cpp" />

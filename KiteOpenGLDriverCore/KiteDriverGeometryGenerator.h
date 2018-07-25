@@ -7,7 +7,7 @@ namespace kite_driver
 	public:
 
 		static KiteDriverMeshPtr Cuboid(float x_length, float y_length, float z_length);
-		
+		static KiteDriverMeshPtr Plane(float x_length, float y_length);
 		static KiteDriverMeshPtr SkyBoxMesh();
 
 	private:

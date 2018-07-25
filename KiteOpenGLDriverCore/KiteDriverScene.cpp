@@ -25,21 +25,39 @@ namespace kite_driver
 	}
 	void KiteDriverScene::Render()
 	{
-		RenderSkyBox();
-
-		std::for_each(_renderObjList.begin(), _renderObjList.end(), [this](std::weak_ptr<kite_driver::KiteDriverRenderObject> renderObjWeak)
+		_frame_buffer.BeginRender(_camera.get());
 		{
-			if (!renderObjWeak.expired())
+			ClearScreen();
+			RenderSkyBox();
+
+			std::for_each(_renderObjList.begin(), _renderObjList.end(), [this](std::weak_ptr<kite_driver::KiteDriverRenderObject> renderObjWeak)
 			{
-				auto renderObj = renderObjWeak.lock();
-				RenderObject(renderObj.get());
-			}
-		});
+				if (!renderObjWeak.expired())
+				{
+					auto renderObj = renderObjWeak.lock();
+					RenderObject(renderObj.get());
+				}
+			});
+		}
+		_frame_buffer.EndRender();
 	}
 
-	void KiteDriverScene::SetSkyBox(const std::shared_ptr<KiteDriverTextureCube>& texCube)
+	void KiteDriverScene::ClearScreen()
+	{
+		glClearColor(1.0f, 0.0f, 0.0f, 1.f);
+		glClearDepth(1.f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glEnable(GL_DEPTH_TEST);
+	}
+
+	void KiteDriverScene::SetSkyBox(const KiteDriverTextureCubePtr& texCube)
 	{
 		_skybox->SetTextureCube(texCube);
+	}
+
+	void KiteDriverScene::SetRenderTarget(const KiteDriverRenderTexturePtr & render_target)
+	{
+		_frame_buffer.SetRenderTarget(render_target);
 	}
 
 	void KiteDriverScene::AssignUniformValue(kite_driver::KiteDriverRenderObject* renderObject)

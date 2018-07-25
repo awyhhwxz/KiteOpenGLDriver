@@ -141,6 +141,12 @@
     <ClInclude Include="KiteDriverRenderStateSetter.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="KiteDriverRenderTexture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KiteDriverFrameBuffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -225,6 +231,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="KiteDriverRenderStateSetter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverRenderTexture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverFrameBuffer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

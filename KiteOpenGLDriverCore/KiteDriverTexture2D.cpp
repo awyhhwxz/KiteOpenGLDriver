@@ -33,7 +33,7 @@ namespace kite_driver
 
 	void KiteDriverTexture2D::SetGLData()
 	{
-		glBindTexture(GL_TEXTURE_2D, _texId);
+		glBindTexture(GL_TEXTURE_2D, _tex_id);
 
 		SetTextureParameters();
 

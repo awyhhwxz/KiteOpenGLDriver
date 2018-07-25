@@ -21,6 +21,7 @@
 #include "KiteDriverParaValue.h"
 #include "KiteDriverShaderVisitor.h"
 #include "KiteDriverTexture2D.h"
+#include "KiteDriverRenderTexture.h"
 #include "KiteDriverTextureCube.h"
 #include "KiteDriverProgramBuilder.h"
 #include "KiteDriverEnumOpenGLEnumConverter.h"
@@ -32,6 +33,7 @@
 #include "KiteDriverRenderObject.h"
 #include "KiteDriverCamera.h"
 #include "KiteDriverSkyBox.h"
+#include "KiteDriverFrameBuffer.h"
 #include "KiteDriverScene.h"
 
 #include "KiteDriverInputManager.h"

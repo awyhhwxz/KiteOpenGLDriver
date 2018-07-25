@@ -23,27 +23,20 @@ namespace kite_driver
 	}
 	void RenderItem01::Render()
 	{
-		glClearColor(1.0f, 0.0f, 0.0f, 1.f);
-		glClearDepth(1.f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glEnable(GL_DEPTH_TEST);
-
 		ShaderDemo();
 	}
 
 	void RenderItem01::ShaderDemo()
 	{
+		_rendertexture_scene->Render();
 		_scene->Render();
 	}
 	void RenderItem01::InitializeShaderDemo()
 	{
-		_renderObject = std::make_shared<KiteDriverRenderObject>();
-		_renderObject->set_mesh(KiteDriverGeometryGenerator::Cuboid(1.0f,1.0f,1.0f));
-		_renderObject->set_material(GenerateMaterial());
-		_renderObject->Initialize();
-		_renderObject->set_position(Vector3f(0, 0, 0));
-		_renderObject->set_euler(Euler(0, 0, Mathf::PI * 0.5f));
-		_renderObject->set_scale(Vector3f(2, 2, 2));
+		_rendertexture = std::make_shared<KiteDriverRenderTexture>();
+
+		_cubeRenderObject = GenerateCubeRenderObject();
+		_planeRenderObject = GeneratePlaneRenderObject();
 
 		KiteDriverCameraPtr camera = GenerateCamera();
 
@@ -54,9 +47,16 @@ namespace kite_driver
 		auto skybox = GenerateSkyBox();
 
 		_scene = std::make_shared<KiteDriverScene>();
-		_scene->AddRenderObj(_renderObject);
+		_scene->AddRenderObj(_cubeRenderObject);
+		_scene->AddRenderObj(_planeRenderObject);
 		_scene->set_camera(camera);
 		_scene->SetSkyBox(skybox);
+
+		_rendertexture_scene = std::make_shared<KiteDriverScene>();
+		_rendertexture_scene->AddRenderObj(_cubeRenderObject);
+		_rendertexture_scene->set_camera(camera);
+		_rendertexture_scene->SetRenderTarget(_rendertexture);
+		_rendertexture_scene->SetSkyBox(skybox);
 	}
 
 	KiteDriverMeshPtr RenderItem01::GenerateMesh()
@@ -78,13 +78,6 @@ namespace kite_driver
 	std::shared_ptr<kite_driver::KiteDriverMaterial> RenderItem01::GenerateMaterial()
 	{
 		auto material = std::make_shared<KiteDriverMaterial>();
-
-		auto imagePath = PathUtil::GetResourcePath() + "/texture/stone.jpg";
-		ImageLoader image_loader;
-		image_loader.Load(imagePath.c_str());
-		auto texture = std::make_shared<KiteDriverTexture2D>();
-		texture->Assign(&image_loader);
-		material->SetUniformTexture("tex", texture);
 
 		auto vertexPath = PathUtil::GetResourcePath() + "/shader/texure.vertex";
 		auto fragmentPath = PathUtil::GetResourcePath() + "/shader/texture.fragment";
@@ -116,6 +109,52 @@ namespace kite_driver
 		texCube->Assign(loads);
 
 		return texCube;
+	}
+
+	KiteDriverTexture2DPtr RenderItem01::GenerateTexture2D(const tchar* image_path)
+	{
+		auto imagePath = PathUtil::GetResourcePath() + image_path;
+		ImageLoader image_loader;
+		image_loader.Load(imagePath.c_str());
+		auto texture = std::make_shared<KiteDriverTexture2D>();
+		texture->Assign(&image_loader);
+
+		return texture;
+	}
+
+	kite_driver::KiteDriverRenderObjectPtr RenderItem01::GenerateCubeRenderObject()
+	{
+		KiteDriverRenderObjectPtr renderObj = std::make_shared<KiteDriverRenderObject>();
+		renderObj->set_mesh(KiteDriverGeometryGenerator::Cuboid(1.0f, 1.0f, 1.0f));
+
+		auto material = GenerateMaterial();
+		auto texture = GenerateTexture2D("/texture/stone.jpg");
+		material->SetUniformTexture("tex", texture);
+
+		renderObj->set_material(material);
+		renderObj->Initialize();
+		renderObj->set_position(Vector3f(0, 0, 0));
+		renderObj->set_euler(Euler(0, 0, Mathf::PI * 0.5f));
+		renderObj->set_scale(Vector3f(2, 2, 2));
+
+		return renderObj;
+	}
+
+	KiteDriverRenderObjectPtr RenderItem01::GeneratePlaneRenderObject()
+	{
+		KiteDriverRenderObjectPtr renderObj = std::make_shared<KiteDriverRenderObject>();
+		renderObj->set_mesh(KiteDriverGeometryGenerator::Plane(1.0f, 1.0f));
+		
+		auto material = GenerateMaterial();
+		auto texture = GenerateTexture2D("/texture/landscape.jpg");
+		material->SetUniformTexture("tex", _rendertexture);
+
+		renderObj->set_material(material);
+		renderObj->Initialize();
+		renderObj->set_position(Vector3f(5, 0, 0));
+		renderObj->set_euler(Euler(0, 0, 0));
+		renderObj->set_scale(Vector3f(1, 1, 1));
+		return renderObj;
 	}
 
 }
