@@ -34,7 +34,10 @@
 #include "KiteDriverCamera.h"
 #include "KiteDriverSkyBox.h"
 #include "KiteDriverFrameBuffer.h"
+#include "IKiteDriverPostEffect.h"
 #include "KiteDriverScene.h"
 
+#include "KiteDriverGraphics.h"
+#include "KiteDriverShareObjectManager.h"
 #include "KiteDriverInputManager.h"
 #include "KiteDriverWindowManager.h"

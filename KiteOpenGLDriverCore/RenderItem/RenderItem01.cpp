@@ -2,6 +2,7 @@
 #include "RenderItem01.h"
 #include "KiteDriverMouseController.h"
 #include "KiteDriverGeometryGenerator.h"
+#include "KiteDriverGrayPostEffect.h"
 
 using namespace kite_math;
 using namespace kite_util;
@@ -28,15 +29,15 @@ namespace kite_driver
 
 	void RenderItem01::ShaderDemo()
 	{
-		_rendertexture_scene->Render();
+		//_rendertexture_scene->Render();
 		_scene->Render();
 	}
 	void RenderItem01::InitializeShaderDemo()
 	{
-		_rendertexture = std::make_shared<KiteDriverRenderTexture>();
+		//_rendertexture = std::make_shared<KiteDriverRenderTexture>();
 
 		_cubeRenderObject = GenerateCubeRenderObject();
-		_planeRenderObject = GeneratePlaneRenderObject();
+		//_planeRenderObject = GeneratePlaneRenderObject();
 
 		KiteDriverCameraPtr camera = GenerateCamera();
 
@@ -48,15 +49,16 @@ namespace kite_driver
 
 		_scene = std::make_shared<KiteDriverScene>();
 		_scene->AddRenderObj(_cubeRenderObject);
-		_scene->AddRenderObj(_planeRenderObject);
+		//_scene->AddRenderObj(_planeRenderObject);
 		_scene->set_camera(camera);
 		_scene->SetSkyBox(skybox);
+		_scene->SetPostEffect(std::make_shared<KiteDriverGrayPostEffect>());
 
-		_rendertexture_scene = std::make_shared<KiteDriverScene>();
-		_rendertexture_scene->AddRenderObj(_cubeRenderObject);
-		_rendertexture_scene->set_camera(camera);
-		_rendertexture_scene->SetRenderTarget(_rendertexture);
-		_rendertexture_scene->SetSkyBox(skybox);
+		//_rendertexture_scene = std::make_shared<KiteDriverScene>();
+		//_rendertexture_scene->AddRenderObj(_cubeRenderObject);
+		//_rendertexture_scene->set_camera(camera);
+		//_rendertexture_scene->SetRenderTarget(_rendertexture);
+		//_rendertexture_scene->SetSkyBox(skybox);
 	}
 
 	KiteDriverMeshPtr RenderItem01::GenerateMesh()
@@ -79,7 +81,7 @@ namespace kite_driver
 	{
 		auto material = std::make_shared<KiteDriverMaterial>();
 
-		auto vertexPath = PathUtil::GetResourcePath() + "/shader/texure.vertex";
+		auto vertexPath = PathUtil::GetResourcePath() + "/shader/texture.vertex";
 		auto fragmentPath = PathUtil::GetResourcePath() + "/shader/texture.fragment";
 		material->SetShader(KDST_VERTEX_SHADER, vertexPath.c_str());
 		material->SetShader(KDST_FRAGMENT_SHADER, fragmentPath.c_str());

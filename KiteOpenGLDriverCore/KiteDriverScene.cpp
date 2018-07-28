@@ -6,6 +6,8 @@ namespace kite_driver
 	KiteDriverScene::KiteDriverScene()
 	{
 		_skybox = std::make_shared<KiteDriverSkyBox>();
+		_frame_buffer = std::make_shared<KiteDriverFrameBuffer>();
+		_post_effect_frame_buffer = std::make_shared<KiteDriverFrameBuffer>();
 	}
 
 
@@ -15,39 +17,49 @@ namespace kite_driver
 
 	void KiteDriverScene::AddRenderObj(const std::shared_ptr<kite_driver::KiteDriverRenderObject> renderObj)
 	{
-		if (std::find_if(_renderObjList.begin(), _renderObjList.end(), [renderObj](std::weak_ptr<kite_driver::KiteDriverRenderObject> renderObjWeak)
+		if (std::find_if(_render_obj_list.begin(), _render_obj_list.end(), [renderObj](std::weak_ptr<kite_driver::KiteDriverRenderObject> renderObjWeak)
 		{
 			return renderObj == renderObjWeak.lock();
-		}) == _renderObjList.end())
+		}) == _render_obj_list.end())
 		{
-			_renderObjList.push_back(renderObj);
+			_render_obj_list.push_back(renderObj);
 		}
 	}
 	void KiteDriverScene::Render()
 	{
-		_frame_buffer.BeginRender(_camera.get());
-		{
-			ClearScreen();
-			RenderSkyBox();
+		bool posteffect_isnull = _post_effect.get() == nullptr;
+		auto& render_framebuffer = posteffect_isnull ? _frame_buffer : _post_effect_frame_buffer;
 
-			std::for_each(_renderObjList.begin(), _renderObjList.end(), [this](std::weak_ptr<kite_driver::KiteDriverRenderObject> renderObjWeak)
-			{
-				if (!renderObjWeak.expired())
-				{
-					auto renderObj = renderObjWeak.lock();
-					RenderObject(renderObj.get());
-				}
-			});
+		render_framebuffer->BeginRender();
+		{
+			RenderAllObjects();
 		}
-		_frame_buffer.EndRender();
+		render_framebuffer->EndRender();
+
+		if (!posteffect_isnull)
+		{
+			_post_effect->OnRenderImage(render_framebuffer->GetRenderTarget(), _frame_buffer);
+		}
+	}
+
+	void KiteDriverScene::RenderAllObjects()
+	{
+		ClearScreen();
+		RenderSkyBox();
+
+		std::for_each(_render_obj_list.begin(), _render_obj_list.end(), [this](std::weak_ptr<kite_driver::KiteDriverRenderObject> renderObjWeak)
+		{
+			if (!renderObjWeak.expired())
+			{
+				auto renderObj = renderObjWeak.lock();
+				RenderObject(renderObj.get());
+			}
+		});
 	}
 
 	void KiteDriverScene::ClearScreen()
 	{
-		glClearColor(1.0f, 0.0f, 0.0f, 1.f);
-		glClearDepth(1.f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glEnable(GL_DEPTH_TEST);
+		KiteDriverGraphics::DefaultClear();
 	}
 
 	void KiteDriverScene::SetSkyBox(const KiteDriverTextureCubePtr& texCube)
@@ -57,7 +69,17 @@ namespace kite_driver
 
 	void KiteDriverScene::SetRenderTarget(const KiteDriverRenderTexturePtr & render_target)
 	{
-		_frame_buffer.SetRenderTarget(render_target);
+		_frame_buffer->SetRenderTarget(render_target);
+	}
+
+	void KiteDriverScene::SetPostEffect(const IKiteDriverPostEffectPtr & effect)
+	{
+		_post_effect = effect;
+
+		if (_post_effect_frame_buffer->GetRenderTarget() == nullptr)
+		{
+			_post_effect_frame_buffer->SetRenderTarget(std::make_shared<KiteDriverRenderTexture>());
+		}
 	}
 
 	void KiteDriverScene::AssignUniformValue(kite_driver::KiteDriverRenderObject* renderObject)

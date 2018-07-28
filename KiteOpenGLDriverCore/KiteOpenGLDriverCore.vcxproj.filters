@@ -28,6 +28,9 @@
     <Filter Include="ParameterValue">
       <UniqueIdentifier>{b0129d18-0b2d-4350-8623-e50f6cba622f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PostEffect">
+      <UniqueIdentifier>{2d98e52a-9064-46f3-82a9-13cc364f6d46}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -147,6 +150,18 @@
     <ClInclude Include="KiteDriverFrameBuffer.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="interface\IKiteDriverPostEffect.h">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="KiteDriverGraphics.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="manager\KiteDriverShareObjectManager.h">
+      <Filter>manager</Filter>
+    </ClInclude>
+    <ClInclude Include="PostEffect\KiteDriverGrayPostEffect.h">
+      <Filter>PostEffect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -238,6 +253,15 @@
     </ClCompile>
     <ClCompile Include="KiteDriverFrameBuffer.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverGraphics.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="manager\KiteDriverShareObjectManager.cpp">
+      <Filter>manager</Filter>
+    </ClCompile>
+    <ClCompile Include="PostEffect\KiteDriverGrayPostEffect.cpp">
+      <Filter>PostEffect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

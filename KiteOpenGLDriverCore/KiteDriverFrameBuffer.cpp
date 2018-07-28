@@ -5,20 +5,29 @@
 namespace kite_driver
 {
 	KiteDriverFrameBuffer::KiteDriverFrameBuffer()
-		: _fbo(0)
+		: _fbo(0), _depth_id(0), _fbo_is_init(false)
 	{
-		glGenFramebuffers(1, &_fbo);
-		glGenRenderbuffers(1, &_depth_id);
+
 	}
 
 
 	KiteDriverFrameBuffer::~KiteDriverFrameBuffer()
 	{
-		glDeleteFramebuffers(1, &_fbo);
-		glDeleteRenderbuffers(1, &_depth_id);
+		if(_fbo > 0) glDeleteFramebuffers(1, &_fbo);
+		if(_depth_id > 0) glDeleteRenderbuffers(1, &_depth_id);
 	}
-
-	void KiteDriverFrameBuffer::BeginRender(KiteDriverCamera* camera)
+	
+	void KiteDriverFrameBuffer::GenerateFBO()
+	{
+		if (!_fbo_is_init)
+		{
+			glGenFramebuffers(1, &_fbo);
+			glGenRenderbuffers(1, &_depth_id);
+			_fbo_is_init = true;
+		}
+	}
+		
+	void KiteDriverFrameBuffer::BeginRender()
 	{
 		if (_render_target)
 		{
@@ -44,6 +53,8 @@ namespace kite_driver
 			_render_target = render_target;
 			if (_render_target)
 			{
+				GenerateFBO();
+
 				glBindFramebuffer(GL_FRAMEBUFFER, _fbo);
 
 				glBindRenderbuffer(GL_RENDERBUFFER, _depth_id);
@@ -57,4 +68,10 @@ namespace kite_driver
 			}
 		}
 	}
+
+	const KiteDriverRenderTexturePtr&  KiteDriverFrameBuffer::GetRenderTarget()
+	{
+		return _render_target;
+	}
+
 }

@@ -15,6 +15,7 @@ namespace kite_driver
 
 		void DrawMesh();
 
+		inline const std::shared_ptr<KiteDriverMesh>& get_mesh() { return _mesh; }
 	private:
 		GLuint GetUVAttribIndex(int uv_index);
 
@@ -22,4 +23,6 @@ namespace kite_driver
 		std::shared_ptr<KiteDriverMesh> _mesh;
 		std::unique_ptr<GLuint[]> _vbo;
 	};
+
+	typedef std::shared_ptr<KiteDriverMeshDrawer> KiteDriverMeshDrawerPtr;
 }

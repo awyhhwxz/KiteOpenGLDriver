@@ -50,10 +50,10 @@ namespace kite_driver
 		auto y_half_length = y_length * 0.5f;
 
 		Vector3f vertices[] = {
-			Vector3f(x_length, y_length, 0),
-			Vector3f(x_length, -y_length, 0),
-			Vector3f(-x_length, y_length, 0),
-			Vector3f(-x_length, -y_length, 0),
+			Vector3f(x_half_length, y_half_length, 0),
+			Vector3f(x_half_length, -y_half_length, 0),
+			Vector3f(-x_half_length, y_half_length, 0),
+			Vector3f(-x_half_length, -y_half_length, 0),
 		};
 		mesh->SetVertices(vertices, 4);
 

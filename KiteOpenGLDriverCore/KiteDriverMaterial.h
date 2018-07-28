@@ -24,5 +24,6 @@ namespace kite_driver
 		std::map<KiteDriverShaderType, std::string> _shader_map;
 		KiteDriverRenderStateSetter _render_state_setter;
 	};
-
+	
+	typedef std::shared_ptr<KiteDriverMaterial> KiteDriverMaterialPtr;
 }

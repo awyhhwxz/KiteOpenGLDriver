@@ -15,7 +15,12 @@ namespace kite_driver
 
 		void SetSkyBox(const KiteDriverTextureCubePtr& texCube);
 		void SetRenderTarget(const KiteDriverRenderTexturePtr& render_target);
+
+		void SetPostEffect(const IKiteDriverPostEffectPtr& effect);
+
 	protected:
+
+		void RenderAllObjects();
 		void AssignUniformValue(kite_driver::KiteDriverRenderObject* renderObject);
 		void RenderSkyBox();
 		void ClearScreen();
@@ -23,7 +28,9 @@ namespace kite_driver
 	private:
 		std::shared_ptr<KiteDriverSkyBox> _skybox;
 		std::shared_ptr<kite_driver::KiteDriverCamera> _camera;
-		std::vector <std::shared_ptr<kite_driver::KiteDriverRenderObject>> _renderObjList;
-		KiteDriverFrameBuffer _frame_buffer;
+		std::vector <std::shared_ptr<kite_driver::KiteDriverRenderObject>> _render_obj_list;
+		KiteDriverFrameBufferPtr _frame_buffer;
+		KiteDriverFrameBufferPtr _post_effect_frame_buffer;
+		IKiteDriverPostEffectPtr _post_effect;
 	};
 }
