@@ -1,0 +1,17 @@
+#version 400 core
+precision mediump float;
+uniform sampler2D tex;
+in vec2 uvs[5];
+out vec4 FragColor;
+void main()		
+{
+	float weight[3] = float[] (0.4026, 0.2442, 0.0545);
+
+	vec3 sum = texture(tex, uvs[0]).rgb * weight[0];
+	sum = sum + texture(tex, uvs[1]).rgb * weight[1];	
+	sum = sum + texture(tex, uvs[2]).rgb * weight[1];
+	sum = sum + texture(tex, uvs[3]).rgb * weight[2];	
+	sum = sum + texture(tex, uvs[4]).rgb * weight[2];
+
+	FragColor = vec4(sum, 1.0f);		
+}

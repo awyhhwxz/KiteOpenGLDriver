@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "KiteDriverShareObjectManager.h"
 #include "KiteDriverGeometryGenerator.h"
+#include "KiteDriverFastAccess.h"
 
 namespace kite_driver
 {
@@ -42,12 +43,10 @@ namespace kite_driver
 
 	void KiteDriverShareObjectManager::InitializeTextureMaterial()
 	{
-		_texture_material = std::make_shared<KiteDriverMaterial>();
-		auto vertexPath = kite_util::PathUtil::GetResourcePath() + "/shader/texture.vertex";
-		auto fragmentPath = kite_util::PathUtil::GetResourcePath() + "/shader/texture.fragment";
-		_texture_material->SetShader(KDST_VERTEX_SHADER, vertexPath.c_str());
-		_texture_material->SetShader(KDST_FRAGMENT_SHADER, fragmentPath.c_str());
-
+		_texture_material = KiteDriverFastAccess::GenerateMaterialByShader(
+			"/shader/texture.vertex",
+			"/shader/texture.fragment"
+		);
 		_texture_material->Link();
 	}
 

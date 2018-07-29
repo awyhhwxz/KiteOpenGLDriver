@@ -25,10 +25,18 @@ namespace kite_driver
 		{
 			dataSize = sizeof(kite_math::Matrix4f);
 		}
+		else if (_type == KDPVT_FLOAT)
+		{
+			dataSize = sizeof(float);
+		}
 
 		if (_data.get() == nullptr)
 		{
 			if (_type == KDPVT_MATRIX4F)
+			{
+				_data.reset(new uint8[dataSize]);
+			}
+			else if (_type == KDPVT_FLOAT)
 			{
 				_data.reset(new uint8[dataSize]);
 			}

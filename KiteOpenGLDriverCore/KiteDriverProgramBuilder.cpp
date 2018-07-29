@@ -37,6 +37,13 @@ namespace kite_driver
 		{
 			GLint infoLen = 0;
 			glGetProgramiv(_program, GL_INFO_LOG_LENGTH, &infoLen);
+			if (infoLen > 1)
+			{
+				char* infoLog = (char*)malloc(sizeof(char) * infoLen);
+
+				glGetProgramInfoLog(_program, infoLen, NULL, infoLog);
+				free(infoLog);
+			}
 		}
 	}
 
@@ -118,6 +125,12 @@ namespace kite_driver
 			{
 				auto location = glGetUniformLocation(_program, uniformName);
 				if (location >= 0) glUniformMatrix4fv(location, 1, GL_FALSE, static_cast<const GLfloat*>(value));
+			}
+			break;
+		case kite_driver::KDPVT_FLOAT:
+			{
+				auto location = glGetUniformLocation(_program, uniformName);
+				if (location >= 0) glUniform1f(location, *static_cast<const GLfloat*>(value));
 			}
 			break;
 		default:

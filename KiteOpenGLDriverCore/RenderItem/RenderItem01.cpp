@@ -3,6 +3,8 @@
 #include "KiteDriverMouseController.h"
 #include "KiteDriverGeometryGenerator.h"
 #include "KiteDriverGrayPostEffect.h"
+#include "KiteDriverBlurPostEffect.h"
+#include "KiteDriverFastAccess.h"
 
 using namespace kite_math;
 using namespace kite_util;
@@ -52,7 +54,7 @@ namespace kite_driver
 		//_scene->AddRenderObj(_planeRenderObject);
 		_scene->set_camera(camera);
 		_scene->SetSkyBox(skybox);
-		_scene->SetPostEffect(std::make_shared<KiteDriverGrayPostEffect>());
+		_scene->SetPostEffect(std::make_shared<KiteDriverBlurPostEffect>());
 
 		//_rendertexture_scene = std::make_shared<KiteDriverScene>();
 		//_rendertexture_scene->AddRenderObj(_cubeRenderObject);
@@ -79,12 +81,10 @@ namespace kite_driver
 
 	std::shared_ptr<kite_driver::KiteDriverMaterial> RenderItem01::GenerateMaterial()
 	{
-		auto material = std::make_shared<KiteDriverMaterial>();
-
-		auto vertexPath = PathUtil::GetResourcePath() + "/shader/texture.vertex";
-		auto fragmentPath = PathUtil::GetResourcePath() + "/shader/texture.fragment";
-		material->SetShader(KDST_VERTEX_SHADER, vertexPath.c_str());
-		material->SetShader(KDST_FRAGMENT_SHADER, fragmentPath.c_str());
+		auto material = KiteDriverFastAccess::GenerateMaterialByShader(
+			"/shader/texture.vertex",
+			"/shader/texture.fragment"
+		);
 
 		return material;
 	}
@@ -113,24 +113,13 @@ namespace kite_driver
 		return texCube;
 	}
 
-	KiteDriverTexture2DPtr RenderItem01::GenerateTexture2D(const tchar* image_path)
-	{
-		auto imagePath = PathUtil::GetResourcePath() + image_path;
-		ImageLoader image_loader;
-		image_loader.Load(imagePath.c_str());
-		auto texture = std::make_shared<KiteDriverTexture2D>();
-		texture->Assign(&image_loader);
-
-		return texture;
-	}
-
 	kite_driver::KiteDriverRenderObjectPtr RenderItem01::GenerateCubeRenderObject()
 	{
 		KiteDriverRenderObjectPtr renderObj = std::make_shared<KiteDriverRenderObject>();
 		renderObj->set_mesh(KiteDriverGeometryGenerator::Cuboid(1.0f, 1.0f, 1.0f));
 
 		auto material = GenerateMaterial();
-		auto texture = GenerateTexture2D("/texture/stone.jpg");
+		auto texture = KiteDriverFastAccess::GenerateTexture2D("/texture/stone.jpg");
 		material->SetUniformTexture("tex", texture);
 
 		renderObj->set_material(material);
@@ -148,7 +137,7 @@ namespace kite_driver
 		renderObj->set_mesh(KiteDriverGeometryGenerator::Plane(1.0f, 1.0f));
 		
 		auto material = GenerateMaterial();
-		auto texture = GenerateTexture2D("/texture/landscape.jpg");
+		auto texture = KiteDriverFastAccess::GenerateTexture2D("/texture/landscape.jpg");
 		material->SetUniformTexture("tex", _rendertexture);
 
 		renderObj->set_material(material);

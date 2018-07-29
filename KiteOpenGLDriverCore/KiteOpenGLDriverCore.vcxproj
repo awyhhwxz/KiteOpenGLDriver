@@ -161,6 +161,7 @@
     <ClInclude Include="KiteDriverContext.h" />
     <ClInclude Include="KiteDriverDummy.h" />
     <ClInclude Include="KiteDriverEnumOpenGLEnumConverter.h" />
+    <ClInclude Include="KiteDriverFastAccess.h" />
     <ClInclude Include="KiteDriverFrameBuffer.h" />
     <ClInclude Include="KiteDriverGeometryGenerator.h" />
     <ClInclude Include="KiteDriverGraphics.h" />
@@ -187,7 +188,9 @@
     <ClInclude Include="MouseController\MouseMiddleButtonController.h" />
     <ClInclude Include="MouseController\MouseRightButtonController.h" />
     <ClInclude Include="ParameterValue\KiteDriverParaValue.h" />
+    <ClInclude Include="PostEffect\KiteDriverBlurPostEffect.h" />
     <ClInclude Include="PostEffect\KiteDriverGrayPostEffect.h" />
+    <ClInclude Include="PostEffect\KiteDriverTextureBlurDrawer.h" />
     <ClInclude Include="RenderItem\RenderItem01.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -197,6 +200,7 @@
     <ClCompile Include="KiteDriverContext.cpp" />
     <ClCompile Include="KiteDriverDummy.cpp" />
     <ClCompile Include="KiteDriverEnumOpenGLEnumConverter.cpp" />
+    <ClCompile Include="KiteDriverFastAccess.cpp" />
     <ClCompile Include="KiteDriverFrameBuffer.cpp" />
     <ClCompile Include="KiteDriverGeometryGenerator.cpp" />
     <ClCompile Include="KiteDriverGraphics.cpp" />
@@ -223,7 +227,9 @@
     <ClCompile Include="MouseController\MouseMiddleButtonController.cpp" />
     <ClCompile Include="MouseController\MouseRightButtonController.cpp" />
     <ClCompile Include="ParameterValue\KiteDriverParaValue.cpp" />
+    <ClCompile Include="PostEffect\KiteDriverBlurPostEffect.cpp" />
     <ClCompile Include="PostEffect\KiteDriverGrayPostEffect.cpp" />
+    <ClCompile Include="PostEffect\KiteDriverTextureBlurDrawer.cpp" />
     <ClCompile Include="RenderItem\RenderItem01.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

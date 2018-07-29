@@ -1,0 +1,19 @@
+#version 400 core
+layout( location = 0 ) in vec3 vPosition;
+layout( location = 1 ) in vec2 vUV;
+out vec2 uvs[5]; 
+uniform mat4 mvp;
+
+uniform float _TexelSize;
+uniform float _PointSize;
+
+void main()		
+{
+	gl_Position = mvp * vec4(vPosition, 1);	
+	vec2 uv = vUV;
+	uvs[0] = uv;
+	uvs[1] = uv + vec2(0.0, _TexelSize * 1.0) * _PointSize;
+	uvs[2] = uv - vec2(0.0, _TexelSize * 1.0) * _PointSize;
+	uvs[3] = uv + vec2(0.0, _TexelSize * 2.0) * _PointSize;
+	uvs[4] = uv - vec2(0.0, _TexelSize * 2.0) * _PointSize;
+}

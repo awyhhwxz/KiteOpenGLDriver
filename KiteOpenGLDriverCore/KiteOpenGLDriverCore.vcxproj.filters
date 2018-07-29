@@ -162,6 +162,15 @@
     <ClInclude Include="PostEffect\KiteDriverGrayPostEffect.h">
       <Filter>PostEffect</Filter>
     </ClInclude>
+    <ClInclude Include="PostEffect\KiteDriverTextureBlurDrawer.h">
+      <Filter>PostEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="PostEffect\KiteDriverBlurPostEffect.h">
+      <Filter>PostEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="KiteDriverFastAccess.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -262,6 +271,15 @@
     </ClCompile>
     <ClCompile Include="PostEffect\KiteDriverGrayPostEffect.cpp">
       <Filter>PostEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="PostEffect\KiteDriverTextureBlurDrawer.cpp">
+      <Filter>PostEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="PostEffect\KiteDriverBlurPostEffect.cpp">
+      <Filter>PostEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverFastAccess.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

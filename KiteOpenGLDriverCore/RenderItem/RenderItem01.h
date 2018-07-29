@@ -21,8 +21,6 @@ namespace kite_driver
 		KiteDriverCameraPtr GenerateCamera();
 		KiteDriverTextureCubePtr GenerateSkyBox();
 
-		KiteDriverTexture2DPtr GenerateTexture2D(const tchar* image_path);
-
 		KiteDriverRenderObjectPtr GenerateCubeRenderObject();
 		KiteDriverRenderObjectPtr GeneratePlaneRenderObject();
 
