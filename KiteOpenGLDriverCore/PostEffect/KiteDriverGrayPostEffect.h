@@ -9,6 +9,11 @@ namespace kite_driver
 		~KiteDriverGrayPostEffect();
 
 		virtual void OnRenderImage(const KiteDriverRenderTexturePtr& src, const KiteDriverFrameBufferPtr& dest) override;
+
+	private:
+		void InitializeGrayMaterial();
+
+		KiteDriverMaterialPtr _gray_material;
 	};
 
 }

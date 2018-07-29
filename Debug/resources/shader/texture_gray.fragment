@@ -1,0 +1,11 @@
+#version 400 core
+precision mediump float;
+uniform sampler2D tex;
+in vec2 uv;
+out vec4 FragColor;
+void main()		
+{
+	vec3 texcol = texture2D(tex, uv).rgb;
+	float grayval = dot(texcol, vec3(0.299, 0.587, 0.114));
+	FragColor = vec4(grayval, grayval, grayval, 1.0);		
+}
