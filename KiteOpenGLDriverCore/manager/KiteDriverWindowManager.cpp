@@ -16,15 +16,17 @@ namespace kite_driver
 	{
 		_window_width = width;
 		_window_height = height;
-		RefreshWindowCameraAspect();
+		OnWindowSizeChanged();
 	}
 
-	void KiteDriverWindowManager::RefreshWindowCameraAspect()
+	void KiteDriverWindowManager::Refresh()
 	{
-		if (_window_camera)
-		{
-			_window_camera->set_aspect(_window_width / _window_height);
-		}
+		OnWindowSizeChanged();
+	}
+
+	void KiteDriverWindowManager::OnWindowSizeChanged()
+	{
+		WindowSizeChangedEvent.Invoke(_window_width, _window_height);
 	}
 
 }

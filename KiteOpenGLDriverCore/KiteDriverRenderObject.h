@@ -14,6 +14,8 @@ namespace kite_driver
 		void Render();
 
 		void set_mesh(const std::shared_ptr<KiteDriverMesh>& mesh) { _mesh = mesh; }
+		KiteDriverMeshDrawer* get_mesh_drawer() { return _meshDrawer.get(); }
+
 
 		KiteDriverMaterial* get_material() { return _material.get(); }
 		void set_material(const std::shared_ptr<KiteDriverMaterial>& mat) { _material = mat; }

@@ -62,6 +62,15 @@ namespace kite_driver
 		}
 	}
 
+	void KiteDriverMeshDrawer::Render(KiteDriverMaterial* material)
+	{
+		material->BeginRender();
+		{
+			DrawMesh();
+		}
+		material->EndRender();
+	}
+
 	GLuint KiteDriverMeshDrawer::GetUVAttribIndex(int uv_index)
 	{
 		return 1 + uv_index;

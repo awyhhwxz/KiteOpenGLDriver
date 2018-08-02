@@ -29,16 +29,20 @@ namespace kite_driver
 		{
 			dataSize = sizeof(float);
 		}
+		else if (_type == KDPVT_VECTOR4)
+		{
+			dataSize = sizeof(kite_math::Vector4f);
+		}
 
 		if (_data.get() == nullptr)
 		{
-			if (_type == KDPVT_MATRIX4F)
+			switch (_type)
 			{
+			case KDPVT_MATRIX4F:
+			case KDPVT_FLOAT:
+			case KDPVT_VECTOR4:
 				_data.reset(new uint8[dataSize]);
-			}
-			else if (_type == KDPVT_FLOAT)
-			{
-				_data.reset(new uint8[dataSize]);
+				break;
 			}
 		}
 

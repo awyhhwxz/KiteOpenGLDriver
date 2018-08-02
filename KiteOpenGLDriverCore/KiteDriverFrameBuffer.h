@@ -14,6 +14,8 @@ namespace kite_driver
 
 		void SetRenderTarget(const KiteDriverRenderTexturePtr& render_target);
 		const KiteDriverRenderTexturePtr& GetRenderTarget();
+
+		void set_view_port(const ViewPort& view_port) { _view_port = view_port; }
 	protected:
 		KiteDriverRenderTexturePtr _render_target;
 		GLuint _fbo;
@@ -22,6 +24,7 @@ namespace kite_driver
 		void GenerateFBO();
 
 	private: 
+		ViewPort _view_port;
 		bool _fbo_is_init;
 
 	};

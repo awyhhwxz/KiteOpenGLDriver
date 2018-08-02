@@ -4,6 +4,7 @@
 #include "KiteDriverGeometryGenerator.h"
 #include "KiteDriverGrayPostEffect.h"
 #include "KiteDriverBlurPostEffect.h"
+#include "KiteDriverHighLightingPostEffect.h"
 #include "KiteDriverFastAccess.h"
 
 using namespace kite_math;
@@ -14,12 +15,18 @@ namespace kite_driver
 
 	RenderItem01::RenderItem01()
 	{
+		_window_size_changed_event = std::make_shared<KiteDriverEvent<float, float>::EventArgsDelegate>(
+			std::bind(&RenderItem01::OnWindowSizeChanged, this, std::placeholders::_1, std::placeholders::_2)
+			);
+		KiteDriverWindowManager::Instance()->WindowSizeChangedEvent.RegistryEvent(_window_size_changed_event);
 	}
 
 
 	RenderItem01::~RenderItem01()
 	{
+		KiteDriverWindowManager::Instance()->WindowSizeChangedEvent.UnregistryEvent(_window_size_changed_event);
 	}
+
 	void RenderItem01::Initialize()
 	{
 		InitializeShaderDemo();
@@ -29,38 +36,50 @@ namespace kite_driver
 		ShaderDemo();
 	}
 
+	void RenderItem01::OnWindowSizeChanged(float width, float height)
+	{
+		if (_camera)
+		{
+			_camera->set_view_port(ViewPort(0.0f, 0.0f, width, height));
+			_camera->set_aspect(width / height);
+		}
+	}
+
 	void RenderItem01::ShaderDemo()
 	{
-		//_rendertexture_scene->Render();
+		KiteDriverHighLightingManager::Instance()->RenderHighLighting(_scene->get_camera());
+		_rendertexture_scene->Render();
 		_scene->Render();
 	}
 	void RenderItem01::InitializeShaderDemo()
 	{
-		//_rendertexture = std::make_shared<KiteDriverRenderTexture>();
+		_rendertexture = std::make_shared<KiteDriverRenderTexture>();
 
 		_cubeRenderObject = GenerateCubeRenderObject();
-		//_planeRenderObject = GeneratePlaneRenderObject();
+		_planeRenderObject = GeneratePlaneRenderObject();
 
-		KiteDriverCameraPtr camera = GenerateCamera();
+		_camera = GenerateCamera();
+		KiteDriverWindowManager::Instance()->Refresh();
 
 		auto mouse_controller = std::make_shared<kite_driver::KiteDriverMouseController>();
-		mouse_controller->SetCamera(camera);
+		mouse_controller->SetCamera(_camera);
 		KiteDriverInputManager::Instance()->RegistryMouseMessageReceiver(std::static_pointer_cast<kite_driver::IMouseMessageReceiver>(mouse_controller));
 		
 		auto skybox = GenerateSkyBox();
 
 		_scene = std::make_shared<KiteDriverScene>();
 		_scene->AddRenderObj(_cubeRenderObject);
-		//_scene->AddRenderObj(_planeRenderObject);
-		_scene->set_camera(camera);
+		_scene->AddRenderObj(_planeRenderObject);
+		_scene->set_camera(_camera);
 		_scene->SetSkyBox(skybox);
-		_scene->SetPostEffect(std::make_shared<KiteDriverBlurPostEffect>());
+		_scene->SetPostEffect(std::make_shared<KiteDriverHighLightingPostEffect>());
 
-		//_rendertexture_scene = std::make_shared<KiteDriverScene>();
-		//_rendertexture_scene->AddRenderObj(_cubeRenderObject);
-		//_rendertexture_scene->set_camera(camera);
-		//_rendertexture_scene->SetRenderTarget(_rendertexture);
-		//_rendertexture_scene->SetSkyBox(skybox);
+		KiteDriverHighLightingManager::Instance()->AddHighLightingObj(_planeRenderObject);
+		_rendertexture_scene = std::make_shared<KiteDriverScene>();
+		_rendertexture_scene->AddRenderObj(_cubeRenderObject);
+		_rendertexture_scene->set_camera(_camera);
+		_rendertexture_scene->SetRenderTarget(_rendertexture);
+		_rendertexture_scene->SetSkyBox(skybox);
 	}
 
 	KiteDriverMeshPtr RenderItem01::GenerateMesh()
@@ -93,8 +112,6 @@ namespace kite_driver
 	{
 		KiteDriverCameraPtr camera = std::make_shared<KiteDriverCamera>();
 		camera->set_position(Vector3f(2.0f, 0, -20.0f));
-
-		KiteDriverWindowManager::Instance()->set_window_camera(camera);
 		return camera;
 	}
 

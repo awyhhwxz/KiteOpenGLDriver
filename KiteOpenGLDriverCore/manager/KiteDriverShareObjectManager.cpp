@@ -34,6 +34,26 @@ namespace kite_driver
 		return _texture_material;
 	}
 
+	kite_driver::KiteDriverFrameBufferPtr KiteDriverShareObjectManager::GetTemporaryFrameBuffer()
+	{
+		return _temp_framebuffer_getter.GetTemporaryObject();
+	}
+
+	void KiteDriverShareObjectManager::ReleaseTemporaryFrameBuffer(const KiteDriverFrameBufferPtr& frame_buffer)
+	{
+		_temp_framebuffer_getter.ReleaseTemporaryObject(frame_buffer);
+	}
+
+	kite_driver::KiteDriverRenderTexturePtr KiteDriverShareObjectManager::GetTemporaryRenderTexture()
+	{
+		return _temp_rendertexture_getter.GetTemporaryObject();
+	}
+
+	void KiteDriverShareObjectManager::ReleaseTemporaryRenderTexture(const KiteDriverRenderTexturePtr& render_texture)
+	{
+		_temp_rendertexture_getter.ReleaseTemporaryObject(render_texture);
+	}
+
 	void KiteDriverShareObjectManager::InitializeFullScreenPlane()
 	{
 		_fullscreen_plane_drawer = std::make_shared<KiteDriverMeshDrawer>();
@@ -48,6 +68,11 @@ namespace kite_driver
 			"/shader/texture.fragment"
 		);
 		_texture_material->Link();
+	}
+
+	void KiteDriverShareObjectManager::InitializeShareFrameBuffer()
+	{
+
 	}
 
 }

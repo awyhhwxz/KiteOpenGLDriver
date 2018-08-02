@@ -171,6 +171,21 @@
     <ClInclude Include="KiteDriverFastAccess.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="manager\KiteDriverHighLightingManager.h">
+      <Filter>manager</Filter>
+    </ClInclude>
+    <ClInclude Include="manager\KiteDriverTempObjectGetter.h">
+      <Filter>manager</Filter>
+    </ClInclude>
+    <ClInclude Include="PostEffect\KiteDriverHighLightingPostEffect.h">
+      <Filter>PostEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="KiteDriverStruct.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="interface\KiteDriverEvent.h">
+      <Filter>interface</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -279,6 +294,15 @@
       <Filter>PostEffect</Filter>
     </ClCompile>
     <ClCompile Include="KiteDriverFastAccess.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="manager\KiteDriverHighLightingManager.cpp">
+      <Filter>manager</Filter>
+    </ClCompile>
+    <ClCompile Include="PostEffect\KiteDriverHighLightingPostEffect.cpp">
+      <Filter>PostEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverStruct.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

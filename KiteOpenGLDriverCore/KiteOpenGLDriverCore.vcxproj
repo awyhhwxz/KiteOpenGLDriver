@@ -149,6 +149,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="interface\KiteDriverEvent.h" />
     <ClInclude Include="interface\IKiteDriverContext.h" />
     <ClInclude Include="interface\IKiteDriverPostEffect.h" />
     <ClInclude Include="interface\IKiteDriverRenderItem.h" />
@@ -176,12 +177,15 @@
     <ClInclude Include="KiteDriverScene.h" />
     <ClInclude Include="KiteDriverShaderVisitor.h" />
     <ClInclude Include="KiteDriverSkyBox.h" />
+    <ClInclude Include="KiteDriverStruct.h" />
     <ClInclude Include="KiteDriverTexture.h" />
     <ClInclude Include="KiteDriverTexture2D.h" />
     <ClInclude Include="KiteDriverTextureCube.h" />
+    <ClInclude Include="manager\KiteDriverHighLightingManager.h" />
     <ClInclude Include="manager\KiteDriverInputManager.h" />
     <ClInclude Include="manager\KiteDriverResourceManager.h" />
     <ClInclude Include="manager\KiteDriverShareObjectManager.h" />
+    <ClInclude Include="manager\KiteDriverTempObjectGetter.h" />
     <ClInclude Include="manager\KiteDriverWindowManager.h" />
     <ClInclude Include="MouseController\IMouseButtonController.h" />
     <ClInclude Include="MouseController\KiteDriverMouseController.h" />
@@ -190,6 +194,7 @@
     <ClInclude Include="ParameterValue\KiteDriverParaValue.h" />
     <ClInclude Include="PostEffect\KiteDriverBlurPostEffect.h" />
     <ClInclude Include="PostEffect\KiteDriverGrayPostEffect.h" />
+    <ClInclude Include="PostEffect\KiteDriverHighLightingPostEffect.h" />
     <ClInclude Include="PostEffect\KiteDriverTextureBlurDrawer.h" />
     <ClInclude Include="RenderItem\RenderItem01.h" />
     <ClInclude Include="resource.h" />
@@ -214,11 +219,13 @@
     <ClCompile Include="KiteDriverScene.cpp" />
     <ClCompile Include="KiteDriverShaderVisitor.cpp" />
     <ClCompile Include="KiteDriverSkyBox.cpp" />
+    <ClCompile Include="KiteDriverStruct.cpp" />
     <ClCompile Include="KiteDriverTexture.cpp" />
     <ClCompile Include="KiteDriverTexture2D.cpp" />
     <ClCompile Include="KiteDriverTextureCube.cpp" />
     <ClCompile Include="KiteOpenGLDriverCore.cpp" />
     <ClCompile Include="KiteOpenGLDriverCoreLib.cpp" />
+    <ClCompile Include="manager\KiteDriverHighLightingManager.cpp" />
     <ClCompile Include="manager\KiteDriverInputManager.cpp" />
     <ClCompile Include="manager\KiteDriverResourceManager.cpp" />
     <ClCompile Include="manager\KiteDriverShareObjectManager.cpp" />
@@ -229,6 +236,7 @@
     <ClCompile Include="ParameterValue\KiteDriverParaValue.cpp" />
     <ClCompile Include="PostEffect\KiteDriverBlurPostEffect.cpp" />
     <ClCompile Include="PostEffect\KiteDriverGrayPostEffect.cpp" />
+    <ClCompile Include="PostEffect\KiteDriverHighLightingPostEffect.cpp" />
     <ClCompile Include="PostEffect\KiteDriverTextureBlurDrawer.cpp" />
     <ClCompile Include="RenderItem\RenderItem01.cpp" />
     <ClCompile Include="stdafx.cpp">

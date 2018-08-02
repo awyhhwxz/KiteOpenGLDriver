@@ -13,11 +13,12 @@ namespace kite_driver
 
 		void BindData();
 
-		void DrawMesh();
+		void Render(KiteDriverMaterial* material);
 
 		inline const std::shared_ptr<KiteDriverMesh>& get_mesh() { return _mesh; }
 	private:
 		GLuint GetUVAttribIndex(int uv_index);
+		void DrawMesh();
 
 	private:
 		std::shared_ptr<KiteDriverMesh> _mesh;

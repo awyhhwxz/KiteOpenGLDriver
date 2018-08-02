@@ -17,7 +17,7 @@ namespace kite_driver
 
 	void KiteDriverScene::AddRenderObj(const std::shared_ptr<kite_driver::KiteDriverRenderObject> renderObj)
 	{
-		if (std::find_if(_render_obj_list.begin(), _render_obj_list.end(), [renderObj](std::weak_ptr<kite_driver::KiteDriverRenderObject> renderObjWeak)
+		if (std::find_if(_render_obj_list.begin(), _render_obj_list.end(), [renderObj](const std::weak_ptr<kite_driver::KiteDriverRenderObject>& renderObjWeak)
 		{
 			return renderObj == renderObjWeak.lock();
 		}) == _render_obj_list.end())
@@ -30,6 +30,8 @@ namespace kite_driver
 		bool posteffect_isnull = _post_effect.get() == nullptr;
 		auto& render_framebuffer = posteffect_isnull ? _frame_buffer : _post_effect_frame_buffer;
 
+		const auto& view_port = _camera->get_view_port();
+		render_framebuffer->set_view_port(view_port);
 		render_framebuffer->BeginRender();
 		{
 			RenderAllObjects();
@@ -38,6 +40,7 @@ namespace kite_driver
 
 		if (!posteffect_isnull)
 		{
+			_frame_buffer->set_view_port(view_port);
 			_post_effect->OnRenderImage(render_framebuffer->GetRenderTarget(), _frame_buffer);
 		}
 	}
@@ -47,12 +50,12 @@ namespace kite_driver
 		ClearScreen();
 		RenderSkyBox();
 
-		std::for_each(_render_obj_list.begin(), _render_obj_list.end(), [this](std::weak_ptr<kite_driver::KiteDriverRenderObject> renderObjWeak)
+		std::for_each(_render_obj_list.begin(), _render_obj_list.end(), [this](std::weak_ptr<kite_driver::KiteDriverRenderObject> render_obj_weak)
 		{
-			if (!renderObjWeak.expired())
+			if (!render_obj_weak.expired())
 			{
-				auto renderObj = renderObjWeak.lock();
-				RenderObject(renderObj.get());
+				auto render_obj = render_obj_weak.lock();
+				RenderObject(render_obj.get());
 			}
 		});
 	}
@@ -82,20 +85,9 @@ namespace kite_driver
 		}
 	}
 
-	void KiteDriverScene::AssignUniformValue(kite_driver::KiteDriverRenderObject* renderObject)
+	void KiteDriverScene::AssignUniformValue(kite_driver::KiteDriverRenderObject* render_object)
 	{
-		auto material = renderObject->get_material();
-		if (material != nullptr)
-		{
-			auto modelMatrix = renderObject->get_world_matrix();
-			material->SetUniformValue("model_matrix", KDPVT_MATRIX4F, modelMatrix.values);
-			auto viewMatrix = _camera->get_view_matrix();
-			auto mvMatrix = viewMatrix * modelMatrix;
-			material->SetUniformValue("mv", KDPVT_MATRIX4F, mvMatrix.values);
-			auto perspectiveMatrix = _camera->get_perspective_matrix();
-			auto mvpMatrix = perspectiveMatrix * mvMatrix;
-			material->SetUniformValue("mvp", KDPVT_MATRIX4F, mvpMatrix.values);
-		}
+		_camera->SetCameraMatrices(render_object);
 	}
 
 	void KiteDriverScene::RenderSkyBox()

@@ -23,11 +23,7 @@ namespace kite_driver
 	}
 	void KiteDriverRenderObject::Render()
 	{
-		_material->BeginRender();
-		{
-			_meshDrawer->DrawMesh();
-		}
-		_material->EndRender();
+		_meshDrawer->Render(_material.get());
 	}
 
 

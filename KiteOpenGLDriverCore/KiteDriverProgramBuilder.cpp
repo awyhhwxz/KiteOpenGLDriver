@@ -133,6 +133,12 @@ namespace kite_driver
 				if (location >= 0) glUniform1f(location, *static_cast<const GLfloat*>(value));
 			}
 			break;
+		case kite_driver::KDPVT_VECTOR4:
+			{
+				auto location = glGetUniformLocation(_program, uniformName);
+				if (location >= 0) glUniform4fv(location, 1, static_cast<const GLfloat*>(value));
+			}
+			break;
 		default:
 			break;
 		}

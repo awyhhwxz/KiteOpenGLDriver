@@ -68,4 +68,26 @@ namespace kite_driver
 		RefreshProjectMatrix();
 	}
 
+	void KiteDriverCamera::SetCameraMatrices(KiteDriverRenderObject* render_object)
+	{
+		auto material = render_object->get_material();
+		if (material != nullptr)
+		{
+			SetCameraMatrices(render_object, material);
+		}
+	}
+
+	void KiteDriverCamera::SetCameraMatrices(KiteDriverRenderObject* render_object, KiteDriverMaterial* material)
+	{
+		auto model_matrix = render_object->get_world_matrix();
+		material->SetUniformValue("model_matrix", KDPVT_MATRIX4F, model_matrix.values);
+		auto view_matrix = this->get_view_matrix();
+		auto mv_matrix = view_matrix * model_matrix;
+		material->SetUniformValue("mv", KDPVT_MATRIX4F, mv_matrix.values);
+		auto perspective_matrix = this->get_perspective_matrix();
+		auto mvp_matrix = perspective_matrix * mv_matrix;
+		material->SetUniformValue("mvp", KDPVT_MATRIX4F, mvp_matrix.values);
+
+	}
+
 }

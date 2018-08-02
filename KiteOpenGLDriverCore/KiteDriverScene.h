@@ -21,14 +21,14 @@ namespace kite_driver
 	protected:
 
 		void RenderAllObjects();
-		void AssignUniformValue(kite_driver::KiteDriverRenderObject* renderObject);
+		void AssignUniformValue(kite_driver::KiteDriverRenderObject* render_object);
 		void RenderSkyBox();
 		void ClearScreen();
 		void RenderObject(kite_driver::KiteDriverRenderObject* object);
 	private:
 		std::shared_ptr<KiteDriverSkyBox> _skybox;
 		std::shared_ptr<kite_driver::KiteDriverCamera> _camera;
-		std::vector <std::shared_ptr<kite_driver::KiteDriverRenderObject>> _render_obj_list;
+		std::vector <std::weak_ptr<kite_driver::KiteDriverRenderObject>> _render_obj_list;
 		KiteDriverFrameBufferPtr _frame_buffer;
 		KiteDriverFrameBufferPtr _post_effect_frame_buffer;
 		IKiteDriverPostEffectPtr _post_effect;

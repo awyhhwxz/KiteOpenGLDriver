@@ -32,12 +32,12 @@ namespace kite_driver
 		if (_render_target)
 		{
 			glBindFramebuffer(GL_FRAMEBUFFER, _fbo);
-			glViewport(0, 0, _render_target->get_width(), _render_target->get_height());
+			KiteDriverGraphics::SetViewPort(ViewPort(0, 0, _render_target->get_width(), _render_target->get_height()));
 		}
 		else
 		{
 			glBindFramebuffer(GL_FRAMEBUFFER, 0);
-			glViewport(0, 0, KiteDriverWindowManager::Instance()->get_window_width(), KiteDriverWindowManager::Instance()->get_window_height());
+			KiteDriverGraphics::SetViewPort(_view_port);
 		}
 	}
 

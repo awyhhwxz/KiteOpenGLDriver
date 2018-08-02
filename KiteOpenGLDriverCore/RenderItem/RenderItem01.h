@@ -13,6 +13,7 @@ namespace kite_driver
 		virtual void Render() override;
 
 	private:
+		void OnWindowSizeChanged(float width, float height);
 		void ShaderDemo();
 		void InitializeShaderDemo();
 
@@ -26,10 +27,13 @@ namespace kite_driver
 
 		KiteDriverRenderObjectPtr _cubeRenderObject;
 		KiteDriverRenderObjectPtr _planeRenderObject;
+		KiteDriverCameraPtr _camera;
 		std::shared_ptr<KiteDriverScene> _scene;
 		std::shared_ptr<KiteDriverScene> _rendertexture_scene;
 
 		KiteDriverRenderTexturePtr _rendertexture;
+
+		KiteDriverEvent<float, float>::EventArgsDelegatePtr _window_size_changed_event;
 	};
 
 }

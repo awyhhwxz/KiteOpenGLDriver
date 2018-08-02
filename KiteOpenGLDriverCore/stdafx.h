@@ -16,6 +16,7 @@
 
 // TODO:  在此处引用程序需要的其他头文件
 #include "KiteOpenGLDriverCoreLib.h"
+#include "KiteDriverStruct.h"
 #include "KiteUtilLib.h"
 #include "KiteDriverParaValueType.h"
 #include "KiteDriverParaValue.h"
@@ -26,9 +27,9 @@
 #include "KiteDriverProgramBuilder.h"
 #include "KiteDriverEnumOpenGLEnumConverter.h"
 #include "KiteDriverMesh.h"
-#include "KiteDriverMeshDrawer.h"
 #include "KiteDriverRenderStateSetter.h"
 #include "KiteDriverMaterial.h"
+#include "KiteDriverMeshDrawer.h"
 #include "KiteDriverDummy.h"
 #include "KiteDriverRenderObject.h"
 #include "KiteDriverCamera.h"
@@ -41,3 +42,4 @@
 #include "KiteDriverShareObjectManager.h"
 #include "KiteDriverInputManager.h"
 #include "KiteDriverWindowManager.h"
+#include "KiteDriverHighLightingManager.h"

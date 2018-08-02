@@ -17,6 +17,12 @@ namespace kite_driver
 		const kite_math::Matrix4f& get_view_matrix() { return _view_matrix; }
 
 		const kite_math::Matrix4f& get_skybox_vp_matrix() { return _skybox_vp_matrix; }
+
+		void SetCameraMatrices(KiteDriverRenderObject* render_object);
+		void SetCameraMatrices(KiteDriverRenderObject* render_object, KiteDriverMaterial* material);
+
+		void set_view_port(const ViewPort& view_port) { _view_port = view_port; }
+		const ViewPort& get_view_port() const{ return _view_port; }
 	protected: 
 		void RefreshProjectMatrix();
 		virtual void RefreshWorldMatrix() override;
@@ -33,6 +39,8 @@ namespace kite_driver
 		kite_math::Matrix4f _skybox_perspective_matrix;
 
 		kite_math::Matrix4f _skybox_vp_matrix;
+
+		ViewPort _view_port;
 	};
 
 	typedef std::shared_ptr<KiteDriverCamera> KiteDriverCameraPtr;

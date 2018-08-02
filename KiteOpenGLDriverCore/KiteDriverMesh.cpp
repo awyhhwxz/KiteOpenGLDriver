@@ -45,17 +45,17 @@ namespace kite_driver
 
 	float * KiteDriverMesh::GetVertices()
 	{
-		return (float*)&_vertices[0];
+		return (float*)_vertices.data();
 	}
 
 	uint16* KiteDriverMesh::GetIndices()
 	{
-		return &_indices[0];
+		return _indices.data();
 	}
 
 	float * KiteDriverMesh::GetUVs(int uv_index)
 	{
-		return (float*)&_uvs_map[uv_index][0];
+		return (float*)_uvs_map[uv_index].data();
 	}
 
 }
