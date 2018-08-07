@@ -10,6 +10,7 @@
 #include <windows.h>
 #include <algorithm>
 #include <map>
+#include <assert.h>
 
 #include "glew.h"
 
@@ -21,6 +22,7 @@
 #include "KiteDriverParaValueType.h"
 #include "KiteDriverParaValue.h"
 #include "KiteDriverShaderVisitor.h"
+#include "KiteDriverBaseObject.h"
 #include "KiteDriverTexture2D.h"
 #include "KiteDriverRenderTexture.h"
 #include "KiteDriverTextureCube.h"

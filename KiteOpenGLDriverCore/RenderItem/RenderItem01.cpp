@@ -40,7 +40,7 @@ namespace kite_driver
 	{
 		if (_camera)
 		{
-			_camera->set_view_port(ViewPort(0.0f, 0.0f, width, height));
+			_camera->set_view_port(ViewPort(0, 0, width, height));
 			_camera->set_aspect(width / height);
 		}
 	}
@@ -68,11 +68,12 @@ namespace kite_driver
 		auto skybox = GenerateSkyBox();
 
 		_scene = std::make_shared<KiteDriverScene>();
-		_scene->AddRenderObj(_cubeRenderObject);
+//		_scene->AddRenderObj(_cubeRenderObject);
 		_scene->AddRenderObj(_planeRenderObject);
 		_scene->set_camera(_camera);
 		_scene->SetSkyBox(skybox);
 		_scene->SetPostEffect(std::make_shared<KiteDriverHighLightingPostEffect>());
+		KiteDriverWindowManager::Instance()->set_window_scene(_scene);
 
 		KiteDriverHighLightingManager::Instance()->AddHighLightingObj(_planeRenderObject);
 		_rendertexture_scene = std::make_shared<KiteDriverScene>();
@@ -111,7 +112,8 @@ namespace kite_driver
 	kite_driver::KiteDriverCameraPtr RenderItem01::GenerateCamera()
 	{
 		KiteDriverCameraPtr camera = std::make_shared<KiteDriverCamera>();
-		camera->set_position(Vector3f(2.0f, 0, -20.0f));
+		camera->set_near_plane(1.0f);
+		camera->set_position(Vector3f(0, 0, -1.0f));
 		return camera;
 	}
 
@@ -141,7 +143,7 @@ namespace kite_driver
 
 		renderObj->set_material(material);
 		renderObj->Initialize();
-		renderObj->set_position(Vector3f(0, 0, 0));
+		renderObj->set_position(Vector3f(3, 0, 0));
 		renderObj->set_euler(Euler(0, 0, Mathf::PI * 0.5f));
 		renderObj->set_scale(Vector3f(2, 2, 2));
 
@@ -155,11 +157,11 @@ namespace kite_driver
 		
 		auto material = GenerateMaterial();
 		auto texture = KiteDriverFastAccess::GenerateTexture2D("/texture/landscape.jpg");
-		material->SetUniformTexture("tex", _rendertexture);
+		material->SetUniformTexture("tex", texture);
 
 		renderObj->set_material(material);
 		renderObj->Initialize();
-		renderObj->set_position(Vector3f(5, 0, 0));
+		renderObj->set_position(Vector3f(0, 0, 0));
 		renderObj->set_euler(Euler(0, 0, 0));
 		renderObj->set_scale(Vector3f(1, 1, 1));
 		return renderObj;

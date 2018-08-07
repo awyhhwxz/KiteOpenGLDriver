@@ -4,7 +4,8 @@
 namespace kite_driver
 {
 	KiteDriverDummy::KiteDriverDummy()
-		: _world(kite_math::Matrix4f::Identity)
+		: KiteDriverBaseObject()
+		, _world(kite_math::Matrix4f::Identity)
 		, _inverse_world(kite_math::Matrix4f::Identity)
 		, _scale(kite_math::Vector3f::One)
 	{
@@ -36,6 +37,11 @@ namespace kite_driver
 	{
 		auto translatefinal = kite_math::Matrix4f::Rotate(_euler) * translate;
 		set_position(_pos + translatefinal);
+	}
+
+	kite_driver::KiteDriverObjectType KiteDriverDummy::get_type()
+	{
+		return KiteDriverObjectType::KDOT_DUMMY;
 	}
 
 	void KiteDriverDummy::RefreshWorldMatrix()

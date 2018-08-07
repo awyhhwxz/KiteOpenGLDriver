@@ -8,6 +8,10 @@ namespace kite_driver
 		KiteDriverCamera();
 		~KiteDriverCamera();
 
+	public:
+		virtual KiteDriverObjectType get_type() override;
+
+	public:
 		void set_fovy(float fovy);
 		void set_aspect(float aspect);
 		void set_near_plane(float near_plane);
@@ -21,9 +25,12 @@ namespace kite_driver
 		void SetCameraMatrices(KiteDriverRenderObject* render_object);
 		void SetCameraMatrices(KiteDriverRenderObject* render_object, KiteDriverMaterial* material);
 
-		void set_view_port(const ViewPort& view_port) { _view_port = view_port; }
-		const ViewPort& get_view_port() const{ return _view_port; }
+		inline void set_view_port(const ViewPort& view_port) { _view_port = view_port; }
+		inline const ViewPort& get_view_port() const{ return _view_port; }
+
+		kite_math::Ray GenerateRayFromScreenPos(const kite_math::Vector2f& screen_pos);
 	protected: 
+		kite_math::Vector3f UnProjectToWorldPos(const kite_math::Vector3f& screen_pos);
 		void RefreshProjectMatrix();
 		virtual void RefreshWorldMatrix() override;
 
@@ -35,7 +42,9 @@ namespace kite_driver
 		float _far_plane;
 
 		kite_math::Matrix4f _view_matrix;
+		kite_math::Matrix4f _inverse_view_matrix;
 		kite_math::Matrix4f _perspective_matrix;
+		kite_math::Matrix4f _inverse_perspective_matrix;
 		kite_math::Matrix4f _skybox_perspective_matrix;
 
 		kite_math::Matrix4f _skybox_vp_matrix;

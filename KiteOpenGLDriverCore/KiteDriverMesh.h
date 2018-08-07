@@ -21,6 +21,8 @@ namespace kite_driver
 
 		float* GetUVs(int uv_index);
 		inline int GetUVChannelCount() { return _uvs_map.size(); }
+
+		bool RayCast(kite_math::Ray ray, kite_math::RayCastInfo& raycastinfo);
 	private:
 		std::vector<kite_math::Vector3f> _vertices;
 		std::vector<uint16> _indices;

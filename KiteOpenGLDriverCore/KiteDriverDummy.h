@@ -3,11 +3,14 @@
 
 namespace kite_driver
 {
-	class KiteDriverDummy
+	class KiteDriverDummy : public KiteDriverBaseObject
 	{
 	public:
 		KiteDriverDummy();
 		~KiteDriverDummy();
+
+	public:
+		virtual KiteDriverObjectType get_type() override;
 
 	public:
 		void set_position(const kite_math::Vector3f& pos);

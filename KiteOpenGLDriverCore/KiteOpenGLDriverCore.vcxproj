@@ -154,10 +154,12 @@
     <ClInclude Include="interface\IKiteDriverPostEffect.h" />
     <ClInclude Include="interface\IKiteDriverRenderItem.h" />
     <ClInclude Include="interface\IMouseMessageReceiver.h" />
+    <ClInclude Include="interface\KiteDriverObjectType.h" />
     <ClInclude Include="interface\KiteDriverShaderType.h" />
     <ClInclude Include="interface\KiteOpenGLDriverCoreLib.h" />
     <ClInclude Include="interface\kite_driver_typedef.h" />
     <ClInclude Include="interface\Singleton.h" />
+    <ClInclude Include="KiteDriverBaseObject.h" />
     <ClInclude Include="KiteDriverCamera.h" />
     <ClInclude Include="KiteDriverContext.h" />
     <ClInclude Include="KiteDriverDummy.h" />
@@ -183,6 +185,7 @@
     <ClInclude Include="KiteDriverTextureCube.h" />
     <ClInclude Include="manager\KiteDriverHighLightingManager.h" />
     <ClInclude Include="manager\KiteDriverInputManager.h" />
+    <ClInclude Include="manager\KiteDriverObjectManger.h" />
     <ClInclude Include="manager\KiteDriverResourceManager.h" />
     <ClInclude Include="manager\KiteDriverShareObjectManager.h" />
     <ClInclude Include="manager\KiteDriverTempObjectGetter.h" />
@@ -190,6 +193,7 @@
     <ClInclude Include="MouseController\IMouseButtonController.h" />
     <ClInclude Include="MouseController\KiteDriverMouseController.h" />
     <ClInclude Include="MouseController\MouseMiddleButtonController.h" />
+    <ClInclude Include="MouseController\MouseObjectSelectController.h" />
     <ClInclude Include="MouseController\MouseRightButtonController.h" />
     <ClInclude Include="ParameterValue\KiteDriverParaValue.h" />
     <ClInclude Include="PostEffect\KiteDriverBlurPostEffect.h" />
@@ -201,6 +205,7 @@
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="KiteDriverBaseObject.cpp" />
     <ClCompile Include="KiteDriverCamera.cpp" />
     <ClCompile Include="KiteDriverContext.cpp" />
     <ClCompile Include="KiteDriverDummy.cpp" />
@@ -227,11 +232,13 @@
     <ClCompile Include="KiteOpenGLDriverCoreLib.cpp" />
     <ClCompile Include="manager\KiteDriverHighLightingManager.cpp" />
     <ClCompile Include="manager\KiteDriverInputManager.cpp" />
+    <ClCompile Include="manager\KiteDriverObjectManger.cpp" />
     <ClCompile Include="manager\KiteDriverResourceManager.cpp" />
     <ClCompile Include="manager\KiteDriverShareObjectManager.cpp" />
     <ClCompile Include="manager\KiteDriverWindowManager.cpp" />
     <ClCompile Include="MouseController\KiteDriverMouseController.cpp" />
     <ClCompile Include="MouseController\MouseMiddleButtonController.cpp" />
+    <ClCompile Include="MouseController\MouseObjectSelectController.cpp" />
     <ClCompile Include="MouseController\MouseRightButtonController.cpp" />
     <ClCompile Include="ParameterValue\KiteDriverParaValue.cpp" />
     <ClCompile Include="PostEffect\KiteDriverBlurPostEffect.cpp" />

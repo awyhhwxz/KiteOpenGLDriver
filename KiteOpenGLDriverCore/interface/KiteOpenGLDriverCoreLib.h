@@ -12,6 +12,7 @@
 #include <memory>
 #include <functional>
 #include "KiteDriverEvent.h"
+#include "KiteDriverObjectType.h"
 
 #include "kite_driver_typedef.h"
 #include "KiteMathLib.h"

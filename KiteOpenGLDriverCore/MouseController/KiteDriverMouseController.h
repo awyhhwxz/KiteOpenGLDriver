@@ -1,6 +1,7 @@
 #pragma once
 
 #include "IMouseButtonController.h"
+#include "MouseObjectSelectController.h"
 
 namespace kite_driver
 {
@@ -30,6 +31,7 @@ namespace kite_driver
 		std::weak_ptr<kite_driver::KiteDriverCamera> _camera;
 		std::map<MouseButtonType, bool> _isButtonDown;
 		std::map<MouseButtonType, IMouseButtonControllerPtr> _controllerMatch;
+		MouseObjectSelectController _select_controller;
 	};
 }
 

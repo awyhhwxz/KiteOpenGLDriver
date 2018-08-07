@@ -27,6 +27,9 @@ namespace kite_driver
 		KiteDriverEvent<float, float> WindowSizeChangedEvent;
 
 		void Refresh();
+
+		KiteDriverScene* get_window_scene() { return _window_scene.lock().get(); }
+		void set_window_scene(KiteDriverScenePtr scene) { _window_scene = scene; }
 	protected:
 		void OnWindowSizeChanged();
 	private:
@@ -34,6 +37,7 @@ namespace kite_driver
 		float _window_width;
 		float _window_height;
 
+		std::weak_ptr<KiteDriverScene> _window_scene;
 	};
 
 }

@@ -60,6 +60,26 @@ namespace kite_math
 		return v;
 	}
 
+	Vector3f Matrix4f::GetXAxis()
+	{
+		return Vector3f::Normalize(Vector3f(_11, _21, _31));
+	}
+
+	Vector3f Matrix4f::GetYAxis()
+	{
+		return Vector3f::Normalize(Vector3f(_12, _22, _32));
+	}
+
+	Vector3f Matrix4f::GetZAxis()
+	{
+		return Vector3f::Normalize(Vector3f(_13, _23, _33));
+	}
+
+	Vector3f Matrix4f::GetPosition()
+	{
+		return Vector3f(_14, _24, _34);
+	}
+
 	kite_math::Matrix4f Matrix4f::Scale(const Vector3f& pos)
 	{
 		Matrix4f m;

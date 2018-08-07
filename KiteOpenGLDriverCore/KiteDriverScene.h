@@ -18,6 +18,7 @@ namespace kite_driver
 
 		void SetPostEffect(const IKiteDriverPostEffectPtr& effect);
 
+		const std::vector <std::weak_ptr<kite_driver::KiteDriverRenderObject>>& get_render_obj_list() { return _render_obj_list; }
 	protected:
 
 		void RenderAllObjects();
@@ -33,4 +34,6 @@ namespace kite_driver
 		KiteDriverFrameBufferPtr _post_effect_frame_buffer;
 		IKiteDriverPostEffectPtr _post_effect;
 	};
+
+	typedef std::shared_ptr<KiteDriverScene> KiteDriverScenePtr;
 }

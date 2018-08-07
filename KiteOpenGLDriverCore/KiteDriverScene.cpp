@@ -27,6 +27,7 @@ namespace kite_driver
 	}
 	void KiteDriverScene::Render()
 	{
+		glEnable(GL_MULTISAMPLE);
 		bool posteffect_isnull = _post_effect.get() == nullptr;
 		auto& render_framebuffer = posteffect_isnull ? _frame_buffer : _post_effect_frame_buffer;
 

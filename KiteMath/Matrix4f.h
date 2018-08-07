@@ -36,6 +36,11 @@ namespace kite_math
 		void SetRow(int rowIndex, const Vector4f& row);
 		Vector4f GetRow(int rowIndex) const;
 
+		Vector3f GetXAxis();
+		Vector3f GetYAxis();
+		Vector3f GetZAxis();
+		Vector3f GetPosition();
+
 		friend inline Matrix4f operator*(const Matrix4f& m1, const Matrix4f& m2)
 		{
 			Matrix4f m;
@@ -69,12 +74,18 @@ namespace kite_math
 			result.y = m._21 * v.x + m._22 * v.y + m._23 * v.z + m._24 * v.w;
 			result.z = m._31 * v.x + m._32 * v.y + m._33 * v.z + m._34 * v.w;
 			result.w = m._41 * v.x + m._42 * v.y + m._43 * v.z + m._44 * v.w;
+
 			return result;
 		}
 
 		friend static inline Vector3f operator*(const Matrix4f& m, const Vector3f& v)
 		{
 			auto v4 = m * Vector4f(v, 1);
+			
+			auto invert_w = 1.0 / v4.w;
+			v4.x *= invert_w;
+			v4.y *= invert_w;
+			v4.z *= invert_w;
 			return Vector3f(v4.x, v4.y, v4.z);
 		}
 

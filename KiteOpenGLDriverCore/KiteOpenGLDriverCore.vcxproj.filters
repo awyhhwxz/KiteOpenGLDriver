@@ -186,6 +186,18 @@
     <ClInclude Include="interface\KiteDriverEvent.h">
       <Filter>interface</Filter>
     </ClInclude>
+    <ClInclude Include="MouseController\MouseObjectSelectController.h">
+      <Filter>MouseController</Filter>
+    </ClInclude>
+    <ClInclude Include="KiteDriverBaseObject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="interface\KiteDriverObjectType.h">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="manager\KiteDriverObjectManger.h">
+      <Filter>manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -304,6 +316,15 @@
     </ClCompile>
     <ClCompile Include="KiteDriverStruct.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MouseController\MouseObjectSelectController.cpp">
+      <Filter>MouseController</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverBaseObject.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="manager\KiteDriverObjectManger.cpp">
+      <Filter>manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

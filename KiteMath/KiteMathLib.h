@@ -12,3 +12,7 @@
 #include "Vector4f.h"
 #include "Euler.h"
 #include "Matrix4f.h"
+
+#include "Triangle.h"
+#include "Plane.h"
+#include "Ray.h"

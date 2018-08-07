@@ -58,4 +58,34 @@ namespace kite_driver
 		return (float*)_uvs_map[uv_index].data();
 	}
 
+	bool KiteDriverMesh::RayCast(kite_math::Ray ray, kite_math::RayCastInfo& raycastinfo)
+	{
+		int face_count = _indices.size() / 3;
+		auto triangle_data = _indices.data();
+		kite_math::Vector3f points[3];
+		for (int face_i = 0 ; face_i < face_count ; ++face_i, triangle_data += 3)
+		{
+			points[0] = _vertices[triangle_data[0]];
+			points[1] = _vertices[triangle_data[1]];
+			points[2] = _vertices[triangle_data[2]];
+
+			kite_math::Plane plane(points);
+			auto ray_normal_cos = kite_math::Vector3f::Dot(plane.get_normal(), ray.get_direction());
+			if (ray_normal_cos < 0)
+			{
+				kite_math::Vector3f intersection_point;
+				if (ray.CastPlane(plane, intersection_point))
+				{
+					kite_math::Vector3f centroid_weight;
+					if (kite_math::Triangle::IsPointInTriangle(points, intersection_point, centroid_weight))
+					{
+						return true;
+					}
+				}
+			}
+		}
+
+		return false;
+	}
+
 }
