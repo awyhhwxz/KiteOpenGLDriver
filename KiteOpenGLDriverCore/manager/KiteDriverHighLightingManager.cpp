@@ -9,8 +9,8 @@ namespace kite_driver
 		_render_texture = std::make_shared<KiteDriverRenderTexture>();
 
 		_pure_color_material = KiteDriverFastAccess::GenerateMaterialByShader(
-			"/shader/texture_purecolor.vertex",
-			"/shader/texture_purecolor.fragment");
+			"/shader/purecolor.vertex",
+			"/shader/purecolor.fragment");
 		_pure_color_material->SetUniformValue("_pureColor", KDPVT_VECTOR4, kite_math::Vector4f(1.0f, 0.0f, 0.0f, 1.0f).values);
 		_pure_color_material->Link();
 

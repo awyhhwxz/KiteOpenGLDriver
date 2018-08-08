@@ -14,6 +14,11 @@ namespace kite_driver
 
 	void MouseObjectSelectController::OnButtonDown(const kite_math::Vector2f& screen_pos)
 	{
+		throw std::logic_error("The method or operation is not implemented.");
+	}
+
+	void MouseObjectSelectController::OnButtonUp(const kite_math::Vector2f& screen_pos)
+	{
 		auto scene = KiteDriverWindowManager::Instance()->get_window_scene();
 		auto camera = scene->get_camera();
 		auto ray = camera->GenerateRayFromScreenPos(screen_pos);
@@ -38,11 +43,6 @@ namespace kite_driver
 		{
 			KiteDriverHighLightingManager::Instance()->Clear();
 		}
-	}
-
-	void MouseObjectSelectController::OnButtonUp(const kite_math::Vector2f& screen_pos)
-	{
-		throw std::logic_error("The method or operation is not implemented.");
 	}
 
 	void MouseObjectSelectController::OnMouseMove(const kite_math::Vector2f& screen_pos)
