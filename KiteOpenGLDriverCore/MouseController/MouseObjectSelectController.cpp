@@ -29,9 +29,15 @@ namespace kite_driver
 				if (obj.lock()->RayCast(ray, castinfo))
 				{
 					is_cast = true;
+					KiteDriverHighLightingManager::Instance()->HighLightingSingleObj(obj.lock());
 				}
 			}
 		});
+
+		if (!is_cast)
+		{
+			KiteDriverHighLightingManager::Instance()->Clear();
+		}
 	}
 
 	void MouseObjectSelectController::OnButtonUp(const kite_math::Vector2f& screen_pos)

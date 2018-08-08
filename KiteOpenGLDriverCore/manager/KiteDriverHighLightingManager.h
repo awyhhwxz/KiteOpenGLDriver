@@ -19,6 +19,7 @@ namespace kite_driver
 
 		const KiteDriverRenderTexturePtr& GetHighLightTexture();
 
+		void HighLightingSingleObj(KiteDriverRenderObjectPtr highlighting_obj);
 	private:
 		std::vector<std::weak_ptr<KiteDriverRenderObject> > _highlight_obj_list;
 		KiteDriverRenderTexturePtr _render_texture;

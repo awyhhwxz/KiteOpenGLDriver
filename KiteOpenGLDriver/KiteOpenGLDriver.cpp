@@ -114,7 +114,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    int width = 800, height = 600;
 
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPED,
       CW_USEDEFAULT, 0, width, height, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
@@ -126,7 +126,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    UpdateWindow(hWnd);
 
    driver_context = CreateKiteDriverContext();
-   driver_context->Initialize(hWnd, width, height);
+
+   auto clientsize = WindowsHelper::GetClientWindowSize(hWnd);
+   driver_context->Initialize(hWnd, clientsize.cx, clientsize.cy);
 
    return TRUE;
 }
@@ -183,9 +185,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_SIZE:
 		{
 			// extract size info
-			auto width = LOWORD(lParam);
-			auto height = HIWORD(lParam);
-			WindowResize(width, height);
+			//auto width = LOWORD(lParam);
+			//auto height = HIWORD(lParam);
+			auto clientsize = WindowsHelper::GetClientWindowSize(hWnd);
+			WindowResize(clientsize.cx, clientsize.cy);
 		}
 		break;
 	case WM_ERASEBKGND:

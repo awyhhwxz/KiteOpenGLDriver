@@ -21,7 +21,7 @@ namespace kite_driver
 		_isButtonDown[button_type] = true;
 		auto controller = GetButtonController(button_type);
 		if (controller) controller->OnButtonDown(screen_pos);
-		_select_controller.OnButtonDown(screen_pos);
+		if(button_type == MouseButtonType::MBT_LEFT) _select_controller.OnButtonDown(screen_pos);
 	}
 
 	void KiteDriverMouseController::OnButtonUp(MouseButtonType button_type, const kite_math::Vector2f& screen_pos)

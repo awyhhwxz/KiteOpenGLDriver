@@ -106,4 +106,10 @@ namespace kite_driver
 		return _render_texture;
 	}
 
+	void KiteDriverHighLightingManager::HighLightingSingleObj(KiteDriverRenderObjectPtr highlighting_obj)
+	{
+		Clear();
+		AddHighLightingObj(highlighting_obj);
+	}
+
 }

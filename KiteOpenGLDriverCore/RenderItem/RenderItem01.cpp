@@ -68,7 +68,7 @@ namespace kite_driver
 		auto skybox = GenerateSkyBox();
 
 		_scene = std::make_shared<KiteDriverScene>();
-//		_scene->AddRenderObj(_cubeRenderObject);
+		_scene->AddRenderObj(_cubeRenderObject);
 		_scene->AddRenderObj(_planeRenderObject);
 		_scene->set_camera(_camera);
 		_scene->SetSkyBox(skybox);
@@ -113,7 +113,7 @@ namespace kite_driver
 	{
 		KiteDriverCameraPtr camera = std::make_shared<KiteDriverCamera>();
 		camera->set_near_plane(1.0f);
-		camera->set_position(Vector3f(0, 0, -1.0f));
+		camera->set_position(Vector3f(0, 0, -10.0f));
 		return camera;
 	}
 
