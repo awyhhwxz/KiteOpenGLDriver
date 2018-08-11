@@ -31,6 +31,12 @@ namespace kite_math
 	}
 
 
+	Vector3f::Vector3f(float val)
+		: Vector3f(val, val, val)
+	{
+
+	}
+
 	Vector3f::~Vector3f()
 	{
 	}

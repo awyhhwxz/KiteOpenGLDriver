@@ -18,6 +18,7 @@
 // TODO:  在此处引用程序需要的其他头文件
 #include "KiteOpenGLDriverCoreLib.h"
 #include "KiteDriverStruct.h"
+#include "KiteDriverAABB.h"
 #include "KiteUtilLib.h"
 #include "KiteDriverParaValueType.h"
 #include "KiteDriverParaValue.h"

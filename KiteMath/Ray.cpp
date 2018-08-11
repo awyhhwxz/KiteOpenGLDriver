@@ -22,7 +22,7 @@ namespace kite_math
 	{
 	}
 
-	bool Ray::CastPlane(const Plane& plane, Vector3f& point)
+	bool Ray::CastPlane(const Plane& plane, float& distance)
 	{
 		const auto& normal = plane.get_normal();
 	  	auto cos_normal_direct = Vector3f::Dot(normal, _direction);
@@ -40,7 +40,7 @@ namespace kite_math
 			}
 			else
 			{
-				point = _origin + _direction * t;
+				distance = t;
 				return true;
 			}
 		}

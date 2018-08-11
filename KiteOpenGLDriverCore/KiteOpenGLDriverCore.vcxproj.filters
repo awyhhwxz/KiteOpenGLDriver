@@ -198,6 +198,9 @@
     <ClInclude Include="manager\KiteDriverObjectManger.h">
       <Filter>manager</Filter>
     </ClInclude>
+    <ClInclude Include="KiteDriverAABB.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -325,6 +328,9 @@
     </ClCompile>
     <ClCompile Include="manager\KiteDriverObjectManger.cpp">
       <Filter>manager</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverAABB.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

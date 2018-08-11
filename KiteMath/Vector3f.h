@@ -9,6 +9,7 @@ namespace kite_math
 		Vector3f(float xVal, float yVal, float zVal);
 		Vector3f(const Vector2f& v2, float zVal);
 		Vector3f(float vals[3]);
+		Vector3f(float val);
 		~Vector3f();
 
 		union

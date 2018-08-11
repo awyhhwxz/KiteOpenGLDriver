@@ -149,6 +149,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DataOperator.h" />
     <ClInclude Include="Euler.h" />
     <ClInclude Include="KiteMathLib.h" />
     <ClInclude Include="Mathf.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Vector2f.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DataOperator.cpp" />
     <ClCompile Include="Euler.cpp" />
     <ClCompile Include="Mathf.cpp" />
     <ClCompile Include="Matrix4f.cpp" />

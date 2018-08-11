@@ -12,7 +12,7 @@ namespace kite_math
 	{
 	}
 
-	bool Triangle::IsPointInTriangle(Vector3f triangle[3], const Vector3f & point, Vector3f& centroid_weight)
+	bool Triangle::IsPointInTriangle(Vector3f triangle[3], const Vector3f & point, Vector3f& barycentric_weight)
 	{
 		auto r = point - triangle[0];
 		auto q1 = triangle[1] - triangle[0];
@@ -31,9 +31,9 @@ namespace kite_math
 
 		if (omega0 >= 0 && omega1 >= 0 && omega2 >= 0)
 		{
-			centroid_weight.x = omega0;
-			centroid_weight.y = omega1;
-			centroid_weight.z = omega2;
+			barycentric_weight.x = omega0;
+			barycentric_weight.y = omega1;
+			barycentric_weight.z = omega2;
 			return true;
 		}
 		else

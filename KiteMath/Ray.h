@@ -6,6 +6,8 @@ namespace kite_math
 	public:
 		Vector3f Position;
 		Vector3f TextureCoord;
+		Vector3f BarycentricWeight;
+		float Distance;
 	};
 
 	class KITE_MATH_API Ray
@@ -23,7 +25,7 @@ namespace kite_math
 		inline void set_length(float length) { _length = length; }
 		inline float get_length() { return _length; }
 
-		bool CastPlane(const Plane& plane, Vector3f& point);
+		bool CastPlane(const Plane& plane, float& distance);
 	private:
 		Vector3f _origin;
 		Vector3f _direction;

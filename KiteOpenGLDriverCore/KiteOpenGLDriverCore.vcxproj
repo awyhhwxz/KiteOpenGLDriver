@@ -159,6 +159,7 @@
     <ClInclude Include="interface\KiteOpenGLDriverCoreLib.h" />
     <ClInclude Include="interface\kite_driver_typedef.h" />
     <ClInclude Include="interface\Singleton.h" />
+    <ClInclude Include="KiteDriverAABB.h" />
     <ClInclude Include="KiteDriverBaseObject.h" />
     <ClInclude Include="KiteDriverCamera.h" />
     <ClInclude Include="KiteDriverContext.h" />
@@ -205,6 +206,7 @@
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="KiteDriverAABB.cpp" />
     <ClCompile Include="KiteDriverBaseObject.cpp" />
     <ClCompile Include="KiteDriverCamera.cpp" />
     <ClCompile Include="KiteDriverContext.cpp" />
