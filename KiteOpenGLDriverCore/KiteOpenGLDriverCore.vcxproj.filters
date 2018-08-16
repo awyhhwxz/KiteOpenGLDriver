@@ -31,6 +31,9 @@
     <Filter Include="PostEffect">
       <UniqueIdentifier>{2d98e52a-9064-46f3-82a9-13cc364f6d46}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PluginVisitor">
+      <UniqueIdentifier>{374ba768-dc49-4932-ae57-fcc166c6cea2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -201,6 +204,9 @@
     <ClInclude Include="KiteDriverAABB.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="KiteDriverFbxVisitor.h">
+      <Filter>PluginVisitor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -331,6 +337,9 @@
     </ClCompile>
     <ClCompile Include="KiteDriverAABB.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverFbxVisitor.cpp">
+      <Filter>PluginVisitor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

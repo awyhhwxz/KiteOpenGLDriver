@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "KiteDriverFastAccess.h"
+#include "KiteDriverFbxVisitor.h"
 
 namespace kite_driver
 {
@@ -25,6 +26,14 @@ namespace kite_driver
 		texture->Assign(&image_loader);
 
 		return texture;
+	}
+
+	KiteDriverMeshPtr KiteDriverFastAccess::LoadFbxMesh(const tchar * fbx_path)
+	{
+		auto fbx_full_path = kite_util::PathUtil::GetResourcePath() + fbx_path;
+		KiteDriverFbxVisitor loader;
+		loader.LoadFbx(fbx_full_path.c_str());
+		return loader.FirstMesh();
 	}
 
 }

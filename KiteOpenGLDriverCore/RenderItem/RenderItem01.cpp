@@ -69,13 +69,13 @@ namespace kite_driver
 
 		_scene = std::make_shared<KiteDriverScene>();
 		_scene->AddRenderObj(_cubeRenderObject);
-		_scene->AddRenderObj(_planeRenderObject);
+		//_scene->AddRenderObj(_planeRenderObject);
 		_scene->set_camera(_camera);
 		_scene->SetSkyBox(skybox);
 		_scene->SetPostEffect(std::make_shared<KiteDriverHighLightingPostEffect>());
 		KiteDriverWindowManager::Instance()->set_window_scene(_scene);
 
-		KiteDriverHighLightingManager::Instance()->AddHighLightingObj(_planeRenderObject);
+		//KiteDriverHighLightingManager::Instance()->AddHighLightingObj(_planeRenderObject);
 		_rendertexture_scene = std::make_shared<KiteDriverScene>();
 		_rendertexture_scene->AddRenderObj(_cubeRenderObject);
 		_rendertexture_scene->set_camera(_camera);
@@ -135,17 +135,19 @@ namespace kite_driver
 	kite_driver::KiteDriverRenderObjectPtr RenderItem01::GenerateCubeRenderObject()
 	{
 		KiteDriverRenderObjectPtr renderObj = std::make_shared<KiteDriverRenderObject>();
-		renderObj->set_mesh(KiteDriverGeometryGenerator::Cuboid(1.0f, 1.0f, 1.0f));
+
+		auto mesh = KiteDriverFastAccess::LoadFbxMesh("/model/balloonstupidcat.fbx");
+		renderObj->set_mesh(mesh);//KiteDriverGeometryGenerator::Cuboid(1.0f, 1.0f, 1.0f));
 
 		auto material = GenerateMaterial();
-		auto texture = KiteDriverFastAccess::GenerateTexture2D("/texture/stone.jpg");
+		auto texture = KiteDriverFastAccess::GenerateTexture2D("/texture/balloonstupidcat_a.png");
 		material->SetUniformTexture("tex", texture);
 
 		renderObj->set_material(material);
 		renderObj->Initialize();
-		renderObj->set_position(Vector3f(3, 0, 0));
-		renderObj->set_euler(Euler(0, 0, Mathf::PI * 0.5f));
-		renderObj->set_scale(Vector3f(2, 2, 2));
+		renderObj->set_position(Vector3f(0, 0, 0));
+		renderObj->set_euler(Euler(-Mathf::PI * 0.5f, Mathf::PI, 0));
+		renderObj->set_scale(Vector3f(0.01, 0.01, 0.01));
 
 		return renderObj;
 	}

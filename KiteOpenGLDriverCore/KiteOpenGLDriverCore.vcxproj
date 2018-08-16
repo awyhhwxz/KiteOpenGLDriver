@@ -88,13 +88,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;KITEOPENGLDRIVERCORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>.;.\GL;.\interface;..\KiteMath;..\KiteUtil;.\ParameterValue;.\manager;.\MouseController;.\PostEffect</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;.\GL;.\interface;..\KiteMath;..\KiteUtil;.\ParameterValue;.\manager;.\MouseController;.\PostEffect;..\Plugins\FbxParserPlugin</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>.\lib;..\Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glew32.lib;KiteMath.lib;KiteUtil.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>.\lib;..\Library;..\Plugins\FbxParserPlugin\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;FbxParserPlugin.lib;KiteMath.lib;KiteUtil.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>.\lib\$(TargetName).lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
@@ -166,6 +166,7 @@
     <ClInclude Include="KiteDriverDummy.h" />
     <ClInclude Include="KiteDriverEnumOpenGLEnumConverter.h" />
     <ClInclude Include="KiteDriverFastAccess.h" />
+    <ClInclude Include="KiteDriverFbxVisitor.h" />
     <ClInclude Include="KiteDriverFrameBuffer.h" />
     <ClInclude Include="KiteDriverGeometryGenerator.h" />
     <ClInclude Include="KiteDriverGraphics.h" />
@@ -213,6 +214,7 @@
     <ClCompile Include="KiteDriverDummy.cpp" />
     <ClCompile Include="KiteDriverEnumOpenGLEnumConverter.cpp" />
     <ClCompile Include="KiteDriverFastAccess.cpp" />
+    <ClCompile Include="KiteDriverFbxVisitor.cpp" />
     <ClCompile Include="KiteDriverFrameBuffer.cpp" />
     <ClCompile Include="KiteDriverGeometryGenerator.cpp" />
     <ClCompile Include="KiteDriverGraphics.cpp" />
