@@ -10,8 +10,12 @@ namespace kite_driver
 		~KiteDriverMesh();
 
 		void SetVertices(kite_math::Vector3f* verices, int vertexCount);
+		void SetNormals(kite_math::Vector3f* normals, int normalCount);
 		void SetIndices(uint16 * indices, int indexCount);
 		void SetUVs(int uv_index, kite_math::Vector2f* uvs, int vertexCount);
+		
+		float* GetNormals();
+		inline int GetNormalCount() { return _normals.size(); }
 
 		float* GetVertices();
 		inline int GetVertexCount() { return _vertices.size(); }
@@ -29,6 +33,7 @@ namespace kite_driver
 
 	private:
 		std::vector<kite_math::Vector3f> _vertices;
+		std::vector<kite_math::Vector3f> _normals;
 		std::vector<uint16> _indices;
 		std::map<int, std::vector<kite_math::Vector2f>> _uvs_map;
 		KiteDriverAABB _aabb;

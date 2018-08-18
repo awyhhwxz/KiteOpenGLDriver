@@ -54,18 +54,17 @@ namespace kite_fbx
 			switch (face.Count)
 			{
 			case 3:
-				for (int polygon_i = 0; polygon_i < _polygon_size; ++polygon_i)
-				{
-					_indexes.push_back(current_index + polygon_i);
-				}
+				_indexes.push_back(current_index);
+				_indexes.push_back(current_index + 2);
+				_indexes.push_back(current_index + 1);
 				break;
 			case 4:
 				_indexes.push_back(current_index);
+				_indexes.push_back(current_index + 2);
 				_indexes.push_back(current_index + 1);
-				_indexes.push_back(current_index + 2);
 				_indexes.push_back(current_index);
-				_indexes.push_back(current_index + 2);
 				_indexes.push_back(current_index + 3);
+				_indexes.push_back(current_index + 2);
 				break;
 			}
 			current_index += _polygon_size;

@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Plugins",
+    "\\Plugins\\FreeImage",
+    "\\Plugins\\FreeImage\\Dist",
+    "\\Plugins\\FreeImage\\Dist\\x32",
+    "\\Plugins\\FreeImage\\Dist\\x64"
   ],
   "PreviewInSolutionExplorer": false
 }

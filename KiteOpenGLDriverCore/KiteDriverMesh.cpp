@@ -25,6 +25,17 @@ namespace kite_driver
 			_aabb.Extend(*verticesPointer);
 		}
 	}
+	void KiteDriverMesh::SetNormals(kite_math::Vector3f * normals, int normalCount)
+	{
+		_normals.clear();
+
+		for (int normalI = 0; normalI < normalCount; ++normalI)
+		{
+			auto normalsPointer = normals + normalI;
+			_normals.push_back(*normalsPointer);
+		}
+	}
+
 	void KiteDriverMesh::SetIndices(uint16* indices, int indexCount)
 	{
 		_indices.clear();
@@ -44,6 +55,11 @@ namespace kite_driver
 			auto uvsPointer = uvs + uvI;
 			uvs_cache.push_back(*uvsPointer);
 		}
+	}
+
+	float * KiteDriverMesh::GetNormals()
+	{
+		return (float*)_normals.data();
 	}
 
 	float * KiteDriverMesh::GetVertices()

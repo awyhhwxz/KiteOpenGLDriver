@@ -25,21 +25,32 @@ namespace kite_driver
 
 		bool is_cast = false;
 		const auto& render_obj_list = scene->get_render_obj_list();
+		
+		kite_driver::KiteDriverRenderObjectPtr select_obj;
+		float distance = kite_math::Mathf::kFloatMaxValue;
 		std::for_each(render_obj_list.begin(), render_obj_list.end()
-			, [&is_cast, ray](const std::weak_ptr<kite_driver::KiteDriverRenderObject>& obj)
+			, [&is_cast, ray, &distance, &select_obj](const std::weak_ptr<kite_driver::KiteDriverRenderObject>& obj)
 		{
-			kite_math::RayCastInfo castinfo;
 			if (!obj.expired())
 			{
+				kite_math::RayCastInfo castinfo;
 				if (obj.lock()->RayCast(ray, castinfo))
 				{
-					is_cast = true;
-					KiteDriverHighLightingManager::Instance()->HighLightingSingleObj(obj.lock());
+					if (castinfo.Distance < distance)
+					{
+						distance = castinfo.Distance;
+						select_obj = obj.lock();
+						is_cast = true;
+					}
 				}
 			}
 		});
 
-		if (!is_cast)
+		if (is_cast)
+		{
+			KiteDriverHighLightingManager::Instance()->HighLightingSingleObj(select_obj);
+		}
+		else
 		{
 			KiteDriverHighLightingManager::Instance()->Clear();
 		}

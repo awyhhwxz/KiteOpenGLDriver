@@ -37,6 +37,13 @@ namespace kite_driver
 			mesh->SetUVs(uv_pair.first, const_cast<kite_math::Vector2f*>(uv_pair.second.data()), uv_pair.second.size());
 		});
 
+		const auto& fbx_normals = fbx_mesh_data.Normals;
+		if (fbx_normals.size() != 0)
+		{
+			const auto& normal = (*fbx_normals.begin()).second;
+			mesh->SetNormals(const_cast<kite_math::Vector3f*>(normal.data()), normal.size());
+		}
+
 		const auto& indices = fbx_mesh->get_indexes();
 		mesh->SetIndices(const_cast<uint16*>(indices.data()), indices.size());
 		return mesh;
