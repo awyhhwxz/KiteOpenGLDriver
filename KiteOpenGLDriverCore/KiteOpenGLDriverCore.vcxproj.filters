@@ -207,6 +207,9 @@
     <ClInclude Include="KiteDriverFbxVisitor.h">
       <Filter>PluginVisitor</Filter>
     </ClInclude>
+    <ClInclude Include="KiteDriverShaderFileParser.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -340,6 +343,9 @@
     </ClCompile>
     <ClCompile Include="KiteDriverFbxVisitor.cpp">
       <Filter>PluginVisitor</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverShaderFileParser.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

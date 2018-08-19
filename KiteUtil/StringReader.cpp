@@ -5,9 +5,9 @@
 namespace kite_util
 {
 
-	std::string kite_util::StringReader::ReadString(const char* filePath)
+	std::string kite_util::StringReader::ReadString(const char* file_path)
 	{
-		std::ifstream ifs(filePath);
+		std::ifstream ifs(file_path);
 		std::string read, result;
 
 		if (ifs)
@@ -22,5 +22,4 @@ namespace kite_util
 
 		return result;
 	}
-
 }

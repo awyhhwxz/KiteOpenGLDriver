@@ -179,6 +179,7 @@
     <ClInclude Include="KiteDriverRenderStateSetter.h" />
     <ClInclude Include="KiteDriverRenderTexture.h" />
     <ClInclude Include="KiteDriverScene.h" />
+    <ClInclude Include="KiteDriverShaderFileParser.h" />
     <ClInclude Include="KiteDriverShaderVisitor.h" />
     <ClInclude Include="KiteDriverSkyBox.h" />
     <ClInclude Include="KiteDriverStruct.h" />
@@ -226,6 +227,7 @@
     <ClCompile Include="KiteDriverRenderStateSetter.cpp" />
     <ClCompile Include="KiteDriverRenderTexture.cpp" />
     <ClCompile Include="KiteDriverScene.cpp" />
+    <ClCompile Include="KiteDriverShaderFileParser.cpp" />
     <ClCompile Include="KiteDriverShaderVisitor.cpp" />
     <ClCompile Include="KiteDriverSkyBox.cpp" />
     <ClCompile Include="KiteDriverStruct.cpp" />

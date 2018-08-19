@@ -1,12 +1,13 @@
 #include "stdafx.h"
 #include "KiteDriverShaderVisitor.h"
+#include "KiteDriverShaderFileParser.h"
 
 namespace kite_driver
 {
 
 	GLuint KiteDriverShaderVisitor::LoadShaderFile(GLenum type, const char * shaderPath)
 	{
-		auto shaderSrc = kite_util::StringReader::ReadString(shaderPath);
+		auto shaderSrc = KiteDriverShaderFileParser::ReadShaderString(shaderPath);
 		return LoadShader(type, shaderSrc.c_str());
 	}
 

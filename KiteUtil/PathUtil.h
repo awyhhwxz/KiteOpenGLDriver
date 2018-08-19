@@ -8,7 +8,12 @@ namespace kite_util
 	public:
 		static tstring GetAppPath();
 		static tstring GetResourcePath();
-		static tstring GetFileDirectory(const tstring& fileName);
+		static tstring GetFileDirectory(const tchar* file_path);
+		static void SplitDirectoryAndFileName(const tchar* file_path, tstring& directory, tstring& file_name);
+		static tstring AddDirectoryFlash(const tchar* directory);
+
+	private:
+		static int IndexLastFlash(const tstring& str);
 	};
 
 }
