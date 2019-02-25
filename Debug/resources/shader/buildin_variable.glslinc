@@ -1,0 +1,6 @@
+
+uniform vec3 _CameraPos;
+uniform mat4 _MVP;
+uniform mat4 _VP;
+uniform mat4 _ObjectToWorld;
+uniform mat4 _WorldToObject;

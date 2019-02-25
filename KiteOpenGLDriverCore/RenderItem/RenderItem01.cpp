@@ -144,7 +144,11 @@ namespace kite_driver
 			"/shader/standard.fragment"
 		);
 		auto texture = KiteDriverFastAccess::GenerateTexture2D("/texture/balloonstupidcat_a.png");
-		material->SetUniformTexture("tex", texture);
+		material->SetUniformTexture("_Albedo", texture);
+		float smoothness = 0.5f;
+		material->SetUniformValue("_Smoothness", KiteDriverParaValueType::KDPVT_FLOAT, &smoothness);
+		float metallic = 0.5f;
+		material->SetUniformValue("_Metallic", KiteDriverParaValueType::KDPVT_FLOAT, &metallic);
 
 		renderObj->set_material(material);
 		renderObj->Initialize();

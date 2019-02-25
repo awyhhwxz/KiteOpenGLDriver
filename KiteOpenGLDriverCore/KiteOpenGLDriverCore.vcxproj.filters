@@ -34,6 +34,9 @@
     <Filter Include="PluginVisitor">
       <UniqueIdentifier>{374ba768-dc49-4932-ae57-fcc166c6cea2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Light">
+      <UniqueIdentifier>{45daed0e-02fa-49e8-a31f-1a6af92a3454}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -210,6 +213,18 @@
     <ClInclude Include="KiteDriverShaderFileParser.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="KiteDriverLightContainer.h">
+      <Filter>Light</Filter>
+    </ClInclude>
+    <ClInclude Include="IKiteDriverLight.h">
+      <Filter>Light</Filter>
+    </ClInclude>
+    <ClInclude Include="KiteDriverDirectionLight.h">
+      <Filter>Light</Filter>
+    </ClInclude>
+    <ClInclude Include="KiteDriverCommonLight.h">
+      <Filter>Light</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -346,6 +361,15 @@
     </ClCompile>
     <ClCompile Include="KiteDriverShaderFileParser.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverLightContainer.cpp">
+      <Filter>Light</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverDirectionLight.cpp">
+      <Filter>Light</Filter>
+    </ClCompile>
+    <ClCompile Include="KiteDriverCommonLight.cpp">
+      <Filter>Light</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

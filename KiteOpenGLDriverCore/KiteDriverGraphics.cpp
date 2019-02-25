@@ -30,7 +30,7 @@ namespace kite_driver
 
 		auto matrix = kite_math::Matrix4f::Identity;// kite_math::Matrix4f::Translate(kite_math::Vector3f(0.5, 0.5, 0.5));
 
-		material->SetUniformValue("mvp", KDPVT_MATRIX4F, const_cast<float*>(matrix.values));
+		material->SetUniformValue("_MVP", KDPVT_MATRIX4F, const_cast<float*>(matrix.values));
 
 		plane->Render(material.get());
 

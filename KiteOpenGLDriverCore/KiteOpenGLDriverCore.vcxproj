@@ -105,10 +105,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;KITEOPENGLDRIVERCORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>.;.\GL;.\interface;..\KiteMath;..\KiteUtil;.\ParameterValue;.\manager;.\MouseController;.\PostEffect;..\Plugins\FbxParserPlugin</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>.\lib;..\Library;..\Plugins\FbxParserPlugin\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glew32_x64.lib;FbxParserPlugin.lib;KiteMath.lib;KiteUtil.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -149,6 +152,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="IKiteDriverLight.h" />
     <ClInclude Include="interface\KiteDriverEvent.h" />
     <ClInclude Include="interface\IKiteDriverContext.h" />
     <ClInclude Include="interface\IKiteDriverPostEffect.h" />
@@ -162,7 +166,9 @@
     <ClInclude Include="KiteDriverAABB.h" />
     <ClInclude Include="KiteDriverBaseObject.h" />
     <ClInclude Include="KiteDriverCamera.h" />
+    <ClInclude Include="KiteDriverCommonLight.h" />
     <ClInclude Include="KiteDriverContext.h" />
+    <ClInclude Include="KiteDriverDirectionLight.h" />
     <ClInclude Include="KiteDriverDummy.h" />
     <ClInclude Include="KiteDriverEnumOpenGLEnumConverter.h" />
     <ClInclude Include="KiteDriverFastAccess.h" />
@@ -170,6 +176,7 @@
     <ClInclude Include="KiteDriverFrameBuffer.h" />
     <ClInclude Include="KiteDriverGeometryGenerator.h" />
     <ClInclude Include="KiteDriverGraphics.h" />
+    <ClInclude Include="KiteDriverLightContainer.h" />
     <ClInclude Include="KiteDriverMaterial.h" />
     <ClInclude Include="KiteDriverMesh.h" />
     <ClInclude Include="KiteDriverMeshDrawer.h" />
@@ -211,7 +218,9 @@
     <ClCompile Include="KiteDriverAABB.cpp" />
     <ClCompile Include="KiteDriverBaseObject.cpp" />
     <ClCompile Include="KiteDriverCamera.cpp" />
+    <ClCompile Include="KiteDriverCommonLight.cpp" />
     <ClCompile Include="KiteDriverContext.cpp" />
+    <ClCompile Include="KiteDriverDirectionLight.cpp" />
     <ClCompile Include="KiteDriverDummy.cpp" />
     <ClCompile Include="KiteDriverEnumOpenGLEnumConverter.cpp" />
     <ClCompile Include="KiteDriverFastAccess.cpp" />
@@ -219,6 +228,7 @@
     <ClCompile Include="KiteDriverFrameBuffer.cpp" />
     <ClCompile Include="KiteDriverGeometryGenerator.cpp" />
     <ClCompile Include="KiteDriverGraphics.cpp" />
+    <ClCompile Include="KiteDriverLightContainer.cpp" />
     <ClCompile Include="KiteDriverMaterial.cpp" />
     <ClCompile Include="KiteDriverMesh.cpp" />
     <ClCompile Include="KiteDriverMeshDrawer.cpp" />

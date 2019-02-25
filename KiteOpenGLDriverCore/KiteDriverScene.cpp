@@ -100,7 +100,7 @@ namespace kite_driver
 			if (material != nullptr)
 			{
 				auto mvp_matrix = _camera->get_skybox_vp_matrix();
-				material->SetUniformValue("mvp", KDPVT_MATRIX4F, mvp_matrix.values);
+				material->SetUniformValue("_MVP", KDPVT_MATRIX4F, mvp_matrix.values);
 				renderObject->Render();
 			}
 		}

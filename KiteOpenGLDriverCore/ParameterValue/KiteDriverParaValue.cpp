@@ -33,6 +33,10 @@ namespace kite_driver
 		{
 			dataSize = sizeof(kite_math::Vector4f);
 		}
+		else if (_type == KDPVT_VECTOR3)
+		{
+			dataSize = sizeof(kite_math::Vector3f);
+		}
 
 		if (_data.get() == nullptr)
 		{
@@ -41,6 +45,7 @@ namespace kite_driver
 			case KDPVT_MATRIX4F:
 			case KDPVT_FLOAT:
 			case KDPVT_VECTOR4:
+			case KDPVT_VECTOR3:
 				_data.reset(new uint8[dataSize]);
 				break;
 			}

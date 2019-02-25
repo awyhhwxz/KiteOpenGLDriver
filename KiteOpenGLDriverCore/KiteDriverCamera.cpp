@@ -119,14 +119,19 @@ namespace kite_driver
 
 	void KiteDriverCamera::SetCameraMatrices(KiteDriverRenderObject* render_object, KiteDriverMaterial* material)
 	{
+		auto camera_pos = this->get_position();
+		material->SetUniformValue("_CameraPos", KDPVT_VECTOR3, camera_pos.values);
+
 		auto model_matrix = render_object->get_world_matrix();
-		material->SetUniformValue("model_matrix", KDPVT_MATRIX4F, model_matrix.values);
+		material->SetUniformValue("_ObjectToWorld", KDPVT_MATRIX4F, model_matrix.values);
+		auto model_inverse_matrix = render_object->get_inverse_world_matrix();
+		material->SetUniformValue("_WorldToObject", KDPVT_MATRIX4F, model_inverse_matrix.values);
 		auto view_matrix = this->get_view_matrix();
-		auto mv_matrix = view_matrix * model_matrix;
-		material->SetUniformValue("mv", KDPVT_MATRIX4F, mv_matrix.values);
 		auto perspective_matrix = this->get_perspective_matrix();
-		auto mvp_matrix = perspective_matrix * mv_matrix;
-		material->SetUniformValue("mvp", KDPVT_MATRIX4F, mvp_matrix.values);
+		auto vp_matrix = perspective_matrix * view_matrix;
+		material->SetUniformValue("_VP", KDPVT_MATRIX4F, vp_matrix.values);
+		auto mvp_matrix = vp_matrix * model_matrix;
+		material->SetUniformValue("_MVP", KDPVT_MATRIX4F, mvp_matrix.values);
 
 	}
 
